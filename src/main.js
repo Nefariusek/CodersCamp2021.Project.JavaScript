@@ -1,5 +1,4 @@
 import './style.css';
+import { QuizTimer } from './components/timer/quiz-timer.js';
 
-document.querySelector('#app').innerHTML = `
-  <h1>CC first project</h1>
-`;
+document.querySelector('#app').appendChild(QuizTimer.showTimer());
