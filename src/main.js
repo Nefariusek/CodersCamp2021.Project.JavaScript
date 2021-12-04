@@ -1,5 +1,5 @@
 import './style.css';
 
 document.querySelector('#app').innerHTML = `
-  <h1>CC first project</h1>
+  <h1>CC first prot</h1>
 `;
