@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SCORE</title>
+    <link rel="stylesheet" href="user.score.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div id="end" class="">
+            <h1 id="finalScore">CONGRATS!</h1>
+            <h1 id="finalScore">YOUR SCORE IS: 6/6</h1>
+            <form>
+                <input type="text" id="username" placeholder="username" />
+                <button type="submit" class="btn" id="saveScoreBtn" onclick="saveHighScore(event)" disabled >
+                   SUBMIT
+                </button>
+            </form>
+            <button class="btn menuBtn" href="/">MENU</button>
+            <button class="btn playAgain" href="/">PLAY AGAIN</button>
+        </div>
+    </div>
+    <script src="user-score.js"></script>
+</body>
+
+</html>
