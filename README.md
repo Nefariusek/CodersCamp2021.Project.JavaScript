@@ -16,3 +16,7 @@ Node.js >=16 (https://nodejs.org/en/)
 By default server should be running here: localhost:3000
 
 To stop local press `Ctrl+C`
+
+**Credits**
+
+Graphics Designed By karacis studio From `<a href="https://lovepik.com/image-450013302/cute-koala-cartoon-vector.html">LovePik.com</a>`
