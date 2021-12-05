@@ -1,5 +1,7 @@
 import './style.css';
-import { QuizTimer } from './components/timer/quiz-timer.js';
+import './components/timer/quiz-timer.css';
+import { createTimer, startTimer, stopTimer } from './components/timer/quiz-timer.js';
 
-document.querySelector('#app').appendChild(QuizTimer.createTimer());
-QuizTimer.startTimer();
+document.querySelector('#app').appendChild(createTimer());
+startTimer();
+setTimeout(stopTimer, 1000 * 35);
