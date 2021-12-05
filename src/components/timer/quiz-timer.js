@@ -4,6 +4,10 @@ export function createTimer() {
   const clock = document.createElement('div');
   clock.setAttribute('id', 'clock');
 
+  const image = document.createElement('img');
+  image.setAttribute('id', 'clk_img');
+  image.src = '/timer.png';
+
   const minutes = document.createElement('span');
   minutes.setAttribute('id', 'min');
   minutes.innerText = '00';
@@ -15,6 +19,7 @@ export function createTimer() {
   seconds.setAttribute('id', 'sec');
   seconds.innerText = '00';
 
+  clock.appendChild(image);
   clock.appendChild(minutes);
   clock.appendChild(colon);
   clock.appendChild(seconds);
@@ -27,10 +32,9 @@ export function startTimer() {
     seconds = 0;
   const min = document.getElementById('min');
   const sec = document.getElementById('sec');
-  const clk = document.getElementById('clock');
+
   min.innerText = '00';
   sec.innerText = '00';
-  clk.style.display = 'initial';
 
   timer = setInterval(function () {
     seconds++;

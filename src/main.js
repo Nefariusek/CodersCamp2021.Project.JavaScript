@@ -4,4 +4,4 @@ import { createTimer, startTimer, stopTimer } from './components/timer/quiz-time
 
 document.querySelector('#app').appendChild(createTimer());
 startTimer();
-setTimeout(stopTimer, 1000 * 35);
+//setTimeout(stopTimer, 1000 * 35);

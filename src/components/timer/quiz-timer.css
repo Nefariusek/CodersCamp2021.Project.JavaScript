@@ -1,4 +1,14 @@
 #clock {
   color: white;
-  font-size: 3rem;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+#clk_img {
+  height: 70px;
+  width: auto;
+  margin: 10px;
 }
