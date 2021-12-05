@@ -13,10 +13,9 @@
 
 h1 {
   font-size: 5.4rem;
-  color:whitesmoke;
+  color: whitesmoke;
   margin-bottom: 3rem;
 }
-
 
 /* UTILITIES */
 
@@ -35,10 +34,15 @@ h1 {
   width: 100%;
 }
 
+#scoreTxt {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
 #finalScore {
   display: flex;
   justify-content: center;
-  font-size: 50px;
+  font-size: 30px;
 }
 
 /* BUTTONS */
@@ -91,7 +95,7 @@ input {
   font-size: 1.8rem;
   border: none;
   border-radius: 15px;
- background-color:rgba(62, 80, 91, 0.4);
+  background-color: rgba(62, 80, 91, 0.4);
 }
 
 input::placeholder {
