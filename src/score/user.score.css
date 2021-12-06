@@ -48,8 +48,10 @@ h1 {
 /* BUTTONS */
 .btn {
   font-size: 1.8rem;
+  font-weight: 700;
   padding: 1rem 0;
   width: 20rem;
+  height: 6rem;
   border: 1em;
   border-radius: 15px;
   text-align: center;
@@ -60,21 +62,27 @@ h1 {
 }
 
 .btn.menuBtn {
-  font-weight: 700;
   width: 25rem;
-  height: 6rem;
   position: absolute;
   bottom: 100px;
   left: 100px;
 }
 
 .btn.playAgain {
-  font-weight: 700;
   width: 25rem;
-  height: 6rem;
   position: absolute;
   bottom: 100px;
   right: 100px;
+}
+
+#saveScoreBtn:hover {
+  background-color: rgba(62, 80, 91, 0.4);
+  color: #333;
+}
+
+#saveScoreBtn:active {
+  background-color: whitesmoke;
+  color: #333;
 }
 
 /* FORMS */
@@ -87,10 +95,9 @@ form {
 }
 
 input {
-  margin-top: 2rem;
   margin-bottom: 1rem;
   width: 40rem;
-  height: 60px;
+  height: 6rem;
   padding: 1.5rem;
   font-size: 1.8rem;
   border: none;
@@ -99,5 +106,7 @@ input {
 }
 
 input::placeholder {
-  color: whitesmoke;
+  color: #333;
+  text-align: center;
+  font-weight: 700;
 }
