@@ -5,20 +5,6 @@ If animate on hover is true, the button will show an icon of Koala to the right 
 */
 import './Button.css';
 
-const addKoala = () => {
-  const koala = document.createElement('img');
-  koala.src = '/cute_koala.png';
-  koala.classList.add('koala', 'hidden');
-  button.after(koala);
-
-  button.onmouseover = () => {
-    koala.classList.remove('hidden');
-  };
-  button.onmouseout = () => {
-    koala.classList.add('hidden');
-  };
-};
-
 export default function Button(label, className, animate, eventListener, callback) {
   const button = document.createElement('button');
   button.innerHTML = label;
@@ -26,7 +12,28 @@ export default function Button(label, className, animate, eventListener, callbac
 
   button.addEventListener(eventListener, callback);
 
-  animate && addKoala();
+  const buttonWrapper = document.createElement('div');
+  buttonWrapper.classList.add('wrapper');
+  buttonWrapper.append(button);
 
-  return button;
+  if (animate) {
+    const koala = addKoala(button);
+    buttonWrapper.append(koala);
+  }
+
+  return buttonWrapper;
 }
+
+const addKoala = (button) => {
+  const koala = document.createElement('img');
+  koala.src = '/cute_koala.png';
+  koala.classList.add('koala', 'hidden');
+
+  button.onmouseover = () => {
+    koala.classList.remove('hidden');
+  };
+  button.onmouseout = () => {
+    koala.classList.add('hidden');
+  };
+  return koala;
+};

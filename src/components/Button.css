@@ -19,6 +19,10 @@ button:hover {
   color: white;
 }
 
+.wrapper {
+  position: relative;
+}
+
 img {
   width: 70px;
   height: 70px;
@@ -26,6 +30,7 @@ img {
 
   opacity: 1;
   transition: 0.2s;
+  position: absolute;
 }
 
 .hidden {
