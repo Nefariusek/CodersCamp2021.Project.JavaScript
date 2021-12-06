@@ -2,29 +2,41 @@ class QuizSettings {
     quizAbout;
     questionsNum;
     questionsType;
-    static createButtonCats() {
-        const buttonCats = document.createElement('input');
-        buttonCats.type = 'button';
-        buttonCats.addEventListener('click', () => {
-            this.quizAbout = 'cats';
-        });
-        return buttonCats;
-    }
 
-    static createButtonDogs() {
-        const buttonDogs = document.createElement('input');
-        buttonDogs.type = 'button';
-        buttonDogs.addEventListener('click', () => {
-            this.quizAbout="dogs"
+    static createRadioButton(val,nameOfRadio,what,side){
+        const div=document.createElement('div');
+        const button = document.createElement('input');
+        button.setAttribute('id',val);
+        button.type='radio';
+        button.value=val;
+        button.name=nameOfRadio;
+        const label=document.createElement('label');
+        label.setAttribute('for',val);
+        label.setAttribute('class',side);
+        label.innerText=val;
+        button.addEventListener('click', () => {
+            if (what=="about"){
+                this.quizAbout=val;
+            }
+            if (what=="type"){
+                this.questionsType=val;
+            }
+            
         });
-        return buttonDogs;
+        if (side=="left"){
+            div.append(label,button);
+        }
+        else {
+            div.append(button,label);
+        }
+        return div;
     }
 
     static createAboutSection() {
         const about = document.createElement('div');
         const text = document.createElement('p');
         text.innerText='Quiz about: '
-        about.append(text, this.createButtonCats(), this.createButtonDogs());
+        about.append(text,this.createRadioButton("cats","about","about","left"), this.createRadioButton("dogs","about","about","right"));
         return about;
     }
 
@@ -45,29 +57,11 @@ class QuizSettings {
         return questionsNumberdiv;
     }
 
-    static createButtonOpen() {
-        const buttonOpen = document.createElement('input');
-        buttonOpen.type = 'button';
-        buttonOpen.addEventListener('click', () => {
-            this.questionsType="open"
-        });
-        return buttonOpen;
-    }
-
-    static createMultipleChoice() {
-        const buttonMultipleChoice = document.createElement('input');
-        buttonMultipleChoice.type = 'button';
-        buttonMultipleChoice.addEventListener('click', () => {
-            this.questionsType="multiple"
-        });
-        return buttonMultipleChoice;
-    }
-
     static createQuestionsTypeSection() {
         const questionsType = document.createElement('div');
         const text = document.createElement('p');
         text.innerText='Questions type: '
-        questionsType.append(text, this.createButtonOpen(), this.createMultipleChoice());
+        questionsType.append(text, this.createRadioButton("open","type","type","left"), this.createRadioButton("multiple choice","type","type","right"));
         return questionsType;
     }
 

@@ -5,19 +5,17 @@ form {
     justify-content: space-around;
     align-items: center;
     gap:30px;
-    width:70%;
     color:white;
 }
 
 form div{
     width:100%;
-    max-width: 450px;
     display: grid;
     grid-template-columns:[first] 1fr [second] 1fr [third];
     align-items: center;
     justify-items: center;
     align-content: center;
-    gap:20px;
+    gap:5%;
 }
 input{
     border: 0px ;
@@ -25,11 +23,24 @@ input{
     width:100%;
     max-width: 450px;
     background-color: #658080;
-    height:50px
+    height:50px;
+    display:inline-block;
+    
+}
+input[type=radio]{
+    -webkit-appearance: none;
 }
 
-input:active{
+input[type=radio]:checked{
+    background-color: #191f24;
+}
+
+input[type=radio]:hover{
     background-color: #3e505b;
+}
+
+input[type=submit]:active{
+    background-color: #263038;
 }
 
 form p{
@@ -37,15 +48,33 @@ form p{
     grid-column-end: third;
 }
 #number{
-    width:100%;
+    width:40%;
     grid-column-start: first;
     grid-column-end: third;
+    color:white;
+    text-align: center;
 }
 #number:hover{
     background-color: #3e505b;
 }
 
 #submit{
+    width:40%;
     margin-top:100px;
-    color:
+    color:white;
+}
+#submit:hover{
+    width:40%;
+    margin-top:100px;
+    background-color: #1e272c;
+}
+
+.left{
+    position:relative;
+    left:110%;
+}
+
+.right{
+    position:relative;
+    left:-110%;
 }
