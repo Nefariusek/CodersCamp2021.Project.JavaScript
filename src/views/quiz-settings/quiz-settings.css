@@ -1,4 +1,5 @@
 form {
+    width:70%;
     margin:auto;
     display: flex;
     flex-direction: column;
@@ -26,6 +27,11 @@ input{
     height:50px;
     display:inline-block;
     
+}
+
+.radioButton{
+    display:flex;
+    flex-direction: column;
 }
 input[type=radio]{
     -webkit-appearance: none;
@@ -69,12 +75,7 @@ form p{
     background-color: #1e272c;
 }
 
-.left{
+label {
     position:relative;
-    left:110%;
-}
-
-.right{
-    position:relative;
-    left:-110%;
+    top:-35px;
 }

@@ -3,111 +3,143 @@ class QuizSettings {
     questionsNum;
     questionsType;
 
-    static createRadioButton(val,nameOfRadio,what,side){
-        const div=document.createElement('div');
+    static createRadioButton(value, settingName) {
+        const div = document.createElement('div');
+        div.setAttribute('class','radioButton')
         const button = document.createElement('input');
-        button.setAttribute('id',val);
-        button.type='radio';
-        button.value=val;
-        button.name=nameOfRadio;
-        const label=document.createElement('label');
-        label.setAttribute('for',val);
-        label.setAttribute('class',side);
-        label.innerText=val;
-        button.addEventListener('click', () => {
-            if (what=="about"){
-                this.quizAbout=val;
-            }
-            if (what=="type"){
-                this.questionsType=val;
-            }
-            
-        });
-        if (side=="left"){
-            div.append(label,button);
-        }
-        else {
-            div.append(button,label);
-        }
+        button.setAttribute('id', value);
+        button.type = 'radio';
+        button.value = value;
+        button.name = settingName;
+        const label = document.createElement('label');
+        label.setAttribute('for', value);
+        label.innerText = value;
+        this.addEventListenerToComponent(button,'click',settingName,value);
+        div.append(button,label);
         return div;
     }
+
+
+
+    static addEventListenerToComponent(component,event,settingName,value){
+        component.addEventListener(event,()=>{
+            if (settingName==='quizAbout'){
+                this.quizAbout=value;
+            }
+            if (settingName==='questionsType'){
+                this.questionsType=value;
+            }
+            if (settingName==='questionsNum'){
+                this.questionsNum=component.value;
+            }
+            console.log(this.quizAbout,this.questionsType,this.questionsNum);
+        });
+    }
+
+
 
     static createAboutSection() {
         const about = document.createElement('div');
         const text = document.createElement('p');
-        text.innerText='Quiz about: '
-        about.append(text,this.createRadioButton("cats","about","about","left"), this.createRadioButton("dogs","about","about","right"));
+        text.innerText = 'Quiz about: ';
+        about.append(
+            text,
+            this.createRadioButton('cats', 'quizAbout'),
+            this.createRadioButton('dogs', 'quizAbout'),
+        );
         return about;
     }
 
+
+
     static createQuestionsNumberInput() {
         const questionsNumber = document.createElement('input');
-        questionsNumber.setAttribute('id','number');
-        questionsNumber.addEventListener('input', () => {
-            this.questionsNum=questionsNumber.value;
-        });
+        questionsNumber.setAttribute('id', 'number');
+        this.addEventListenerToComponent(questionsNumber,'input','questionsNum',questionsNumber)
         return questionsNumber;
     }
 
-    static createQuestionsNumberSection() {
+
+
+    static createQuestionsNumberdiv() {
         const questionsNumberdiv = document.createElement('div');
         const text = document.createElement('p');
-        text.innerText='Questions number: '
+        text.innerText = 'Questions number: ';
         questionsNumberdiv.append(text, this.createQuestionsNumberInput());
         return questionsNumberdiv;
     }
 
+
+
     static createQuestionsTypeSection() {
         const questionsType = document.createElement('div');
         const text = document.createElement('p');
-        text.innerText='Questions type: '
-        questionsType.append(text, this.createRadioButton("open","type","type","left"), this.createRadioButton("multiple choice","type","type","right"));
+        text.innerText = 'Questions type: ';
+        questionsType.append(
+            text,
+            this.createRadioButton('open','questionsType'),
+            this.createRadioButton('multiple choice', 'questionsType'),
+        );
         return questionsType;
     }
+
+
+
+    static createButtonStartQuiz(){
+        const buttonStartQuiz = document.createElement('input');
+        buttonStartQuiz.type = 'submit';
+        buttonStartQuiz.setAttribute('id', 'submit');
+        buttonStartQuiz.value = 'Start Quiz';
+        return buttonStartQuiz;
+    }
+
+
 
     static createForm() {
         const form = document.createElement('form');
 
-        const buttonStartQuiz = document.createElement('input');
-        buttonStartQuiz.type = 'submit';
-        buttonStartQuiz.setAttribute('id','submit');
-        buttonStartQuiz.value='Start Quiz';
-
         form.append(
             this.createAboutSection(),
-            this.createQuestionsNumberSection(),
+            this.createQuestionsNumberdiv(),
             this.createQuestionsTypeSection(),
-            buttonStartQuiz,
+            this.createButtonStartQuiz()
         );
-        form.addEventListener("submit", e => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
-            if (this.questionsNum===undefined || this.questionsNum<1 || this.questionsNum>20){
-                alert("Insert questions number between 1 and 20");
+            if (this.questionsNum === undefined || this.questionsNum < 1 || this.questionsNum > 20) {
+                alert('Insert questions number between 1 and 20');
+            } else if (this.quizAbout === undefined) {
+                alert('Choose animals');
+            } else if (this.quizAbout === undefined) {
+                alert('Choose questionsType');
+            } else {
+                alert(
+                    'Quiz about: ' +
+                    this.quizAbout +
+                    '\nQuestions number: ' +
+                    this.questionsNum +
+                    '\nQuestions type: ' +
+                    this.questionsType,
+                );
             }
-            else if (this.quizAbout===undefined){
-                alert("Choose animals");
-            }
-            else if (this.quizAbout===undefined){
-                alert("Choose questionsType");
-            }
-            else {
-                alert("Quiz about: "+this.quizAbout+"\nQuestions number: "+this.questionsNum+"\nQuestions type: "+this.questionsType);
-            }
-
         });
         return form;
     }
 
+
+
     static showSettings() {
         const settings = document.createElement('div');
         settings.appendChild(this.createForm());
-        settings.setAttribute('id','quiz-settings');
-
-        console.log(this.quizAbout, this.questionsType, this.questionsNum);
+        settings.setAttribute('id', 'quiz-settings');
 
         return settings;
     }
 }
+
+
+
+
 
 export {
     QuizSettings
