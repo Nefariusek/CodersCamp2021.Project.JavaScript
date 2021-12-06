@@ -5,7 +5,12 @@ If animate on hover is true, the button will show an icon of Koala to the right 
 */
 import './Button.css';
 
-export default function Button(label, classStyle, animate) {
+/*const simpleCallback = () => {
+  console.log(`Greetings from koala`);
+};
+*/
+
+export default function Button(label, classStyle, animate, eventListener, callback) {
   const koalaButton = document.createElement('div');
   koalaButton.classList.add('koala-button');
 
@@ -13,9 +18,7 @@ export default function Button(label, classStyle, animate) {
   button.innerHTML = label;
   button.classList.add(classStyle);
 
-  button.addEventListener('click', () => {
-    console.log(`Greetings from koala in ${label}`);
-  });
+  button.addEventListener(eventListener, callback);
 
   koalaButton.append(button);
 

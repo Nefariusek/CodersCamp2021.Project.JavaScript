@@ -4,12 +4,17 @@ import Button from './components/Button.js';
 document.querySelector('#app').innerHTML = `
   <h1>CC first project</h1>
 `;
-// how to use: Button(label, classStyle, animate, listener, callback)
-const buttonQuiz = Button('start quiz', 'quiz', true);
-const buttonLeaderboard = Button('leaderboard', 'leaderboard', true);
-const buttonAdoption = Button('adoption', 'adoption', true);
-const buttonCredits = Button('credits', 'credits', true);
-const buttonStatic = Button('abort koala', 'noKoala', false);
+
+const simpleCallback = () => {
+  console.log(`Greetings from koala`);
+};
+
+// how to use: Button(label, classStyle, animate, 'eventListener', callback)
+const buttonQuiz = Button('start quiz', 'quiz', true, 'click', simpleCallback);
+const buttonLeaderboard = Button('leaderboard', 'leaderboard', true, 'click', simpleCallback);
+const buttonAdoption = Button('adoption', 'adoption', true, 'click', simpleCallback);
+const buttonCredits = Button('credits', 'credits', true, 'click', simpleCallback);
+const buttonStatic = Button('abort koala', 'noKoala', false, 'click', simpleCallback);
 
 document.querySelector('#app').append(buttonQuiz, buttonLeaderboard, buttonAdoption, buttonCredits);
 document.querySelector('#app').append(buttonStatic);
