@@ -1,5 +1,6 @@
 import './style.css';
 import Button from './components/Button.js';
+import Question from './model/question.js';
 
 document.querySelector('#app').innerHTML = `
   <h1>CC first project</h1>
@@ -8,6 +9,19 @@ document.querySelector('#app').innerHTML = `
 const simpleCallback = () => {
   console.log(`Greetings from koala`);
 };
+// how to use Question class Question has {imageUrl, correct, incorrectAnswers, question} and .getAnswers method
+
+const firstQuestion = new Question(
+  'url',
+  'ula',
+  ['ala', 'ela', 'ola'],
+  "Mirror, mirror on the wall who's the fairest of them all?",
+);
+
+console.log(firstQuestion.question);
+//show answers
+console.log('The correct answer is:');
+setTimeout(() => console.log(firstQuestion.correct), 3000);
 
 // how to use: Button(label, className, animate, 'eventListener', callback)
 const buttonQuiz = Button('start quiz', 'quiz', true, 'click', simpleCallback);
