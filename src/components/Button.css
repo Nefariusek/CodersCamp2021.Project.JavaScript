@@ -23,13 +23,9 @@ img {
   width: 70px;
   height: 70px;
   transform: translateY(-10px);
-  position: absolute;
+
   opacity: 1;
   transition: 0.2s;
-}
-
-.koalaButton {
-  position: relative;
 }
 
 .hidden {
