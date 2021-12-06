@@ -9,7 +9,7 @@ const simpleCallback = () => {
   console.log(`Greetings from koala`);
 };
 
-// how to use: Button(label, classStyle, animate, 'eventListener', callback)
+// how to use: Button(label, className, animate, 'eventListener', callback)
 const buttonQuiz = Button('start quiz', 'quiz', true, 'click', simpleCallback);
 const buttonLeaderboard = Button('leaderboard', 'leaderboard', true, 'click', simpleCallback);
 const buttonAdoption = Button('adoption', 'adoption', true, 'click', simpleCallback);
