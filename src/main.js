@@ -7,7 +7,3 @@ function main() {
 }
 
 main();
-
-// document.querySelector('#app').innerHTML = `
-//   <h1>CC first project</h1>
-// `;

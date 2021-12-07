@@ -28,7 +28,7 @@ function renderMainView() {
 
       <div class="bubbles">
         <div class="bubble fact">
-          <img class="fact-img" src="http://placekitten.com/200/300" alt="the animal the sentence is about">
+          <img class="fact-img" src="http://placekitten.com/400/500" alt="the animal the sentence is about">
           <div class="fact-text">
             <h2>Did you know?</h2>
           </div>
@@ -45,12 +45,10 @@ function renderMainView() {
       </div>
 
       <div class="animal">
-        <img src="src/views/img/kangoroo.png" alt="kangoroo that tells informations" /></div>
+        <img src="src/public/kangoroo.png" alt="kangoroo that tells informations" /></div>
       </div>      
 
     </div>
-
-    <div class="footer">Footer</div>
   
   </div>
   `;
