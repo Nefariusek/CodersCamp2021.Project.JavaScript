@@ -26,7 +26,7 @@ export default function Button(label, className, animate, eventListener, callbac
 
 const addKoala = (button) => {
   const koala = document.createElement('img');
-  koala.src = '/cute_koala.png';
+  koala.src = './cute_koala.png';
   koala.classList.add('koala', 'hidden');
 
   button.onmouseover = () => {

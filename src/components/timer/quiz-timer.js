@@ -5,7 +5,7 @@ export function createTimer() {
   clock.setAttribute('id', 'clock');
 
   const image = document.createElement('img');
-  image.src = '/timer.png';
+  image.src = './timer.png';
 
   const minutes = document.createElement('span');
   minutes.setAttribute('id', 'timer-minutes');
