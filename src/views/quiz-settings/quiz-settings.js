@@ -5,7 +5,7 @@ class QuizSettings {
 
     static createRadioButton(value, settingName) {
         const div = document.createElement('div');
-        div.setAttribute('class','radioButton')
+        div.setAttribute('class', 'radioButton')
         const button = document.createElement('input');
         button.setAttribute('id', value);
         button.type = 'radio';
@@ -14,25 +14,25 @@ class QuizSettings {
         const label = document.createElement('label');
         label.setAttribute('for', value);
         label.innerText = value;
-        this.addEventListenerToComponent(button,'click',settingName,value);
-        div.append(button,label);
+        this.addEventListenerToComponent(button, 'click', settingName, value);
+        div.append(button, label);
         return div;
     }
 
 
 
-    static addEventListenerToComponent(component,event,settingName,value){
-        component.addEventListener(event,()=>{
-            if (settingName==='quizAbout'){
-                this.quizAbout=value;
+    static addEventListenerToComponent(component, event, settingName, value) {
+        component.addEventListener(event, () => {
+            if (settingName === 'quizAbout') {
+                this.quizAbout = value;
             }
-            if (settingName==='questionsType'){
-                this.questionsType=value;
+            if (settingName === 'questionsType') {
+                this.questionsType = value;
             }
-            if (settingName==='questionsNum'){
-                this.questionsNum=component.value;
+            if (settingName === 'questionsNum') {
+                this.questionsNum = component.value;
             }
-            console.log(this.quizAbout,this.questionsType,this.questionsNum);
+            console.log(this.quizAbout, this.questionsType, this.questionsNum);
         });
     }
 
@@ -55,7 +55,7 @@ class QuizSettings {
     static createQuestionsNumberInput() {
         const questionsNumber = document.createElement('input');
         questionsNumber.setAttribute('id', 'number');
-        this.addEventListenerToComponent(questionsNumber,'input','questionsNum',questionsNumber)
+        this.addEventListenerToComponent(questionsNumber, 'input', 'questionsNum', questionsNumber)
         return questionsNumber;
     }
 
@@ -77,7 +77,7 @@ class QuizSettings {
         text.innerText = 'Questions type: ';
         questionsType.append(
             text,
-            this.createRadioButton('open','questionsType'),
+            this.createRadioButton('open', 'questionsType'),
             this.createRadioButton('multiple choice', 'questionsType'),
         );
         return questionsType;
@@ -85,7 +85,7 @@ class QuizSettings {
 
 
 
-    static createButtonStartQuiz(){
+    static createButtonStartQuiz() {
         const buttonStartQuiz = document.createElement('input');
         buttonStartQuiz.type = 'submit';
         buttonStartQuiz.setAttribute('id', 'submit');

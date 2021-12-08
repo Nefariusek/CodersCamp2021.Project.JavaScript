@@ -1,81 +1,86 @@
 form {
-    width:70%;
-    margin:auto;
+    width: 70%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    gap:30px;
-    color:white;
+    gap: 30px;
+    color: white;
 }
 
-form div{
-    width:100%;
+form div {
+    width: 100%;
     display: grid;
-    grid-template-columns:[first] 1fr [second] 1fr [third];
+    grid-template-columns: [first] 1fr [second] 1fr [third];
     align-items: center;
     justify-items: center;
     align-content: center;
-    gap:5%;
-}
-input{
-    border: 0px ;
-    border-radius: 7px;
-    width:100%;
-    max-width: 450px;
-    background-color: #658080;
-    height:50px;
-    display:inline-block;
-    
+    gap: 5%;
 }
 
-.radioButton{
-    display:flex;
+input {
+    border: 0px;
+    border-radius: 7px;
+    width: 100%;
+    max-width: 450px;
+    background-color: #658080;
+    height: 50px;
+    display: inline-block;
+
+}
+
+.radioButton {
+    display: flex;
     flex-direction: column;
 }
-input[type=radio]{
+
+input[type=radio] {
     -webkit-appearance: none;
 }
 
-input[type=radio]:checked{
+input[type=radio]:checked {
     background-color: #191f24;
 }
 
-input[type=radio]:hover{
+input[type=radio]:hover {
     background-color: #3e505b;
 }
 
-input[type=submit]:active{
+input[type=submit]:active {
     background-color: #263038;
 }
 
-form p{
+form p {
     grid-column-start: first;
     grid-column-end: third;
 }
-#number{
-    width:40%;
+
+#number {
+    width: 40%;
     grid-column-start: first;
     grid-column-end: third;
-    color:white;
+    color: white;
     text-align: center;
 }
-#number:hover{
+
+#number:hover {
     background-color: #3e505b;
 }
 
-#submit{
-    width:40%;
-    margin-top:100px;
-    color:white;
+#submit {
+    width: 40%;
+    margin-top: 100px;
+    color: white;
 }
-#submit:hover{
-    width:40%;
-    margin-top:100px;
+
+#submit:hover {
+    width: 40%;
+    margin-top: 100px;
     background-color: #1e272c;
 }
 
 label {
-    position:relative;
-    top:-35px;
+    position: relative;
+    top: -35px;
 }
