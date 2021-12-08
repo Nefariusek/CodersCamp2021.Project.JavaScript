@@ -9,17 +9,18 @@ document.querySelector('#app').innerHTML = `
 const simpleCallback = () => {
   console.log(`Greetings from koala`);
 };
+
 // how to use Question class Question has {imageUrl, correct, incorrectAnswers, question} and .getAnswers method
 
 const firstQuestion = new Question(
   'url',
-  'ula',
-  ['ala', 'ela', 'ola'],
+  'Ala',
+  ['Ula', 'Ela', 'Ola'],
   "Mirror, mirror on the wall who's the fairest of them all?",
 );
 
 console.log(firstQuestion.question);
-//show answers
+console.log(firstQuestion.getAnswers());
 console.log('The correct answer is:');
 setTimeout(() => console.log(firstQuestion.correct), 3000);
 
