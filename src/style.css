@@ -8,5 +8,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
+  font-size: 16px;
+}
+
+:root {
+  --bg-color: #8ab0ab;
+  --btn-color: #658080;
+  --hover-btn-color: #3e505b;
+  --bubble-color: #410606;
+}
+
+body {
+  background-color: var(--bg-color);
 }
