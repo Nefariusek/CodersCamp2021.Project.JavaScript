@@ -23,7 +23,7 @@ button:hover {
   position: relative;
 }
 
-img {
+.wrapper img {
   width: 70px;
   height: 70px;
   transform: translateY(-10px);
@@ -33,6 +33,6 @@ img {
   position: absolute;
 }
 
-.hidden {
+.wrapper .hidden {
   opacity: 0;
 }
