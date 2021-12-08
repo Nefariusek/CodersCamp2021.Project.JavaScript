@@ -1,4 +1,6 @@
 import './style.css';
+import './components/timer/quiz-timer.css';
+import { createTimer, startTimer, stopTimer } from './components/timer/quiz-timer.js';
 import Button from './components/Button.js';
 
 document.querySelector('#app').innerHTML = `
@@ -18,3 +20,7 @@ const buttonStatic = Button('abort koala', 'noKoala', false, 'click', simpleCall
 
 document.querySelector('#app').append(buttonQuiz, buttonLeaderboard, buttonAdoption, buttonCredits);
 document.querySelector('#app').append(buttonStatic);
+
+
+document.querySelector('#app').appendChild(createTimer());
+startTimer();
