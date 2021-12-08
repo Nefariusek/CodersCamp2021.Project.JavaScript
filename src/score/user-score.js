@@ -3,6 +3,7 @@ import './user.score.css';
 export function renderScorePage() {
   renderPage();
   scoreLocalStorage();
+  saveHighScore();
 }
 
 function renderPage() {
@@ -36,26 +37,24 @@ function scoreLocalStorage() {
   username.addEventListener('keyup', () => {
     saveScoreBtn.disabled = !username.value;
   });
+}
 
+const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+function saveHighScore(e) {
   const recentUserScore = '12';
   const finalScore = document.getElementById('finalScore');
   finalScore.innerText = recentUserScore;
 
-  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  const score = {
+    score: recentUserScore,
+    name: username.value,
+  };
 
-  function saveHighScore(e) {
-    console.log('clikedItem');
-    e.preventDefault();
+  highScores.push(score);
+  localStorage.setItem('highScores', JSON.stringify(highScores));
 
-    const score = {
-      score: recentUserScore,
-      name: username.value,
-    };
-
-    highScores.push(score);
-    localStorage.setItem('highScores', JSON.stringify(highScores));
-
-    username.value = null;
-  }
+  username.value = null;
   saveScoreBtn.addEventListener('click', saveHighScore);
+  e.preventDefault();
 }
