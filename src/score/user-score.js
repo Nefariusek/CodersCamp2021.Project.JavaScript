@@ -3,7 +3,7 @@ import './user.score.css';
 export function renderScorePage() {
   renderPage();
   scoreLocalStorage();
-  saveHighScore();
+  saveScoreBtn.addEventListener('click', saveHighScore);
 }
 
 function renderPage() {
@@ -25,7 +25,6 @@ function renderPage() {
             PLAY AGAIN
           </button>
         </div>
-         <script src="user-score.js"></script>
      </div>
   `;
 }
@@ -40,12 +39,12 @@ function scoreLocalStorage() {
 }
 
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+const recentUserScore = '12';
 
 function saveHighScore(e) {
-  const recentUserScore = '12';
+  e.preventDefault();
   const finalScore = document.getElementById('finalScore');
   finalScore.innerText = recentUserScore;
-
   const score = {
     score: recentUserScore,
     name: username.value,
@@ -55,6 +54,4 @@ function saveHighScore(e) {
   localStorage.setItem('highScores', JSON.stringify(highScores));
 
   username.value = null;
-  saveScoreBtn.addEventListener('click', saveHighScore);
-  e.preventDefault();
 }
