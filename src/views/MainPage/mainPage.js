@@ -59,7 +59,6 @@ function renderMainView() {
   navItems.forEach((item) => {
     item.addEventListener('click', () => {
       alert(`Hello! I'm ${item.dataset.name} site`);
-      //item.dataset.name można wykorzystać jako fragment nazwy funkcji renderujące odpowiednią podstronę
     });
   });
 }
