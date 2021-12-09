@@ -35,21 +35,34 @@ function renderNickForm(){
     const input=document.createElement('input');
     input.setAttribute('id','nickInput');
     input.setAttribute('value','NICK');
-    div.append(input,Button('SUBMIT','nickSubmitButton',false,'click',saveNick(input)));
+    div.append(input,Button('SUBMIT','nickSubmitButton',false,'click',saveNick));
     return div;
 }
 
-function saveNick(input){
-    var nick=input.value;
-    console.log(nick);
+function saveNick(){
+    const input=document.getElementById('nickInput');
+    if (nickValidation()){
+        console.log(input.value);
+    } else {
+        alert("Type in your nickname!")
+    }
+}
+
+function nickValidation(){
+    const input=document.getElementById('nickInput');
+    if (input.value!='' && input.value!='NICK'){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function renderMenuButton(){
-    return(Button('MENU','menuButton',false,'click',goToMainPage()))
+    return(Button('MENU','menuButton',false,'click',goToMainPage))
 }
 
 function renderPlayAgainButton(){
-    return(Button('PLAY AGAIN','playAgainButton',false,'click',playAgain()))
+    return(Button('PLAY AGAIN','playAgainButton',false,'click',playAgain))
 }
 
 function goToMainPage(){
