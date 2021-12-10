@@ -11,7 +11,7 @@ export function RenderScorePage(){
     const div=document.createElement('div');
     div.setAttribute('id','scorePage');
     div.append(renderGraphics(),RenderScore(recentUserScore,questionsNumber),renderNickForm(),renderMenuButton(),renderPlayAgainButton());
-    return div;
+    document.querySelector('#app').append(div);
 }
 
 function RenderScore(score,questionsNumber){
@@ -30,8 +30,8 @@ function renderGraphics(){
     const img=document.createElement('img');
     img.setAttribute('src','../../public/cat.png');
     img.setAttribute('alt','Congrats!');
-    img.setAttribute('width','500');
-    img.setAttribute('height','500');
+    img.setAttribute('width','350');
+    img.setAttribute('height','350');
     return img;
 }
 

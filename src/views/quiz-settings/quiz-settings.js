@@ -133,7 +133,7 @@ class QuizSettings {
         settings.appendChild(this.createForm());
         settings.setAttribute('id', 'quiz-settings');
 
-        return settings;
+        document.querySelector('#app').append(settings);
     }
 }
 
