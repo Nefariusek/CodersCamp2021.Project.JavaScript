@@ -1,9 +1,5 @@
 import { renderMainPage } from '../../views/MainPage/mainPage.js';
-import { QuizSettings } from '../../views/quiz-settings/quiz-settings';
-
-function settings() {
-  document.querySelector('#app').appendChild(QuizSettings.showSettings());
-}
+import { settings } from '../../main.js';
 
 const app = document.getElementById('app');
 

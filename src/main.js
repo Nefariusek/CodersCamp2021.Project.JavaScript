@@ -9,3 +9,7 @@ import { renderMainPage } from './views/MainPage/mainPage.js';
 import { QuizSettings } from './views/quiz-settings/quiz-settings';
 
 import './components/router/Router.js';
+
+export function settings() {
+  document.querySelector('#app').appendChild(QuizSettings.showSettings());
+}
