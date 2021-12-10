@@ -1,12 +1,16 @@
 import './ScorePage.css';
-
+import { scoreLocalStorage,saveHighScore } from '../../score/user-score';
 import Button from '../../components/Button';
 import '../../components/Button.css';
 
-export function RenderScorePage(score,questionsNumber){
+export function RenderScorePage(){
+    const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+    const recentUserScore = 12;
+    const questionsNumber=12;
+    
     const div=document.createElement('div');
     div.setAttribute('id','scorePage');
-    div.append(renderGraphics(),RenderScore(score,questionsNumber),renderNickForm(),renderMenuButton(),renderPlayAgainButton());
+    div.append(renderGraphics(),RenderScore(recentUserScore,questionsNumber),renderNickForm(),renderMenuButton(),renderPlayAgainButton());
     return div;
 }
 
@@ -14,9 +18,11 @@ function RenderScore(score,questionsNumber){
     const div=document.createElement('div');
     const congratsText=document.createElement('h2');
     const scoreText=document.createElement('h2');
+    const finalScore=document.createElement('h2');
+    finalScore.setAttribute('id','finalScore');
     congratsText.innerText='CONGRATS!';
-    scoreText.innerText='YOUR SCORE IS: '+score+"/"+questionsNumber;
-    div.append(congratsText,scoreText);
+    scoreText.innerText='YOUR SCORE IS: ';
+    div.append(congratsText,scoreText,finalScore);
     return div;
 }
 
@@ -33,23 +39,25 @@ function renderNickForm(){
     const div=document.createElement('div');
     div.setAttribute('id','nickFormDiv');
     const input=document.createElement('input');
-    input.setAttribute('id','nickInput');
+    input.setAttribute('id','username');
     input.setAttribute('value','NICK');
-    div.append(input,Button('SUBMIT','nickSubmitButton',false,'click',saveNick));
+    div.append(input,Button('SUBMIT','saveScoreBtn',false,'click',saveNick));
     return div;
 }
 
 function saveNick(){
-    const input=document.getElementById('nickInput');
-    if (nickValidation()){
-        console.log(input.value);
-    } else {
-        alert("Type in your nickname!")
+    const recentUserScore = 12;
+    const input=document.getElementById('username');
+    const saveButton=document.getElementsByClassName('saveScoreBtn')[0];
+    console.log(saveButton);
+    saveButton.addEventListener('click',saveHighScore);
+    if (!nickValidation()){
+        alert("Type in your nickname!");
     }
 }
 
 function nickValidation(){
-    const input=document.getElementById('nickInput');
+    const input=document.getElementById('username');
     if (input.value!='' && input.value!='NICK'){
         return true;
     } else {

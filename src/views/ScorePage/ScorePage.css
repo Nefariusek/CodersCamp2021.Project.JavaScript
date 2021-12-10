@@ -10,6 +10,7 @@ h2{
 }
 
 #nickFormDiv{
+    margin-top: 10px;
     justify-content: center;
     width:70%;
     margin:auto;
@@ -17,13 +18,13 @@ h2{
     gap:5%;
 }
 
-#nickInput{
+#username{
     border:0px solid;
     width:400px;
     height: 48px;
 }
 
-#nickInput:hover{
+#username:hover{
     color:white;
 }
 
@@ -41,4 +42,7 @@ input{
     position: fixed;
     bottom:2%;
     right:4%;
+}
+#finalScore{
+    height:70px;
 }

@@ -31,4 +31,4 @@ import { renderMainPage } from './views/MainPage/mainPage.js';
 // document.querySelector('#app').appendChild(createTimer());
 // startTimer();
 // document.querySelector('#app').append(QuizSettings.showSettings());
-document.querySelector('#app').append(RenderScorePage(6,6));
+document.querySelector('#app').append(RenderScorePage());
