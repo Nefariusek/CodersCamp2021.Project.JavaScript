@@ -16,8 +16,34 @@ const makeAnimalArray = (data) => {
   return questions;
 };
 
+const prepareQuiz = (arr, numberOfQuestions) => {
+  const questions = [];
+  for (let questionNumber = 1; questionNumber <= numberOfQuestions; questionNumber++) {
+    const animal = arr[Math.floor(Math.random() * arr.length)];
+    console.log('Question number: ', questionNumber, ' answer is: ', animal);
+    const incorrectAnswers = [];
+
+    arr.splice(arr.indexOf(animal), 1);
+
+    for (let i = 0; incorrectAnswers.length < 3; i++) {
+      let incorrect = arr[Math.floor(Math.random() * arr.length)];
+      if (!incorrectAnswers.includes(incorrect)) {
+        incorrectAnswers.push(incorrect.name);
+      }
+    }
+    console.log('correct: ', animal, 'incorrect: ', incorrectAnswers);
+    questions.push({
+      questionNumber,
+      animal,
+      incorrectAnswers,
+    });
+  }
+  console.log('array of questions', questions);
+  return questions;
+};
+
 // with fetch
-const fetchAnimal = async (animal) => {
+const getQuizQuestions = async (animal, numberOfQuestions) => {
   try {
     let animalType = {};
     switch (animal) {
@@ -35,18 +61,20 @@ const fetchAnimal = async (animal) => {
         'x-api-key': animalType.api_key,
       },
     });
-    //const res = await fetch('https://api.thecatapi.com/v1/breeds?api_key=2d4cf1ee-1883-474f-80ab-f931262fd79b');
     const data = await res.json();
     const animalArray = makeAnimalArray(data);
-    console.log(animalArray);
+    console.log('default fetched', animalArray);
+
+    prepareQuiz(animalArray, numberOfQuestions);
+
     return animalArray;
   } catch (error) {
     console.error('Error:', error);
   }
 };
 
-export default function getData() {
-  fetchAnimal('dog');
+export default function retrieveQuizQuestions(animalSpecies, numberOfQuestions) {
+  getQuizQuestions(animalSpecies, numberOfQuestions);
 }
 
 /* using axios
