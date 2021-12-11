@@ -2,7 +2,7 @@ import './style.css';
 import './components/timer/quiz-timer.css';
 import { createTimer, startTimer, stopTimer } from './components/timer/quiz-timer.js';
 import Button from './components/Button.js';
-
+import getData from './api/retrieveQuizQuestions';
 import { renderMainPage } from './views/MainPage/mainPage.js';
 
 function main() {
@@ -10,6 +10,8 @@ function main() {
 }
 
 main();
+const buttonFetch = Button('fetch data', 'fetch-felines', false, 'click', getData);
+document.querySelector('#app').append(buttonFetch);
 
 const simpleCallback = () => {
   console.log(`Greetings from koala`);
