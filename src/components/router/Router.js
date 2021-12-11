@@ -1,27 +1,26 @@
 import { renderMainPage } from '../../views/MainPage/mainPage.js';
-import { settings } from '../../main.js';
+import { renderQuizSettings } from '../../views/quiz-settings/quiz-settings.js';
 
 const app = document.getElementById('app');
 
 const applicationRoutes = {
   '/': renderMainPage,
-  '#quiz-settings': settings,
+  '#quiz-settings': renderQuizSettings,
 };
 
-function checkRoute(path) {
+function setRenderFunction(path) {
   if (applicationRoutes[path] === undefined) {
-    return () => alert('Podana strona nie istnieje!');
+    return () => alert('Page does not exist!');
   } else {
     return applicationRoutes[path];
   }
 }
 
-function Router() {
+export function Router() {
   const url = window.location.hash || '/';
   app.innerHTML = '';
-  const render_view = checkRoute(url);
-  render_view();
+  const renderer = setRenderFunction(url);
+  if (renderer) {
+    renderer();
+  }
 }
-
-window.addEventListener('load', Router);
-window.addEventListener('hashchange', Router);
