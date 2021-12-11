@@ -1,5 +1,8 @@
 * {
+  box-sizing: border-box;
   background-color: #8ab0ab;
+  margin: 0;
+  padding: 0;
 }
 
 #scorePage {
@@ -26,14 +29,11 @@
 }
 
 .step {
-  height: 300px;
+  height: 3em;
   padding: 5px;
   vertical-align: bottom;
 }
 
-#response {
-  font-family: courier-new, courier;
-}
 #podium3,
 #podium1,
 #podium2 {
