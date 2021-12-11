@@ -1,5 +1,3 @@
-import './style.css';
+import { renderLeaderboard } from './leaderboard/leaderboard';
 
-document.querySelector('#app').innerHTML = `
-  <h1>CC first project</h1>
-`;
+renderLeaderboard();

@@ -1,0 +1,72 @@
+* {
+  background-color: #8ab0ab;
+}
+
+#scorePage {
+  position: relative;
+  text-align: center;
+}
+
+#scorePageTitle {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+/*podium*/
+
+.podium {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.nick {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.step {
+  height: 300px;
+  padding: 5px;
+  vertical-align: bottom;
+}
+
+#response {
+  font-family: courier-new, courier;
+}
+#podium3,
+#podium1,
+#podium2 {
+  display: flex;
+  width: 150px;
+  background: gray;
+  justify-content: center;
+  align-items: center;
+  font-size: 6rem;
+}
+#podium1 {
+  /* gold */
+  height: 250px;
+}
+#podium2 {
+  /* silver */
+  height: 200px;
+}
+#podium3 {
+  /* bronze */
+  height: 150px;
+}
+
+/*list*/
+
+.list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.listItem {
+  display: inline-block;
+  width: 6rem;
+  border: 1px solid black;
+  margin: 1rem;
+}
