@@ -12,9 +12,9 @@ function podium() {
   <div class="podium">
     <table id="ladder">
       <tr>
-        <td class = "step" ><input class = "nick" id="nickname2"></input></td>
-        <td class = "step"><input class = "nick" id="nickname1"></input></td>
-        <td class = "step"><input class= "nick" id="nickname3"></input></td>
+        <td class = "step" ><p class = "nick" id="nick2">nick</p></td>
+        <td class = "step"><p class = "nick" id="nick1">nick</p></td>
+        <td class = "step"><p class= "nick" id="nick3">nick</p></td>
       </tr>
       <tr>
       <td class = "step"><div id="podium2">2</div></td>
@@ -26,15 +26,15 @@ function podium() {
 
   <div class="list">
     <ol start="4" id = "list1">
-      <li><input class="listItem"></input></li>
-      <li><input class="listItem"></input></li>
-      <li><input class="listItem"></input></li>
+      <li><p class="listItem" id="nick4">nick</p></li>
+      <li><p class="listItem" id="nick5" >nick</p></li>
+      <li><p class="listItem" id="nick6">nick</p></li>
     </ol>
 
     <ol start ="7" id="list2">
-      <li><input class="listItem"></input></li>
-      <li><input class="listItem"></input></li>
-      <li><input class="listItem"></input></li>
+      <li><p class="listItem" id="nick7">nick</p></li>
+      <li><p class="listItem" id="nick8">nick</p></li>
+      <li><p class="listItem" id="nick9">nick</p></li>
     </ol>
   </div>
  </div> 
