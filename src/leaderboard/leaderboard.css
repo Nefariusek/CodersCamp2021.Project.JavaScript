@@ -26,6 +26,8 @@
 .nick {
   text-align: center;
   text-transform: uppercase;
+  font-size: 1.5rem;
+  word-wrap: break-word;
 }
 
 .step {
@@ -69,4 +71,5 @@
   width: 6rem;
   margin: 1rem;
   text-transform: uppercase;
+  font-size: 1.5rem;
 }

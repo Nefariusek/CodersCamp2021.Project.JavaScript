@@ -2,6 +2,7 @@ import './leaderboard.css';
 
 export function renderLeaderboard() {
   podium();
+  localScores();
 }
 
 function podium() {
@@ -13,7 +14,7 @@ function podium() {
     <table id="ladder">
       <tr>
         <td class = "step" ><p class = "nick" id="nick2">nick</p></td>
-        <td class = "step"><p class = "nick" id="nick1">nick</p></td>
+        <td class = "step"><p class = "nick" id="nick1"></p></td>
         <td class = "step"><p class= "nick" id="nick3">nick</p></td>
       </tr>
       <tr>
@@ -39,4 +40,47 @@ function podium() {
   </div>
  </div> 
   `;
+}
+
+function localScores() {
+  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  const highScoresList = document.getElementById('highScoresList');
+
+  nick1.innerText = Object.values(highScores[0]);
+  nick2.innerText = Object.values(highScores[1]);
+  nick3.innerText = Object.values(highScores[2]);
+  nick4.innerText = Object.values(highScores[3]);
+  nick5.innerText = Object.values(highScores[4]);
+  nick6.innerText = Object.values(highScores[5]);
+  nick7.innerText = Object.values(highScores[6]);
+  nick8.innerText = Object.values(highScores[7]);
+  nick9.innerText = Object.values(highScores[8]);
+
+  // for (let value of Object.values(highScores[0])) {
+  //   nick1.innerText = value;
+  // }
+  // for (let value of Object.values(highScores[1])) {
+  //   nick2.innerText = value;
+  // }
+  // for (let value of Object.values(highScores[2])) {
+  //   nick3.innerText = value;
+  // }
+  // for (let value of Object.values(highScores[3])) {
+  //   nick4.innerText = value;
+  // }
+  // for (let value of Object.values(highScores[4])) {
+  //   nick5.innerText = value;
+  // }
+  // for (let value of Object.values(highScores[5])) {
+  //   nick6.innerText = value;
+  // }
+  // for (let value of Object.values(highScores[6])) {
+  //   nick7.innerText = value;
+  // }
+  // for (let value of Object.values(highScores[7])) {
+  //   nick8.innerText = value;
+  // }
+  // for (let value of Object.values(highScores[8])) {
+  //   nick9.innerText = value;
+  // }
 }
