@@ -75,8 +75,9 @@ function renderPlayAgainButton(){
 
 function goToMainPage(){
     console.log('Go to main page!');
+    window.location.pathname='';
 }
 
 function playAgain(){
-    console.log('Play again!');
+    window.location.pathname='start-quiz';
 }

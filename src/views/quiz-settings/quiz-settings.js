@@ -97,6 +97,7 @@ class QuizSettings {
 
     static createForm() {
         const form = document.createElement('form');
+        form.setAttribute('id','quizSettingsForm');
 
         form.append(
             this.createAboutSection(),
@@ -110,7 +111,7 @@ class QuizSettings {
                 alert('Insert questions number between 1 and 20');
             } else if (this.quizAbout === undefined) {
                 alert('Choose animals');
-            } else if (this.quizAbout === undefined) {
+            } else if (this.questionsType === undefined) {
                 alert('Choose questionsType');
             } else {
                 alert(
@@ -121,6 +122,7 @@ class QuizSettings {
                     '\nQuestions type: ' +
                     this.questionsType,
                 );
+                window.location.pathname='quiz';
             }
         });
         return form;

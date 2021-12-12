@@ -1,5 +1,10 @@
-form {
-    width: 70%;
+.quizSettings{
+    width:100%;
+}
+
+#quizSettingsForm {
+    padding-top: 100px;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -22,7 +27,7 @@ form div {
 input {
     border: 0px;
     border-radius: 7px;
-    width: 100%;
+    max-width: 100%;
     max-width: 450px;
     background-color: #658080;
     height: 50px;
@@ -82,5 +87,5 @@ form p {
 
 label {
     position: relative;
-    top: -35px;
+    top: -45px;
 }

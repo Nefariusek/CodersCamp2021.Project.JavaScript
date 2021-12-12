@@ -1,6 +1,8 @@
 import './style.css';
-import './components/timer/quiz-timer.css';
+// import './components/timer/quiz-timer.css';
 import './views/quiz-settings/quiz-settings.css'
+// import './views/ScorePage/ScorePage.css';
+// import './views/quiz-settings/quiz-settings.css';
 import { createTimer, startTimer, stopTimer } from './components/timer/quiz-timer.js';
 import Button from './components/Button.js';
 import { QuizSettings } from './views/quiz-settings/quiz-settings';
@@ -31,4 +33,5 @@ import { renderMainPage } from './views/MainPage/mainPage.js';
 // document.querySelector('#app').appendChild(createTimer());
 // startTimer();
 // document.querySelector('#app').append(QuizSettings.showSettings());
-document.querySelector('#app').append(RenderScorePage());
+// RenderScorePage();
+QuizSettings.showSettings();
