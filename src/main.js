@@ -2,7 +2,7 @@ import './style.css';
 import './components/timer/quiz-timer.css';
 import { createTimer, startTimer, stopTimer } from './components/timer/quiz-timer.js';
 import Button from './components/Button.js';
-import retrieveQuizQuestions from './api/retrieveQuizQuestions';
+import getQuizQuestions from './api/getQuizQuestions.js';
 import Question from './model/question.js';
 
 import { renderMainPage } from './views/MainPage/mainPage.js';
@@ -13,8 +13,8 @@ function main() {
 
 main();
 
-const catQuiz = Button('CAT QUIZ!', 'fetch-felines', false, 'click', () => retrieveQuizQuestions('cat', 3));
-const dogQuiz = Button('DOG QUIZ!', 'fetch-felines', false, 'click', () => retrieveQuizQuestions('dog', 3));
+const catQuiz = Button('CAT QUIZ!', 'fetch-felines', false, 'click', () => getQuizQuestions('CATS', 3));
+const dogQuiz = Button('DOG QUIZ!', 'fetch-felines', false, 'click', () => getQuizQuestions('DOGS', 3));
 document.querySelector('#app').append(catQuiz, dogQuiz);
 
 const simpleCallback = () => {
