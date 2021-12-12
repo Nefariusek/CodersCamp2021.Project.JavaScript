@@ -1,48 +1,48 @@
-#scorePage{
-    margin:auto;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+#scorePage {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-h2{
-    color:white;
+h2 {
+  color: white;
 }
 
-#nickFormDiv{
-    margin-top: 10px;
-    justify-content: center;
-    width:70%;
-    margin:auto;
-    display:flex;
-    gap:5%;
+#nickFormDiv {
+  margin-top: 10px;
+  justify-content: center;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  gap: 5%;
 }
 
-#username{
-    border:0px solid;
-    width:400px;
-    height: 48px;
+#username {
+  border: 0px solid;
+  width: 400px;
+  height: 48px;
 }
 
-#username:hover{
-    color:white;
+#username:hover {
+  color: white;
 }
 
-input{
-    text-align: center;
+input {
+  text-align: center;
 }
 
-.menuButton{
-    position: fixed;
-    bottom:2%;
-    left:4%;
+.menuButton {
+  position: fixed;
+  bottom: 2%;
+  left: 4%;
 }
 
-.playAgainButton{
-    position: fixed;
-    bottom:2%;
-    right:4%;
+.playAgainButton {
+  position: fixed;
+  bottom: 2%;
+  right: 4%;
 }
-#finalScore{
-    height:70px;
+#finalScore {
+  height: 70px;
 }

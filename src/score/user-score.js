@@ -44,18 +44,15 @@ const recentUserScore = '12';
 export function saveHighScore(e) {
   e.preventDefault();
   const finalScore = document.getElementById('finalScore');
-  const input=document.getElementById('username');
-  if (input.value!='' && input.value!='NICK'){
+  const input = document.getElementById('username');
+  if (input.value != '' && input.value != 'NICK') {
     finalScore.innerText = recentUserScore;
-  const score = {
-    score: recentUserScore,
-    name: username.value,
-  };
-  highScores.push(score);
-  localStorage.setItem('highScores', JSON.stringify(highScores));
-  username.value = null;
+    const score = {
+      score: recentUserScore,
+      name: username.value,
+    };
+    highScores.push(score);
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+    username.value = null;
   }
-  
-
-  
 }
