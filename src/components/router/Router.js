@@ -8,9 +8,14 @@ const applicationRoutes = {
   '#quiz-settings': renderQuizSettings,
 };
 
+function redirectToMainPage() {
+  window.location.hash = '';
+  return applicationRoutes['/'];
+}
+
 function setRenderFunction(path) {
   if (applicationRoutes[path] === undefined) {
-    return () => alert('Page does not exist!');
+    return redirectToMainPage;
   } else {
     return applicationRoutes[path];
   }
@@ -19,8 +24,5 @@ function setRenderFunction(path) {
 export function Router() {
   const url = window.location.hash || '/';
   app.innerHTML = '';
-  const renderer = setRenderFunction(url);
-  if (renderer) {
-    renderer();
-  }
+  setRenderFunction(url)();
 }
