@@ -120,3 +120,6 @@ class QuizSettings {
 }
 
 export { QuizSettings };
+export function renderQuizSettings() {
+  QuizSettings.showSettings();
+}

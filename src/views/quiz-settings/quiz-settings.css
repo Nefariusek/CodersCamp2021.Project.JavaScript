@@ -41,6 +41,9 @@ input {
 
 input[type='radio'] {
   -webkit-appearance: none;
+  width: 100%;
+  max-width: 450px;
+  min-height: 50px;
 }
 
 input[type='radio']:checked {
@@ -86,5 +89,5 @@ form p {
 
 label {
   position: relative;
-  top: -45px;
+  top: -35px;
 }

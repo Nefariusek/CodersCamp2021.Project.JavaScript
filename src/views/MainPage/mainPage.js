@@ -16,7 +16,7 @@ function renderMainView() {
     <div class="navigation-container">
       <nav>
         <ul>
-          <li><a href="#" data-name="StartQuiz">Start quiz</a></li>
+          <li><a href="#quiz-settings" data-name="StartQuiz">Start quiz</a></li>
           <li><a href="#" data-name="Leaderboard">Leaderboard </a></li>
           <li><a href="#" data-name="Adoption">Adoption </a></li>
           <li><a href="#" data-name="Credits">Credits</a></li>
