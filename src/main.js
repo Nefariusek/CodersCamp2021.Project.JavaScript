@@ -1,8 +1,8 @@
 import './style.css';
 import './components/timer/quiz-timer.css';
 import { createTimer, startTimer, stopTimer } from './components/timer/quiz-timer.js';
-import Button from './components/Button.js';
-import getQuizQuestions from './api/getQuizQuestions.js';
+import Button from './components/Button/Button.js';
+import { getQuizQuestions } from './api/getQuizQuestions.js';
 import Question from './model/question.js';
 
 import { renderMainPage } from './views/MainPage/mainPage.js';
@@ -13,13 +13,24 @@ function main() {
 
 main();
 
-const catQuiz = Button('CAT QUIZ!', 'fetch-felines', false, 'click', () => getQuizQuestions('CATS', 3));
-const dogQuiz = Button('DOG QUIZ!', 'fetch-felines', false, 'click', () => getQuizQuestions('DOGS', 3));
+const dogCallback = async () => {
+  const dogs = await getQuizQuestions('DOGS', 3);
+  console.log(dogs);
+};
+
+const catCallback = async () => {
+  const cats = await getQuizQuestions('CATS', 3);
+  console.log(car);
+};
+
+const catQuiz = Button('CAT QUIZ!', 'fetch-felines', false, 'click', catCallback);
+const dogQuiz = Button('DOG QUIZ!', 'fetch-dogs', false, 'click', dogCallback);
 document.querySelector('#app').append(catQuiz, dogQuiz);
 
 const simpleCallback = () => {
   console.log(`Greetings from koala`);
 };
+
 // how to use: Button(label, className, animate, 'eventListener', callback)
 
 const buttonQuiz = Button('start quiz', 'quiz', true, 'click', simpleCallback);
