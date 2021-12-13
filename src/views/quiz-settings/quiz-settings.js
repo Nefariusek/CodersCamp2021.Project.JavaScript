@@ -104,7 +104,7 @@ class QuizSettings {
             '\nQuestions type: ' +
             this.questionsType,
         );
-        window.location.pathname = 'quiz';
+        window.location.hash = 'quiz';
       }
     });
     return form;
