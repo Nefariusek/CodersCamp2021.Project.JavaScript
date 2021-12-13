@@ -1,7 +1,10 @@
 import './leaderboard.css';
 
+// funkcja renderująca stronę
+
 export function renderLeaderboard() {
   podium();
+  sortScores();
   localScores();
 }
 
@@ -13,9 +16,9 @@ function podium() {
   <div class="podium">
     <table id="ladder">
       <tr>
-        <td class = "step" ><p class = "nick" id="nick2">nick</p></td>
-        <td class = "step"><p class = "nick" id="nick1"></p></td>
-        <td class = "step"><p class= "nick" id="nick3">nick</p></td>
+        <td class = "onStep" ><div class = "podiumNick" id="nick2"></div></td>
+        <td class = "onStep"><div class = "podiumNick" id="nick1"></div></td>
+        <td class = "onStep"><div class= "podiumNick" id="nick3"></div></td>
       </tr>
       <tr>
       <td class = "step"><div id="podium2">2</div></td>
@@ -27,25 +30,33 @@ function podium() {
 
   <div class="list">
     <ol start="4" id = "list1">
-      <li><p class="listItem" id="nick4">nick</p></li>
-      <li><p class="listItem" id="nick5" >nick</p></li>
-      <li><p class="listItem" id="nick6">nick</p></li>
+      <li><p class="listItem" id="nick4"></p></li>
+      <li><p class="listItem" id="nick5" ></p></li>
+      <li><p class="listItem" id="nick6"></p></li>
     </ol>
 
     <ol start ="7" id="list2">
-      <li><p class="listItem" id="nick7">nick</p></li>
-      <li><p class="listItem" id="nick8">nick</p></li>
-      <li><p class="listItem" id="nick9">nick</p></li>
+      <li><p class="listItem" id="nick7"></p></li>
+      <li><p class="listItem" id="nick8"></p></li>
+      <li><p class="listItem" id="nick9"></p></li>
     </ol>
   </div>
  </div> 
   `;
 }
+const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+// Sortowanie wyników od najwyzszego do najnizszego, pierwsze 9 wyników
+
+function sortScores() {
+  highScores.sort((a, b) => b.score - a.score);
+  highScores.splice(9);
+  console.log(highScores);
+}
+
+// Umiejscowienie wyników w odpowiednich paragrafach
 
 function localScores() {
-  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-  const highScoresList = document.getElementById('highScoresList');
-
   nick1.innerText = Object.values(highScores[0]);
   nick2.innerText = Object.values(highScores[1]);
   nick3.innerText = Object.values(highScores[2]);
@@ -55,32 +66,4 @@ function localScores() {
   nick7.innerText = Object.values(highScores[6]);
   nick8.innerText = Object.values(highScores[7]);
   nick9.innerText = Object.values(highScores[8]);
-
-  // for (let value of Object.values(highScores[0])) {
-  //   nick1.innerText = value;
-  // }
-  // for (let value of Object.values(highScores[1])) {
-  //   nick2.innerText = value;
-  // }
-  // for (let value of Object.values(highScores[2])) {
-  //   nick3.innerText = value;
-  // }
-  // for (let value of Object.values(highScores[3])) {
-  //   nick4.innerText = value;
-  // }
-  // for (let value of Object.values(highScores[4])) {
-  //   nick5.innerText = value;
-  // }
-  // for (let value of Object.values(highScores[5])) {
-  //   nick6.innerText = value;
-  // }
-  // for (let value of Object.values(highScores[6])) {
-  //   nick7.innerText = value;
-  // }
-  // for (let value of Object.values(highScores[7])) {
-  //   nick8.innerText = value;
-  // }
-  // for (let value of Object.values(highScores[8])) {
-  //   nick9.innerText = value;
-  // }
 }
