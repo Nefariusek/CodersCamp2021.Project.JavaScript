@@ -38,3 +38,4 @@ dist-ssr
 # Yarn
 .yarn
 .pnp.*
+src/score/user-score.html
