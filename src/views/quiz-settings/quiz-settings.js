@@ -1,3 +1,5 @@
+import './quiz-settings.css';
+
 class QuizSettings {
   quizAbout;
   questionsNum;

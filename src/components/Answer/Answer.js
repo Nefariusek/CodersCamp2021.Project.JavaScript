@@ -1,11 +1,11 @@
 import Question from '../../model/question';
 
 export default class Answer {
-    timeOfAnswer;
-    Question;
-    lifelineUsed=false;
+  timeOfAnswer;
+  Question;
+  lifelineUsed = false;
 
-    static getScore() {
-        return 1;
-    }
+  static getScore() {
+    return 1;
+  }
 }

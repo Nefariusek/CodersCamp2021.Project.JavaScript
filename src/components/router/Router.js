@@ -1,11 +1,13 @@
 import { renderMainPage } from '../../views/MainPage/mainPage.js';
 import { renderQuizSettings } from '../../views/quiz-settings/quiz-settings.js';
+import { renderScorePage } from '../../views/ScorePage/ScorePage';
 
 const app = document.getElementById('app');
 
 const applicationRoutes = {
   '/': renderMainPage,
   '#quiz-settings': renderQuizSettings,
+  '#score-page': renderScorePage,
 };
 
 function redirectToMainPage() {
