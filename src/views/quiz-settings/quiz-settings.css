@@ -1,5 +1,6 @@
 .quizSettings {
   width: 100%;
+  color: white;
 }
 
 #quizSettingsForm {
@@ -35,8 +36,13 @@ input {
 }
 
 .radioButton {
+  color: white !important;
   display: flex;
   flex-direction: column;
+}
+
+.radioButton:checked {
+  color: white !important;
 }
 
 input[type='radio'] {
@@ -47,15 +53,18 @@ input[type='radio'] {
 }
 
 input[type='radio']:checked {
-  background-color: #191f24;
+  background-color: #3e505b;
+  color: white;
 }
 
 input[type='radio']:hover {
   background-color: #3e505b;
+  color: white;
 }
 
 input[type='submit']:active {
-  background-color: #263038;
+  background-color: #3e505b;
+  color: white;
 }
 
 form p {
@@ -67,12 +76,12 @@ form p {
   width: 40%;
   grid-column-start: first;
   grid-column-end: third;
-  color: white;
   text-align: center;
 }
 
 #number:hover {
   background-color: #3e505b;
+  color: white;
 }
 
 #submit {
@@ -84,10 +93,11 @@ form p {
 #submit:hover {
   width: 40%;
   margin-top: 100px;
-  background-color: #1e272c;
+  background-color: #3e505b;
 }
 
 label {
+  color: white;
   position: relative;
-  top: -35px;
+  top: -45px;
 }
