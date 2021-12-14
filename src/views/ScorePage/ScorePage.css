@@ -1,0 +1,48 @@
+#scorePage {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  color: white;
+}
+
+#nickFormDiv {
+  margin-top: 10px;
+  justify-content: center;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  gap: 5%;
+}
+
+#nickname {
+  border: 0px solid;
+  width: 400px;
+  height: 48px;
+}
+
+#nickname:hover {
+  color: white;
+}
+
+input {
+  text-align: center;
+}
+
+.menuButton {
+  position: fixed;
+  bottom: 2%;
+  left: 4%;
+}
+
+.playAgainButton {
+  position: fixed;
+  bottom: 2%;
+  right: 4%;
+}
+#finalScore {
+  height: 70px;
+}
