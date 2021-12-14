@@ -1,11 +1,13 @@
 import { renderMainPage } from '../../views/MainPage/mainPage.js';
 import { renderQuizSettings } from '../../views/quiz-settings/quiz-settings.js';
+import { renderQuizView } from '../../views/QuizView/quizView.js';
 
 const app = document.getElementById('app');
 
 const applicationRoutes = {
   '/': renderMainPage,
   '#quiz-settings': renderQuizSettings,
+  '#quiz': renderQuizView,
 };
 
 function redirectToMainPage() {

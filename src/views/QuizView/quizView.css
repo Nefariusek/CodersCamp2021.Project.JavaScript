@@ -1,0 +1,63 @@
+#quizView {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(8, 12vh);
+  grid-template-areas:
+    'header header header header'
+    'number number number number'
+    '. photo photo .'
+    '. photo photo timer'
+    '. photo photo .'
+    'leftarrow question question rightarrow'
+    '. answer answer .'
+    '. answer answer .';
+  justify-content: center;
+  align-items: center;
+}
+
+#quizView h1 {
+  grid-area: header;
+  color: black;
+  font-size: 50px;
+}
+
+#quizView #question-numbers {
+  grid-area: number;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 50px;
+  color: black;
+}
+
+#quizView > img {
+  grid-area: photo;
+  height: 100%;
+  width: auto;
+  justify-self: center;
+}
+
+#quizView #clock {
+  grid-area: timer;
+}
+
+#quizView #question-text {
+  grid-area: question;
+  color: white;
+  font-size: 50px;
+}
+
+#quizView #answers {
+  grid-area: answer;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+
+#quizView .answer {
+  justify-self: center;
+  align-self: center;
+  width: 80%;
+}

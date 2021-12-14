@@ -3,8 +3,8 @@ import Question from '../model/question.js';
 const QUESTION_TEXT = 'Name the breed:';
 
 const questionsApis = {
-  DOGS: { url: 'https://api.thedogapi.com/v1/breeds', api_key: '62b8cc9a-2c13-4eec-abe2-80703eabb0a6' },
-  CATS: { url: 'https://api.thecatapi.com/v1/breeds', api_key: '2d4cf1ee-1883-474f-80ab-f931262fd79b' },
+  dogs: { url: 'https://api.thedogapi.com/v1/breeds', api_key: '62b8cc9a-2c13-4eec-abe2-80703eabb0a6' },
+  cats: { url: 'https://api.thecatapi.com/v1/breeds', api_key: '2d4cf1ee-1883-474f-80ab-f931262fd79b' },
 };
 
 export const getQuizQuestions = async (animal, numberOfQuestions) => {
