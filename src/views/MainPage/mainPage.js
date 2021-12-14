@@ -1,5 +1,5 @@
 import './mainPage.css';
-
+import Button from '../../components/Button/Button.js';
 export function renderMainPage() {
   renderMainView();
   renderAnimalFact();
@@ -14,14 +14,6 @@ function renderMainView() {
     </div>
 
     <div class="navigation-container">
-      <nav>
-        <ul>
-          <li><a href="#quiz-settings" data-name="StartQuiz">Start quiz</a></li>
-          <li><a href="#" data-name="Leaderboard">Leaderboard </a></li>
-          <li><a href="#" data-name="Adoption">Adoption </a></li>
-          <li><a href="#" data-name="Credits">Credits</a></li>
-        </ul>
-      </nav>
     </div>
 
     <div class="info">
@@ -54,6 +46,16 @@ function renderMainView() {
   `;
 
   const navContainer = document.querySelector('.navigation-container');
+  const quizButton = Button('Start Quiz', 'quiz-button', true, 'click', () => console.log('greetings from quiz'));
+  const leaderboardButton = Button('Leaderboard', 'leaderboard-button', true, 'click', () =>
+    console.log('greetings from leaderboard'),
+  );
+  const adoptionButton = Button('Adoption', 'adoption-button', true, 'click', () =>
+    console.log('greetings from adoption'),
+  );
+  const creditsButton = Button('Credits', 'credits-button', true, 'click', () => console.log('greetings from credits'));
+
+  navContainer.append(quizButton, leaderboardButton, adoptionButton, creditsButton);
   const navItems = navContainer.querySelectorAll('a');
 
   navItems.forEach((item) => {
