@@ -79,6 +79,7 @@ class QuizSettings {
 
   static createForm() {
     const form = document.createElement('form');
+    form.setAttribute('id', 'quizSettingsForm');
 
     form.append(
       this.createAboutSection(),
@@ -92,8 +93,8 @@ class QuizSettings {
         alert('Insert questions number between 1 and 20');
       } else if (this.quizAbout === undefined) {
         alert('Choose animals');
-      } else if (this.quizAbout === undefined) {
-        alert('Choose questionsType');
+      } else if (this.questionsType === undefined) {
+        alert('Choose type of questions');
       } else {
         alert(
           'Quiz about: ' +
@@ -103,6 +104,7 @@ class QuizSettings {
             '\nQuestions type: ' +
             this.questionsType,
         );
+        window.location.hash = 'quiz';
       }
     });
     return form;
@@ -113,12 +115,11 @@ class QuizSettings {
     settings.appendChild(this.createForm());
     settings.setAttribute('id', 'quiz-settings');
 
-    return settings;
+    document.querySelector('#app').append(settings);
   }
 }
 
 export { QuizSettings };
-
 export function renderQuizSettings() {
-  document.querySelector('#app').appendChild(QuizSettings.showSettings());
+  QuizSettings.showSettings();
 }
