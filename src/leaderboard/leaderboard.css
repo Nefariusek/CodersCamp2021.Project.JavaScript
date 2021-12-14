@@ -83,3 +83,16 @@
   font-size: 2rem;
   color: whitesmoke;
 }
+
+/*mainMenuBtn*/
+
+.mainMenuBtn {
+  margin: 0 4rem;
+  float: left;
+}
+@media screen and (max-width: 768px) {
+  .mainMenuBtn {
+    width: fit-content;
+    margin: 0 1rem;
+  }
+}

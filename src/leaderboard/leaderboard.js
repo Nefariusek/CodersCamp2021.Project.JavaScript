@@ -1,11 +1,15 @@
 import './leaderboard.css';
 
+import Button from '../components/Button/Button';
+import '../components/Button/Button.css';
+
 // funkcja renderująca stronę
 
 export function renderLeaderboard() {
   podium();
   sortScores();
   localScores();
+  renderMenuBtn();
 }
 
 function podium() {
@@ -41,6 +45,9 @@ function podium() {
       <li><p class="listItem" id="nick9"></p></li>
     </ol>
   </div>
+  <div id="mainMenu">
+  </div>
+  
  </div> 
   `;
 }
@@ -65,4 +72,11 @@ function localScores() {
   nick7.innerText = Object.values(highScores[6]);
   nick8.innerText = Object.values(highScores[7]);
   nick9.innerText = Object.values(highScores[8]);
+}
+
+// klawisz funkcyjny powrót do Menu
+
+function renderMenuBtn() {
+  const menuButton = document.getElementById('mainMenu');
+  menuButton.append(Button('MENU', 'mainMenuBtn', false, 'click'));
 }
