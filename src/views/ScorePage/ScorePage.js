@@ -12,7 +12,7 @@ export function renderScorePage() {
   container.setAttribute('id', 'scorePage');
   container.append(
     renderGraphics(),
-    RenderScore(recentUserScore, questionsNumber),
+    renderScore(recentUserScore, questionsNumber),
     renderNickForm(),
     renderMenuButton(),
     renderPlayAgainButton(),
@@ -20,7 +20,7 @@ export function renderScorePage() {
   document.querySelector('#app').append(container);
 }
 
-function RenderScore(score, questionsNumber) {
+function renderScore(score, questionsNumber) {
   const container = document.createElement('div');
   const congratsText = document.createElement('h2');
   const scoreText = document.createElement('h2');
@@ -34,7 +34,7 @@ function RenderScore(score, questionsNumber) {
 
 function renderGraphics() {
   const img = document.createElement('img');
-  img.setAttribute('src', '../../public/cat.png');
+  img.src='./cat.png';
   img.setAttribute('alt', 'Congrats!');
   img.setAttribute('width', '350');
   img.setAttribute('height', '350');
@@ -45,23 +45,23 @@ function renderNickForm() {
   const nickFormContainer = document.createElement('div');
   nickFormContainer.setAttribute('id', 'nickFormDiv');
   const input = document.createElement('input');
-  input.setAttribute('id', 'username');
-  input.setAttribute('value', 'NICK');
-  nickFormContainer.append(input, Button('SUBMIT', 'saveScoreBtn', false, 'click', saveNick));
+  input.setAttribute('id', 'nickname');
+  input.setAttribute('value', 'NICKNAME');
+  nickFormContainer.append(input, Button('SUBMIT', 'saveScoreBtn', false, 'click', saveNickname));
   return nickFormContainer;
 }
 
-function saveNick() {
+function saveNickname() {
   const saveButton = document.getElementsByClassName('saveScoreBtn')[0];
   saveButton.addEventListener('click', saveHighScore);
-  if (!nickValidation()) {
+  if (!nicknameValidation()) {
     alert('Type in your nickname!');
   }
 }
 
-function nickValidation() {
-  const input = document.getElementById('username');
-  if (input.value != '' && input.value != 'NICK') {
+function nicknameValidation() {
+  const input = document.getElementById('nickname');
+  if (input.value != '' && input.value != 'NICKNAME') {
     return true;
   } else {
     return false;

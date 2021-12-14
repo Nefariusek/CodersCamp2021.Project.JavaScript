@@ -13,7 +13,7 @@ function renderPage() {
           <h1 id="scoreTxt">CONGRATS! YOUR SCORE IS:</h1>
           <h1 id="finalScore"></h1>
           <form>
-            <input type="text" id="username" placeholder="NICK" />
+            <input type="text" id="nickname" placeholder="NICK" />
             <button type="submit" class="btn" id="saveScoreBtn" disabled>
               SUBMIT
             </button>
@@ -30,11 +30,11 @@ function renderPage() {
 }
 
 export function scoreLocalStorage() {
-  const username = document.getElementById('username');
+  const nickname = document.getElementById('nickname');
   const saveScoreBtn = document.getElementById('saveScoreBtn');
 
-  username.addEventListener('keyup', () => {
-    saveScoreBtn.disabled = !username.value;
+  nickname.addEventListener('keyup', () => {
+    saveScoreBtn.disabled = !nickname.value;
   });
 }
 
@@ -44,15 +44,15 @@ const recentUserScore = '12';
 export function saveHighScore(e) {
   e.preventDefault();
   const finalScore = document.getElementById('finalScore');
-  const input = document.getElementById('username');
-  if (input.value != '' && input.value != 'NICK') {
+  const input = document.getElementById('nickname');
+  if (input.value != '' && input.value != 'NICKNAME') {
     finalScore.innerText = recentUserScore;
     const score = {
       score: recentUserScore,
-      name: username.value,
+      name: nickname.value,
     };
     highScores.push(score);
     localStorage.setItem('highScores', JSON.stringify(highScores));
-    username.value = null;
+    nickname.value = null;
   }
 }

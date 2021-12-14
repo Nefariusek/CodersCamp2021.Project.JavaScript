@@ -18,13 +18,13 @@ h2 {
   gap: 5%;
 }
 
-#username {
+#nickname {
   border: 0px solid;
   width: 400px;
   height: 48px;
 }
 
-#username:hover {
+#nickname:hover {
   color: white;
 }
 

@@ -94,7 +94,7 @@ class QuizSettings {
       } else if (this.quizAbout === undefined) {
         alert('Choose animals');
       } else if (this.questionsType === undefined) {
-        alert('Choose questionsType');
+        alert('Choose type of questions');
       } else {
         alert(
           'Quiz about: ' +
