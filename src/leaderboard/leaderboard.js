@@ -51,15 +51,14 @@ const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 function sortScores() {
   highScores.sort((a, b) => b.score - a.score);
   highScores.splice(9);
-  console.log(highScores);
 }
 
 // Umiejscowienie wyników w odpowiednich paragrafach
 
 function localScores() {
-  nick1.innerText = Object.values(highScores[0]);
-  nick2.innerText = Object.values(highScores[1]);
-  nick3.innerText = Object.values(highScores[2]);
+  nick1.innerText = `pts: ${Object.values(highScores[0])}`;
+  nick2.innerText = `pts: ${Object.values(highScores[1])}`;
+  nick3.innerText = `pts: ${Object.values(highScores[2])}`;
   nick4.innerText = Object.values(highScores[3]);
   nick5.innerText = Object.values(highScores[4]);
   nick6.innerText = Object.values(highScores[5]);
