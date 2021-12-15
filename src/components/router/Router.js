@@ -1,4 +1,4 @@
-import { renderMainPage } from '../../views/MainPage/mainPage.js';
+import { renderMainPage } from '../../views/MainPage/MainPage.js';
 import { renderQuizSettings } from '../../views/quiz-settings/quiz-settings.js';
 
 const app = document.getElementById('app');
