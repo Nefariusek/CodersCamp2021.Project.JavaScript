@@ -1,4 +1,4 @@
-/********** CONTAINER / GRID ************/
+/********** CONTAINER ****************/
 
 .container {
   display: grid;
@@ -78,7 +78,7 @@
 
 .navigation-container a:hover:after {
   content: '';
-  background: url(../../public/koala.png) no-repeat;
+  background: url(../public/cute_koala.png) no-repeat;
   background-size: 50px 50px;
   position: absolute;
   left: 105%;
@@ -96,7 +96,6 @@
   justify-content: space-between;
   align-items: start;
   flex-direction: row;
-  margin-right: 20px;
 }
 
 @media (max-width: 960px) {
@@ -107,12 +106,21 @@
 }
 
 .bubbles {
-  flex-grow: 2;
+  width: 60%;
 }
 
 .animal {
-  flex-grow: 1;
+  width: 40%;
   align-self: center;
+}
+
+@media (max-width: 960px) {
+  .bubbles {
+    width: 100%;
+  }
+  .animal {
+    width: 60%;
+  }
 }
 
 .animal img {
@@ -123,7 +131,7 @@
 
 .bubble {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 150px 1fr;
   grid-gap: 10px;
   align-items: center;
 

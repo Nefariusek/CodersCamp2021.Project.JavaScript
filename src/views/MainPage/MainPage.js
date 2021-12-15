@@ -1,5 +1,10 @@
-import './mainPage.css';
 import Button from '../../components/Button/Button.js';
+import './MainPage.css';
+
+const MAIN_ANIMAL_PATH = './public/kangoroo.png';
+const FACT_ANIMAL_URL = 'http://placekitten.com/400/500';
+const ADOPTION_ANIMAL_URL = 'http://placekitten.com/300/400';
+
 export function renderMainPage() {
   renderMainView();
   renderAnimalFact();
@@ -20,15 +25,19 @@ function renderMainView() {
 
       <div class="bubbles">
         <div class="bubble fact">
-          <img class="fact-img" src="http://placekitten.com/400/500" alt="the animal the sentence is about">
-          <div class="fact-text">
+          <div class="bubble-img">
+            <img src="${FACT_ANIMAL_URL}" alt="the animal the sentence is about">
+          </div>
+          <div class="bubble-text">
             <h2>Did you know?</h2>
           </div>
         </div>
 
         <div class="bubble adoption">
-          <img class="adoption-img" src="http://placekitten.com/300/400" alt="the animal to adoption">
-          <div class="adoption-text">
+          <div class="bubble-img">
+            <img src="${ADOPTION_ANIMAL_URL}" alt="the animal to adoption">
+          </div>
+          <div class="bubble-text">
             <h2>Or maybe you'd like to adopt your own pet?</h2>
             <p>This one is looking for home</p>
             <p>See more here: <a href="#">Adoption Page</a></p>
@@ -37,8 +46,8 @@ function renderMainView() {
       </div>
 
       <div class="animal">
-        <img src="src/public/kangoroo.png" alt="kangoroo that tells informations" /></div>
-      </div>      
+        <img src="${MAIN_ANIMAL_PATH}" alt="kangoroo that tells informations" /></div>
+      </div>        
 
     </div>
   
@@ -66,10 +75,11 @@ function renderMainView() {
 }
 
 async function renderAnimalFact() {
-  const factItem = document.querySelector('.fact-text');
+  const factItem = document.querySelector('.bubble-text');
   const factSentence = document.createElement('p');
-
-  factSentence.innerText =
+  const FACT =
     "Cat's eyes shine in the dark because of the tapetum, a reflective layer in the eye, which acts like a mirror.";
+
+  factSentence.innerText = FACT;
   factItem.append(factSentence);
 }
