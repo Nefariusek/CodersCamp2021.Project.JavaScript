@@ -1,7 +1,7 @@
 import './ScorePage.css';
-import { scoreLocalStorage, saveHighScore } from '../../score/user-score';
-import Button from '../../components/Button';
-import '../../components/Button.css';
+import { scoreLocalStorage, saveHighScore } from '../../score/user-score.js';
+import Button from '../../components/Button/Button.js';
+import '../../components/Button/Button.css';
 
 export function renderScorePage() {
   const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
@@ -34,7 +34,7 @@ function renderScore(score, questionsNumber) {
 
 function renderGraphics() {
   const img = document.createElement('img');
-  img.src='./cat.png';
+  img.src = './cat.png';
   img.setAttribute('alt', 'Congrats!');
   img.setAttribute('width', '350');
   img.setAttribute('height', '350');

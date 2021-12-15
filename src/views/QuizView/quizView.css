@@ -1,16 +1,13 @@
 #quizView {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(8, 12vh);
+  grid-template-columns: 25vw 50vw 25vw;
+  grid-template-rows: 10vh 10vh 40vh 10vh 30vh;
   grid-template-areas:
-    'header header header header'
-    'number number number number'
-    '. photo photo .'
-    '. photo photo timer'
-    '. photo photo .'
-    'leftarrow question question rightarrow'
-    '. answer answer .'
-    '. answer answer .';
+    'header header  header'
+    'number number number'
+    '. photo  timer'
+    'leftarrow question  rightarrow'
+    'answer answer answer';
   justify-content: center;
   align-items: center;
 }
@@ -18,7 +15,8 @@
 #quizView h1 {
   grid-area: header;
   color: black;
-  font-size: 50px;
+  font-size: 5vmin;
+  width: auto;
 }
 
 #quizView #question-numbers {
@@ -26,25 +24,66 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 50px;
+  font-size: 3vmin;
   color: black;
+}
+
+#quizView #question-numbers div {
+  line-height: 4vmin;
+  width: 4vmin;
+  border-radius: 50%;
+  padding: 1vmin;
+  border: 0.3vmin solid #000;
+  text-align: center;
+  font-weight: bold;
+}
+
+#quizView #question-numbers #current-question {
+  line-height: 4vmin;
+  width: 4vmin;
+  border-radius: 50%;
+  padding: 1vmin;
+  border: 0.3vmin solid #000;
+  color: white;
+  text-align: center;
+  background-color: #000;
 }
 
 #quizView > img {
   grid-area: photo;
-  height: 100%;
-  width: auto;
+  max-height: 100%;
+  max-width: 100%;
   justify-self: center;
 }
 
 #quizView #clock {
   grid-area: timer;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 #quizView #question-text {
   grid-area: question;
   color: white;
-  font-size: 50px;
+  font-size: 5vmin;
+}
+
+#quizView #navigation-arrows-left {
+  grid-area: leftarrow;
+}
+#quizView #navigation-arrows-left img {
+  height: 7vmin;
+  max-height: 70px;
+  width: auto;
+}
+
+#quizView #navigation-arrows-right {
+  grid-area: rightarrow;
+}
+#quizView #navigation-arrows-right img {
+  height: 7vmin;
+  max-height: 70px;
+  width: auto;
 }
 
 #quizView #answers {
@@ -60,4 +99,5 @@
   justify-self: center;
   align-self: center;
   width: 80%;
+  font-size: 3vmin;
 }

@@ -121,5 +121,8 @@ class QuizSettings {
 
 export { QuizSettings };
 export function renderQuizSettings() {
+  QuizSettings.questionsNum = undefined;
+  QuizSettings.questionsType = undefined;
+  QuizSettings.quizAbout = undefined;
   QuizSettings.showSettings();
 }
