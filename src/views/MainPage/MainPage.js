@@ -56,22 +56,14 @@ function renderMainView() {
 
   const navContainer = document.querySelector('.navigation-container');
 
-  const quizButton = Button(
-    'Start Quiz',
-    'quiz-button',
-    true,
-    'click',
-    () => (window.location.hash = '#quiz-settings'),
-  );
-  const leaderboardButton = Button(
-    'Leaderboard',
-    'leaderboard-button',
-    true,
-    'click',
-    () => (window.location.hash = '/'),
-  );
-  const adoptionButton = Button('Adoption', 'adoption-button', true, 'click', () => (window.location.hash = '/'));
-  const creditsButton = Button('Credits', 'credits-button', true, 'click', () => (window.location.hash = '/'));
+  const goToPage = (hash) => {
+    window.location.hash = hash;
+  };
+
+  const quizButton = Button('Start Quiz', 'quiz-button', true, 'click', goToPage.bind(null, '#quiz-settings'));
+  const leaderboardButton = Button('Leaderboard', 'leaders-button', true, 'click', goToPage.bind(null, '#leaderboard'));
+  const adoptionButton = Button('Adoption', 'adoption-button', true, 'click', goToPage.bind(null, '#adoption'));
+  const creditsButton = Button('Credits', 'credits-button', true, 'click', goToPage.bind(null, '#credits'));
 
   navContainer.append(quizButton, leaderboardButton, adoptionButton, creditsButton);
   const navItems = navContainer.querySelectorAll('a');
