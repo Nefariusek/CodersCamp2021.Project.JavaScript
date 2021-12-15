@@ -46,3 +46,37 @@ input {
 #finalScore {
   height: 70px;
 }
+@media only screen and (min-device-width : 280px) and (max-device-width : 480px){
+  .menuButton{
+    position: relative;
+    align-self: center;
+    bottom: 0%;
+    left: 0%;
+  }
+  .playAgainButton{
+    position:relative;
+    bottom: 0%;
+    left: 0%;
+  }
+  #nickFormDiv{
+    flex-direction: column;
+  }
+  #nickname{
+    width:auto;
+  }
+  #finalScore {
+    height: 40px;
+  }
+  img{
+    height: 250px;
+    width: 250px;
+  }
+}
+@media only screen and (max-device-height : 610px){
+  img{
+    display: none;
+  }
+  #scorePage{
+    margin-top: 20%;
+  }
+}
