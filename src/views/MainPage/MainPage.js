@@ -60,7 +60,7 @@ function renderMainView() {
   const handleNavigationButtonClick = (e) => onNavigationChange(e);
 
   const quizButton = Button('Start Quiz', 'quiz-settings', true, 'click', handleNavigationButtonClick);
-  const leaderboardButton = Button('Leaderboard', 'whatever', true, 'click', handleNavigationButtonClick);
+  const leaderboardButton = Button('Leaderboard', 'leadearboard', true, 'click', handleNavigationButtonClick);
   const adoptionButton = Button('Adoption', 'adoption-button', true, 'click', handleNavigationButtonClick);
   const creditsButton = Button('Credits', 'credits-button', true, 'click', handleNavigationButtonClick);
 
