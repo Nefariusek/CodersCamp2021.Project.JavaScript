@@ -74,7 +74,7 @@ function createLayout() {
 }
 
 function renderQuizData() {
-  if (current == QuizSettings.questionsNum) {
+  if (current === QuizSettings.questionsNum) {
     window.location.hash = 'score-page';
     return;
   }
