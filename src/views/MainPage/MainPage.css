@@ -35,7 +35,8 @@
   grid-area: nav;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: center;
+  flex-direction: column;
 }
 
 .navigation-container ul {
@@ -44,7 +45,8 @@
   padding: 0;
 }
 
-.navigation-container li {
+.navigation-container li,
+.wrapper {
   position: relative;
 }
 
