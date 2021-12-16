@@ -7,11 +7,42 @@ let questions;
 let current;
 
 export async function renderQuizView() {
-  questions = await getQuizQuestions(QuizSettings.quizAbout, QuizSettings.questionsNum);
+  questions = await getQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
   current = 0;
   document.querySelector('#app').append(createLayout());
   startTimer();
   renderQuizData();
+}
+
+function createQuestionNumbers() {
+  const circles = document.createElement('div');
+  circles.setAttribute('id', 'question-numbers');
+  for (let i = 0; i < QuizSettings.questionsNum; i++) {
+    const number = document.createElement('div');
+    number.innerText = i + 1;
+    circles.appendChild(number);
+  }
+  return circles;
+}
+
+function createRightArrow() {
+  const rightArrow = document.createElement('div');
+  rightArrow.setAttribute('id', 'navigation-arrows-right');
+  const rightArrowImage = document.createElement('img');
+  rightArrowImage.src = './rightarrow.png';
+  rightArrow.appendChild(rightArrowImage);
+  rightArrowImage.addEventListener('click', nextQuestion);
+  return rightArrow;
+}
+
+function createLeftArrow() {
+  const leftArrow = document.createElement('div');
+  leftArrow.setAttribute('id', 'navigation-arrows-left');
+  const leftArrowImage = document.createElement('img');
+  leftArrowImage.src = './leftarrow.png';
+  leftArrow.appendChild(leftArrowImage);
+  leftArrowImage.addEventListener('click', previousQuestion);
+  return leftArrow;
 }
 
 function createLayout() {
@@ -21,37 +52,24 @@ function createLayout() {
   const header = document.createElement('h1');
   header.innerText = 'LIVE QUIZ';
 
-  const circles = document.createElement('div');
-  circles.setAttribute('id', 'question-numbers');
-  for (let i = 0; i < QuizSettings.questionsNum; i++) {
-    const number = document.createElement('div');
-    number.innerText = i + 1;
-    circles.appendChild(number);
-  }
-
   const image = document.createElement('img');
 
   const question = document.createElement('div');
   question.setAttribute('id', 'question-text');
 
-  const right_arrow = document.createElement('div');
-  right_arrow.setAttribute('id', 'navigation-arrows-right');
-  const right_arrow_image = document.createElement('img');
-  right_arrow_image.src = './rightarrow.png';
-  right_arrow.appendChild(right_arrow_image);
-  right_arrow_image.addEventListener('click', nextQuestion);
-
-  const left_arrow = document.createElement('div');
-  left_arrow.setAttribute('id', 'navigation-arrows-left');
-  const left_arrow_image = document.createElement('img');
-  left_arrow_image.src = './leftarrow.png';
-  left_arrow.appendChild(left_arrow_image);
-  left_arrow_image.addEventListener('click', previousQuestion);
-
   const answers = document.createElement('div');
   answers.setAttribute('id', 'answers');
 
-  container.append(header, circles, image, createTimer(), question, right_arrow, left_arrow, answers);
+  container.append(
+    header,
+    createQuestionNumbers(),
+    image,
+    createTimer(),
+    question,
+    createRightArrow(),
+    createLeftArrow(),
+    answers,
+  );
   return container;
 }
 
@@ -70,30 +88,30 @@ function renderQuizData() {
   const question = document.getElementById('question-text');
   question.innerText = questions[current].question.toUpperCase();
 
-  const answers_container = document.getElementById('answers');
+  const answersContainer = document.getElementById('answers');
   const answers = questions[current].getAnswers();
   for (let i = 0; i < 4; i++) {
-    answers_container.appendChild(Button(answers[i], 'answer', false, 'click', nextQuestion));
+    answersContainer.appendChild(Button(answers[i], 'answer', false, 'click', nextQuestion));
   }
 }
 
 function nextQuestion() {
-  const current_question_number = document.getElementById('current-question');
-  current_question_number.setAttribute('id', '');
+  const currentQuestionNumber = document.getElementById('current-question');
+  currentQuestionNumber.setAttribute('id', '');
 
-  const answers_container = document.getElementById('answers');
-  answers_container.innerHTML = '';
+  const answersContainer = document.getElementById('answers');
+  answersContainer.innerHTML = '';
 
   current++;
   renderQuizData();
 }
 
 function previousQuestion() {
-  const current_question_number = document.getElementById('current-question');
-  current_question_number.setAttribute('id', '');
+  const currentQuestionNumber = document.getElementById('current-question');
+  currentQuestionNumber.setAttribute('id', '');
 
-  const answers_container = document.getElementById('answers');
-  answers_container.innerHTML = '';
+  const answersContainer = document.getElementById('answers');
+  answersContainer.innerHTML = '';
 
   current--;
   renderQuizData();
