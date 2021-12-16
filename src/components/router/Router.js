@@ -1,12 +1,15 @@
-import { renderMainPage } from '../../views/MainPage/mainPage.js';
+import { renderMainPage } from '../../views/MainPage/MainPage.js';
 import { renderQuizSettings } from '../../views/quiz-settings/quiz-settings.js';
-import { renderScorePage } from '../../views/ScorePage/ScorePage';
+
+import { renderQuizView } from '../../views/QuizView/quizView.js';
+import { renderScorePage } from '../../views/ScorePage/ScorePage.js';
 
 const app = document.getElementById('app');
 
 const applicationRoutes = {
   '/': renderMainPage,
   '#quiz-settings': renderQuizSettings,
+  '#quiz': renderQuizView,
   '#score-page': renderScorePage,
 };
 
@@ -27,4 +30,8 @@ export function Router() {
   const url = window.location.hash || '/';
   app.innerHTML = '';
   setRenderFunction(url)();
+}
+
+export function onNavigationChange(e) {
+  window.location.hash = e.target.className;
 }

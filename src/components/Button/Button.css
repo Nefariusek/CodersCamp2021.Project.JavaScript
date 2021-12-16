@@ -12,6 +12,7 @@ button {
   text-transform: uppercase;
   margin-bottom: 20px;
   width: 200px;
+  font-weight: bold;
 }
 
 button:hover {
