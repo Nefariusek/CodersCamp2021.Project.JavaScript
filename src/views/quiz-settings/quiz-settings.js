@@ -31,7 +31,7 @@ class QuizSettings {
         this.questionsType = value;
       }
       if (settingName === 'questionsNum') {
-        this.questionsNum = component.value;
+        this.questionsNum = parseInt(component.value);
       }
       console.log(this.quizAbout, this.questionsType, this.questionsNum);
     });
