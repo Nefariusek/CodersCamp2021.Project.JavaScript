@@ -1,5 +1,6 @@
 import Button from '../../components/Button/Button.js';
 import './MainPage.css';
+import { onNavigationChange } from '../../components/router/Router.js';
 
 const MAIN_ANIMAL_PATH = './public/kangoroo.png';
 const FACT_ANIMAL_URL = 'http://placekitten.com/400/500';
@@ -59,7 +60,7 @@ function renderMainView() {
   const handleNavigationButtonClick = (e) => onNavigationChange(e);
 
   const quizButton = Button('Start Quiz', 'quiz-settings', true, 'click', handleNavigationButtonClick);
-  const leaderboardButton = Button('Leaderboard', 'leaders-button', true, 'click', handleNavigationButtonClick);
+  const leaderboardButton = Button('Leaderboard', 'whatever', true, 'click', handleNavigationButtonClick);
   const adoptionButton = Button('Adoption', 'adoption-button', true, 'click', handleNavigationButtonClick);
   const creditsButton = Button('Credits', 'credits-button', true, 'click', handleNavigationButtonClick);
 
@@ -71,10 +72,6 @@ function renderMainView() {
       alert(`Hello! I'm ${item.dataset.name} site`);
     });
   });
-}
-
-function onNavigationChange(e) {
-  window.location.hash = e.target.className;
 }
 
 async function renderAnimalFact() {

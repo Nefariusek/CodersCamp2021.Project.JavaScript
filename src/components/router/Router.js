@@ -30,3 +30,7 @@ export function Router() {
   app.innerHTML = '';
   setRenderFunction(url)();
 }
+
+export function onNavigationChange(e) {
+  window.location.hash = e.target.className;
+}
