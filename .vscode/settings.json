@@ -12,7 +12,7 @@
     "editor.defaultFormatter": "vscode.html-language-features"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "HookyQR.beautify"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

@@ -101,11 +101,11 @@ class QuizSettings {
       } else {
         alert(
           'Quiz about: ' +
-            this.quizAbout +
-            '\nQuestions number: ' +
-            this.questionsNum +
-            '\nQuestions type: ' +
-            this.questionsType,
+          this.quizAbout +
+          '\nQuestions number: ' +
+          this.questionsNum +
+          '\nQuestions type: ' +
+          this.questionsType,
         );
         window.location.hash = 'quiz';
       }
@@ -122,7 +122,9 @@ class QuizSettings {
   }
 }
 
-export { QuizSettings };
+export {
+  QuizSettings
+};
 export function renderQuizSettings() {
   QuizSettings.showSettings();
 }

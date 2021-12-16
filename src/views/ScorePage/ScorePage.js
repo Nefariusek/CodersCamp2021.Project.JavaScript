@@ -1,5 +1,8 @@
 import './ScorePage.css';
-import { scoreLocalStorage, saveHighScore } from '../../score/user-score';
+import {
+  scoreLocalStorage,
+  saveHighScore
+} from '../../score/user-score';
 import Button from '../../components/Button/Button';
 import '../../components/Button/Button.css';
 
