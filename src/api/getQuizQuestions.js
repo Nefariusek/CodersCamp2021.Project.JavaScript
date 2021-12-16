@@ -54,13 +54,11 @@ const getQuestionsFromData = (data) => {
 
 const getFalseAnswers = (correctAnswer, allAnswers) => {
   const falseAnswers = [];
-  for (let i = 0; falseAnswers.length < 3; i++) {
+  while (falseAnswers.length < 3) {
     const falseAnswer = allAnswers[Math.floor(Math.random() * allAnswers.length)];
 
     if (!falseAnswers.some((answer) => answer === falseAnswer.name) && falseAnswer.name !== correctAnswer) {
       falseAnswers.push(falseAnswer.name);
-    } else {
-      falseAnswers.push('');
     }
   }
 

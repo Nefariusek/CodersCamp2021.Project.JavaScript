@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 import { renderLeaderboard } from './leaderboard/leaderboard';
+=======
+import './style.css';
+import './components/timer/quiz-timer.css';
+import './views/quiz-settings/quiz-settings.css';
+import './views/QuizView/quizView.css';
+import './views/ScorePage/ScorePage.css';
+>>>>>>> develop
 
 renderLeaderboard();
 

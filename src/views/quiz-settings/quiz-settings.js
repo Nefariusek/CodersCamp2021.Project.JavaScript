@@ -28,7 +28,7 @@ class QuizSettings {
         this.questionsType = value;
       }
       if (settingName === 'questionsNum') {
-        this.questionsNum = component.value;
+        this.questionsNum = parseInt(component.value);
       }
       console.log(this.quizAbout, this.questionsType, this.questionsNum);
     });
@@ -121,5 +121,8 @@ class QuizSettings {
 
 export { QuizSettings };
 export function renderQuizSettings() {
+  QuizSettings.questionsNum = undefined;
+  QuizSettings.questionsType = undefined;
+  QuizSettings.quizAbout = undefined;
   QuizSettings.showSettings();
 }
