@@ -1,3 +1,6 @@
+import './quiz-settings.css';
+import '../../style.css';
+
 class QuizSettings {
   quizAbout;
   questionsNum;
@@ -28,7 +31,7 @@ class QuizSettings {
         this.questionsType = value;
       }
       if (settingName === 'questionsNum') {
-        this.questionsNum = parseInt(component.value);
+        this.questionsNum = component.value;
       }
       console.log(this.quizAbout, this.questionsType, this.questionsNum);
     });
@@ -37,8 +40,8 @@ class QuizSettings {
   static createAboutSection() {
     const about = document.createElement('div');
     const text = document.createElement('p');
-    text.innerText = 'Quiz about: ';
-    about.append(text, this.createRadioButton('cats', 'quizAbout'), this.createRadioButton('dogs', 'quizAbout'));
+    text.innerHTML = '<h3>Quiz about:</h3>';
+    about.append(text, this.createRadioButton('CATS', 'quizAbout'), this.createRadioButton('DOGS', 'quizAbout'));
     return about;
   }
 
@@ -52,7 +55,7 @@ class QuizSettings {
   static createQuestionsNumberdiv() {
     const questionsNumberdiv = document.createElement('div');
     const text = document.createElement('p');
-    text.innerText = 'Questions number: ';
+    text.innerHTML = '<h3>Number of questions:</h3>';
     questionsNumberdiv.append(text, this.createQuestionsNumberInput());
     return questionsNumberdiv;
   }
@@ -60,11 +63,11 @@ class QuizSettings {
   static createQuestionsTypeSection() {
     const questionsType = document.createElement('div');
     const text = document.createElement('p');
-    text.innerText = 'Questions type: ';
+    text.innerHTML = '<h3>Type of questions:</h3>';
     questionsType.append(
       text,
-      this.createRadioButton('open', 'questionsType'),
-      this.createRadioButton('multiple choice', 'questionsType'),
+      this.createRadioButton('OPEN', 'questionsType'),
+      this.createRadioButton('MULTIPLE CHOICE', 'questionsType'),
     );
     return questionsType;
   }
@@ -121,8 +124,5 @@ class QuizSettings {
 
 export { QuizSettings };
 export function renderQuizSettings() {
-  QuizSettings.questionsNum = undefined;
-  QuizSettings.questionsType = undefined;
-  QuizSettings.quizAbout = undefined;
   QuizSettings.showSettings();
 }

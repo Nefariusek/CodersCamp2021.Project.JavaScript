@@ -1,6 +1,6 @@
 import './ScorePage.css';
-import { scoreLocalStorage, saveHighScore } from '../../score/user-score.js';
-import Button from '../../components/Button/Button.js';
+import { scoreLocalStorage, saveHighScore } from '../../score/user-score';
+import Button from '../../components/Button/Button';
 import '../../components/Button/Button.css';
 
 export function renderScorePage() {
