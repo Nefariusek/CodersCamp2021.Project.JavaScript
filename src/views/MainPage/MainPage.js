@@ -56,14 +56,12 @@ function renderMainView() {
 
   const navContainer = document.querySelector('.navigation-container');
 
-  const goToPage = (hash) => {
-    window.location.hash = hash;
-  };
+  const handleNavigationButtonClick = (e) => onNavigationChange(e);
 
-  const quizButton = Button('Start Quiz', 'quiz-button', true, 'click', goToPage.bind(null, '#quiz-settings'));
-  const leaderboardButton = Button('Leaderboard', 'leaders-button', true, 'click', goToPage.bind(null, '#leaderboard'));
-  const adoptionButton = Button('Adoption', 'adoption-button', true, 'click', goToPage.bind(null, '#adoption'));
-  const creditsButton = Button('Credits', 'credits-button', true, 'click', goToPage.bind(null, '#credits'));
+  const quizButton = Button('Start Quiz', 'quiz-settings', true, 'click', handleNavigationButtonClick);
+  const leaderboardButton = Button('Leaderboard', 'leaders-button', true, 'click', handleNavigationButtonClick);
+  const adoptionButton = Button('Adoption', 'adoption-button', true, 'click', handleNavigationButtonClick);
+  const creditsButton = Button('Credits', 'credits-button', true, 'click', handleNavigationButtonClick);
 
   navContainer.append(quizButton, leaderboardButton, adoptionButton, creditsButton);
   const navItems = navContainer.querySelectorAll('a');
@@ -73,6 +71,10 @@ function renderMainView() {
       alert(`Hello! I'm ${item.dataset.name} site`);
     });
   });
+}
+
+function onNavigationChange(e) {
+  window.location.hash = e.target.className;
 }
 
 async function renderAnimalFact() {
