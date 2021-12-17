@@ -2,7 +2,7 @@ import Button from '../../components/Button/Button.js';
 import './MainPage.css';
 import { onNavigationChange } from '../../components/router/Router.js';
 
-const MAIN_ANIMAL_PATH = './public/kangoroo.png';
+const MAIN_ANIMAL_PATH = './kangoroo.png';
 const FACT_ANIMAL_URL = 'http://placekitten.com/400/500';
 const ADOPTION_ANIMAL_URL = 'http://placekitten.com/300/400';
 
