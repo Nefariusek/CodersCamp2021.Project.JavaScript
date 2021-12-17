@@ -39,6 +39,12 @@
   flex-direction: column;
 }
 
+@media (max-width: 960px) {
+  .navigation-container button {
+    width: 50vw;
+  }
+}
+
 .navigation-container ul {
   list-style-type: none;
   margin: 0;
