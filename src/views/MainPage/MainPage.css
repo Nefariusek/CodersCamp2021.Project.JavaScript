@@ -34,57 +34,15 @@
 .navigation-container {
   grid-area: nav;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
 }
 
-.navigation-container ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navigation-container li,
-.wrapper {
-  position: relative;
-}
-
-.navigation-container a {
-  display: block;
-  padding: 1em;
-  background-color: var(--btn-color);
-  font-weight: bold;
-  text-align: center;
-  margin: 2em 0;
-  text-decoration: none;
-  color: #000000;
-  font-size: 1.2em;
-  width: 8em;
-  border-radius: 10px;
-}
-
 @media (max-width: 960px) {
-  .navigation-container a {
+  .navigation-container button {
     width: 50vw;
   }
-}
-
-.navigation-container a:hover {
-  background-color: var(--hover-btn-color);
-  color: #ffffff;
-  transition: ease-in-out all 0.4s;
-}
-
-.navigation-container a:hover:after {
-  content: '';
-  background: url(../public/cute_koala.png) no-repeat;
-  background-size: 50px 50px;
-  position: absolute;
-  left: 105%;
-  top: 10%;
-  width: 50px;
-  height: 50px;
 }
 
 /******* INFO SPACE ******/
