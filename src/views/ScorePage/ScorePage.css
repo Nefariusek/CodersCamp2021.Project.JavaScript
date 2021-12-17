@@ -63,6 +63,7 @@ input {
   }
   #nickname {
     width: auto;
+    margin-bottom: 10px;
   }
   #finalScore {
     height: 40px;

@@ -2,9 +2,15 @@ import { QuizSettings } from '../quiz-settings/quiz-settings';
 import { createTimer, startTimer, stopTimer } from '../../components/timer/quiz-timer';
 import { getQuizQuestions } from '../../api/getQuizQuestions';
 import Button from '../../components/Button/Button';
+import Answer from '../../components/Answer/Answer';
+import Question from '../../model/question';
 
 let questions;
 let current;
+let date;
+let startTime;
+let endTime;
+let Answers = [];
 
 export async function renderQuizView() {
   questions = await getQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
@@ -75,6 +81,7 @@ function createLayout() {
 
 function renderQuizData() {
   if (current === QuizSettings.questionsNum) {
+    console.log(Answers);
     window.location.hash = 'score-page';
     return;
   }
@@ -93,9 +100,23 @@ function renderQuizData() {
   for (let i = 0; i < 4; i++) {
     answersContainer.appendChild(Button(answers[i], 'answer', false, 'click', nextQuestion));
   }
+  date = new Date();
+  startTime = date.getTime();
+  console.log(startTime);
+}
+
+function saveAnswer() {
+  date = new Date();
+  endTime = date.getTime();
+  console.log(endTime);
+  const relativeTime = endTime - startTime;
+  const ans = new Answer(relativeTime, questions[current], 'blabla', false);
+  Answers.push(ans);
 }
 
 function nextQuestion() {
+  saveAnswer();
+
   const currentQuestionNumber = document.getElementById('current-question');
   currentQuestionNumber.setAttribute('id', '');
 

@@ -1,9 +1,20 @@
 import Question from '../../model/question';
 
 export default class Answer {
-  timeOfAnswer;
-  Question;
-  lifelineUsed = false;
+  constructor(timeOfAnswer, Question, answer, lifelineUsed) {
+    this.timeOfAnswer = timeOfAnswer;
+    this.Question = Question;
+    this.lifelineUsed = lifelineUsed;
+    this.answer = answer;
+  }
+
+  corectnessCheck() {
+    if (this.answer === this.Question.correct) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   static getScore() {
     return 1;
