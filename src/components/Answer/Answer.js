@@ -9,7 +9,7 @@ export default class Answer {
   }
 
   corectnessCheck() {
-    if (this.answer === this.Question.correct) {
+    if (this.answer === this.Question.correct.toUpperCase()) {
       return true;
     } else {
       return false;

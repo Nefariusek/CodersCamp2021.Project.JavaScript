@@ -77,7 +77,6 @@ function renderPlayAgainButton() {
 }
 
 function goToMainPage() {
-  console.log('Go to main page!');
   window.location.hash = '';
 }
 

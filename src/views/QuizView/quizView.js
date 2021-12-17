@@ -81,7 +81,6 @@ function createLayout() {
 
 function renderQuizData() {
   if (current === QuizSettings.questionsNum) {
-    console.log(Answers);
     window.location.hash = 'score-page';
     return;
   }
@@ -102,20 +101,19 @@ function renderQuizData() {
   }
   date = new Date();
   startTime = date.getTime();
-  console.log(startTime);
 }
 
-function saveAnswer() {
+function saveAnswer(answer) {
   date = new Date();
   endTime = date.getTime();
-  console.log(endTime);
   const relativeTime = endTime - startTime;
-  const ans = new Answer(relativeTime, questions[current], 'blabla', false);
+  const ans = new Answer(relativeTime, questions[current], answer, false);
   Answers.push(ans);
 }
 
-function nextQuestion() {
-  saveAnswer();
+function nextQuestion(e) {
+  let buttonValue = e.target.innerText;
+  saveAnswer(buttonValue);
 
   const currentQuestionNumber = document.getElementById('current-question');
   currentQuestionNumber.setAttribute('id', '');
