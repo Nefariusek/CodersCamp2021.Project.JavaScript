@@ -2,9 +2,16 @@ import { QuizSettings } from '../quiz-settings/quiz-settings';
 import { createTimer, startTimer, stopTimer } from '../../components/timer/quiz-timer';
 import { getRandomQuizQuestions } from '../../model/randomizer.js';
 import Button from '../../components/Button/Button';
+import Answer from '../../components/Answer/Answer';
+import Question from '../../model/question';
 
 let questions;
 let current;
+let startTime;
+let endTime;
+let timerMinutes;
+let timerSeconds;
+let Answers = [];
 
 export async function renderQuizView() {
   questions = await getRandomQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
@@ -70,6 +77,7 @@ function createLayout() {
     createLeftArrow(),
     answers,
   );
+
   return container;
 }
 
@@ -93,9 +101,27 @@ function renderQuizData() {
   for (let i = 0; i < 4; i++) {
     answersContainer.appendChild(Button(answers[i], 'answer', false, 'click', nextQuestion));
   }
+  startTime = getTime();
 }
 
-function nextQuestion() {
+function getTime() {
+  timerMinutes = document.getElementById('timer-minutes').innerText;
+  timerSeconds = document.getElementById('timer-seconds').innerText;
+  const time = timerMinutes * 60 + timerSeconds;
+  return time;
+}
+
+function saveAnswer(answer) {
+  endTime = getTime();
+  const relativeTime = endTime - startTime;
+  const ans = new Answer(relativeTime, questions[current], answer, false);
+  Answers.push(ans);
+}
+
+function nextQuestion(e) {
+  let buttonValue = e.target.innerText;
+  saveAnswer(buttonValue);
+
   const currentQuestionNumber = document.getElementById('current-question');
   currentQuestionNumber.setAttribute('id', '');
 
