@@ -1,6 +1,5 @@
 import { QuizSettings } from '../quiz-settings/quiz-settings';
 import { createTimer, startTimer, stopTimer } from '../../components/timer/quiz-timer';
-//import { getQuizQuestions } from '../../api/getQuizQuestions';
 import { getRandomQuizQuestions } from '../../model/randomizer.js';
 import Button from '../../components/Button/Button';
 
