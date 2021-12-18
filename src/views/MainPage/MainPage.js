@@ -15,6 +15,7 @@ const ADOPTION_ANIMAL = { url: 'http://placekitten.com/300/400', alt: 'the anima
 
 export function renderMainPage() {
   renderMainView();
+  renderNavigation();
   renderAnimalFact();
 }
 
@@ -61,7 +62,9 @@ function renderMainView() {
   
   </div>
   `;
+}
 
+function renderNavigation() {
   const navContainer = document.querySelector('.navigation-container');
 
   const handleNavigationButtonClick = (e) => onNavigationChange(e);
