@@ -1,5 +1,7 @@
-import Button from '../../components/Button/Button.js';
 import './MainPage.css';
+import { retrieveAnimalFact } from '../../api/FactsController.js';
+import { Fact } from '../../model/Fact.js';
+import Button from '../../components/Button/Button.js';
 import { onNavigationChange } from '../../components/router/Router.js';
 
 const MAIN_ANIMAL_PATH = './kangoroo.png';
