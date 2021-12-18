@@ -3,7 +3,7 @@ import { createTimer, startTimer, stopTimer } from '../../components/timer/quiz-
 import { getRandomQuizQuestions } from '../../model/randomizer.js';
 import Button from '../../components/Button/Button';
 import Answer from '../../components/Answer/Answer';
-import Question from '../../model/question';
+import Question from '../../model/Question';
 
 let questions;
 let current;
