@@ -63,17 +63,18 @@ input {
   }
   #nickname {
     width: auto;
+    margin-bottom: 10px;
   }
   #finalScore {
     height: 40px;
   }
-  #scorePage img {
+  #catPNG {
     height: 250px;
     width: 250px;
   }
 }
 @media only screen and (max-device-height: 610px) {
-  #scorePage img {
+  #catPNG {
     display: none;
   }
   #scorePage {

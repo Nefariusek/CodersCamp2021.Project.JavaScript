@@ -1,3 +1,11 @@
+div#scorePage > * {
+  box-sizing: border-box;
+  background-color: #8ab0ab;
+  margin: 0;
+  padding: 0;
+  font-family: 'Bebas Neue', cursive;
+}
+
 #scorePage {
   position: relative;
   text-align: center;
