@@ -77,12 +77,19 @@ function renderNavigation() {
   navContainer.append(quizButton, leaderboardButton, adoptionButton, creditsButton);
 }
 
-async function renderAnimalFact() {
-  const factItem = document.querySelector('.bubble-text');
+function renderAnimalFact() {
+  const factSentenceItem = document.querySelector('.bubble.fact .bubble-text');
   const factSentence = document.createElement('p');
-  const FACT =
-    "Cat's eyes shine in the dark because of the tapetum, a reflective layer in the eye, which acts like a mirror.";
 
-  factSentence.innerText = FACT;
-  factItem.append(factSentence);
+  retrieveAnimalFact()
+    .then((result) => {
+      const newFact = new Fact(result);
+      factSentence.innerText = newFact.makeFact;
+    })
+    .catch((error) => {
+      const newFact = new Fact(FACT_ANIMAL.fallbackFact);
+      factSentence.innerText = newFact.makeFact;
+    });
+
+  factSentenceItem.append(factSentence);
 }
