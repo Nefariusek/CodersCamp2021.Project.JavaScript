@@ -72,13 +72,6 @@ function renderMainView() {
   const creditsButton = Button('Credits', 'credits-button', true, 'click', handleNavigationButtonClick);
 
   navContainer.append(quizButton, leaderboardButton, adoptionButton, creditsButton);
-  const navItems = navContainer.querySelectorAll('a');
-
-  navItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      alert(`Hello! I'm ${item.dataset.name} site`);
-    });
-  });
 }
 
 async function renderAnimalFact() {
