@@ -8,3 +8,11 @@ Verify, consult and update before starting.
 Additional notes
 This functionality should be stored in a separate .js file.
 As an input, an array with all retrieved Questions will be given. */
+import { getQuizQuestions } from '../api/getQuizQuestions.js';
+
+export async function questionRandomizer(animal) {
+  const questions = await getQuizQuestions(animal);
+  const randomQuestions = [...questions];
+  randomQuestions.sort(() => Math.random() - 0.5);
+  return randomQuestions;
+}
