@@ -1,7 +1,7 @@
 #quizView {
   display: grid;
   grid-template-columns: 25vw 50vw 25vw;
-  grid-template-rows: 10vh 10vh 40vh 10vh 30vh;
+  grid-template-rows: 8vh 15vh 40vh 10vh 27vh;
   grid-template-areas:
     'header header  header'
     'number number number'
@@ -26,6 +26,8 @@
   align-items: center;
   font-size: 3vmin;
   color: black;
+  flex-wrap: wrap;
+  gap: 1vmin;
 }
 
 #quizView #question-numbers div {
@@ -53,6 +55,8 @@
   grid-area: photo;
   max-height: 100%;
   max-width: 100%;
+  height: auto;
+  width: auto;
   justify-self: center;
 }
 
@@ -88,6 +92,7 @@
 
 #quizView #answers {
   grid-area: answer;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -96,8 +101,9 @@
 }
 
 #quizView .answer {
-  justify-self: center;
-  align-self: center;
+  margin: 0.5vmin;
+  padding: 2vmin;
+  vertical-align: middle;
   width: 80%;
   font-size: 3vmin;
 }
