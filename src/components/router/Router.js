@@ -2,6 +2,7 @@ import { renderMainPage } from '../../views/MainPage/MainPage.js';
 import { renderQuizSettings } from '../../views/quiz-settings/quiz-settings.js';
 import { renderQuizView } from '../../views/QuizView/quizView.js';
 import { renderScorePage } from '../../views/ScorePage/ScorePage.js';
+import { renderLeaderboard } from '../../views/Leaderboard/Leaderboard.js';
 
 const app = document.getElementById('app');
 
@@ -10,6 +11,7 @@ const applicationRoutes = {
   '#quiz-settings': renderQuizSettings,
   '#quiz': renderQuizView,
   '#score-page': renderScorePage,
+  '#leadearboard': renderLeaderboard,
 };
 
 function redirectToMainPage() {

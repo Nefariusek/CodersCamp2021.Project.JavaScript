@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  background-color: #8ab0ab;
+  margin: 0;
+  padding: 0;
+  font-family: 'Bebas Neue', cursive;
+}
+
+#scorePage {
+  position: relative;
+  text-align: center;
+}
+
+#scorePageTitle {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+/*podium*/
+
+.podium {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.podiumNick {
+  margin-top: 30px;
+  margin-left: 15px;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+  word-wrap: break-word;
+  max-width: 180px;
+  color: whitesmoke;
+}
+
+.step {
+  height: 3em;
+  padding: 5px;
+  vertical-align: bottom;
+}
+
+td.step div:first-of-type {
+  display: flex;
+  width: 150px;
+  background: #2c3e50;
+  justify-content: center;
+  align-items: center;
+  font-size: 6rem;
+  margin: 20px 30px;
+  color: whitesmoke;
+}
+#gold {
+  height: 250px;
+}
+#silver {
+  height: 200px;
+}
+#bronze {
+  height: 150px;
+}
+
+/*list*/
+
+.list {
+  display: flex;
+  justify-content: space-around;
+  color: whitesmoke;
+  bottom: 20%;
+}
+
+.listItem {
+  display: inline-block;
+  width: 6rem;
+  margin: 1rem;
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: whitesmoke;
+}
+
+/*mainMenuBtn*/
+
+button.menuButton {
+  position: fixed;
+  bottom: 2%;
+  left: 4%;
+}
+
+@media (max-width: 960px) {
+  button.menuButton {
+    bottom: 0;
+    left: 0;
+    width: min-content;
+  }
+}

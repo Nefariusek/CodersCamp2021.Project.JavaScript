@@ -2,7 +2,7 @@ import Button from '../../components/Button/Button.js';
 import './MainPage.css';
 import { onNavigationChange } from '../../components/router/Router.js';
 
-const MAIN_ANIMAL_PATH = './public/kangoroo.png';
+const MAIN_ANIMAL_PATH = './kangoroo.png';
 const FACT_ANIMAL_URL = 'http://placekitten.com/400/500';
 const ADOPTION_ANIMAL_URL = 'http://placekitten.com/300/400';
 
@@ -60,7 +60,7 @@ function renderMainView() {
   const handleNavigationButtonClick = (e) => onNavigationChange(e);
 
   const quizButton = Button('Start Quiz', 'quiz-settings', true, 'click', handleNavigationButtonClick);
-  const leaderboardButton = Button('Leaderboard', 'whatever', true, 'click', handleNavigationButtonClick);
+  const leaderboardButton = Button('Leaderboard', 'leadearboard', true, 'click', handleNavigationButtonClick);
   const adoptionButton = Button('Adoption', 'adoption-button', true, 'click', handleNavigationButtonClick);
   const creditsButton = Button('Credits', 'credits-button', true, 'click', handleNavigationButtonClick);
 
