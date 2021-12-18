@@ -1,13 +1,14 @@
 import { QuizSettings } from '../quiz-settings/quiz-settings';
 import { createTimer, startTimer, stopTimer } from '../../components/timer/quiz-timer';
-import { getQuizQuestions } from '../../api/getQuizQuestions';
+//import { getQuizQuestions } from '../../api/getQuizQuestions';
+import { getRandomQuizQuestions } from '../../model/randomizer.js';
 import Button from '../../components/Button/Button';
 
 let questions;
 let current;
 
 export async function renderQuizView() {
-  questions = await getQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
+  questions = await getRandomQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
   current = 0;
   document.querySelector('#app').append(createLayout());
   startTimer();

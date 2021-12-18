@@ -10,9 +10,12 @@ This functionality should be stored in a separate .js file.
 As an input, an array with all retrieved Questions will be given. */
 import { getQuizQuestions } from '../api/getQuizQuestions.js';
 
-export async function questionRandomizer(animal) {
-  const questions = await getQuizQuestions(animal);
-  const randomQuestions = [...questions];
-  randomQuestions.sort(() => Math.random() - 0.5);
-  return randomQuestions;
+export async function getRandomQuizQuestions(animal, numberOfQuestions) {
+  const APIquestions = await getQuizQuestions(animal);
+  const randomQuestions = [...APIquestions].sort(() => Math.random() - 0.5);
+
+  if (numberOfQuestions < randomQuestions.length) {
+    const questionSet = randomQuestions.slice(0, numberOfQuestions);
+    return questionSet;
+  }
 }

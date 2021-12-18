@@ -14,8 +14,6 @@ export const getQuizQuestions = async (animal, numberOfQuestions) => {
   if (data) {
     questions.push(...mapDataToQuestions(data));
   }
-
-  console.log(questions);
   return questions;
 };
 
