@@ -5,8 +5,7 @@ export async function getRandomQuizQuestions(animal, numberOfQuestions) {
   const randomQuestions = questionToRandomize.sort(() => Math.random() - 0.5);
 
   if (numberOfQuestions < randomQuestions.length) {
-    const questionSet = randomQuestions.slice(0, numberOfQuestions);
-    return questionSet;
+    return randomQuestions.slice(0, numberOfQuestions);
   } else {
     return randomQuestions;
   }

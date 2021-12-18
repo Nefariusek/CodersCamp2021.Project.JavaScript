@@ -1,4 +1,4 @@
-import Question from '../model/question.js';
+import Question from '../model/Question.js';
 
 const QUESTION_TEXT = 'Name the breed:';
 
