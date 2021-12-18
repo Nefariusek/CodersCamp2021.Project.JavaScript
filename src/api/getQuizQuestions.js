@@ -1,4 +1,4 @@
-import Question from '../model/question.js';
+import Question from '../model/Question';
 
 const QUESTION_TEXT = 'Name the breed:';
 
@@ -14,8 +14,6 @@ export const getQuizQuestions = async (animal, numberOfQuestions) => {
   if (data) {
     questions.push(...mapDataToQuestions(data));
   }
-
-  console.log(questions);
   return questions;
 };
 

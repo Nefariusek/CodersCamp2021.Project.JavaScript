@@ -1,4 +1,4 @@
-import Question from '../../model/question';
+import Question from '../../model/Question';
 
 export default class Answer {
   timeOfAnswer;
