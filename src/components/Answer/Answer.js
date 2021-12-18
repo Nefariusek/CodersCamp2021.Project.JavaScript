@@ -8,12 +8,8 @@ export default class Answer {
     this.answer = answer;
   }
 
-  corectnessCheck() {
-    if (this.answer === this.Question.correct.toUpperCase()) {
-      return true;
-    } else {
-      return false;
-    }
+  checkIfCorrect() {
+    return this.answer.toUpperCase() === this.Question.correct.toUpperCase();
   }
 
   static getScore() {

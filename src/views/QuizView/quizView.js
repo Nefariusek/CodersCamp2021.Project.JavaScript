@@ -7,9 +7,10 @@ import Question from '../../model/question';
 
 let questions;
 let current;
-let date;
 let startTime;
 let endTime;
+let timerMinutes;
+let timerSeconds;
 let Answers = [];
 
 export async function renderQuizView() {
@@ -76,6 +77,7 @@ function createLayout() {
     createLeftArrow(),
     answers,
   );
+
   return container;
 }
 
@@ -99,13 +101,18 @@ function renderQuizData() {
   for (let i = 0; i < 4; i++) {
     answersContainer.appendChild(Button(answers[i], 'answer', false, 'click', nextQuestion));
   }
-  date = new Date();
-  startTime = date.getTime();
+  startTime = getTime();
+}
+
+function getTime() {
+  timerMinutes = document.getElementById('timer-minutes').innerText;
+  timerSeconds = document.getElementById('timer-seconds').innerText;
+  const time = timerMinutes * 60 + timerSeconds;
+  return time;
 }
 
 function saveAnswer(answer) {
-  date = new Date();
-  endTime = date.getTime();
+  endTime = getTime();
   const relativeTime = endTime - startTime;
   const ans = new Answer(relativeTime, questions[current], answer, false);
   Answers.push(ans);
