@@ -50,7 +50,7 @@ function renderPodium() {
 }
 
 function getScoreFromLocalStorage() {
-  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  const highScores = JSON.parse(localStorage.getItem('quizScores')) || [];
   highScores.sort((a, b) => b.score - a.score);
   function showScore() {
     nick1.innerText = `pts: ${Object.values(highScores[0])}`;

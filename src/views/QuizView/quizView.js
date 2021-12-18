@@ -11,7 +11,7 @@ let startTime;
 let endTime;
 let timerMinutes;
 let timerSeconds;
-let Answers = [];
+export let Answers = [];
 
 export async function renderQuizView() {
   questions = await getRandomQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);

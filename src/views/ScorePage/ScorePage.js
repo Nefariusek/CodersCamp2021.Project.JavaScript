@@ -1,18 +1,19 @@
 import './ScorePage.css';
-import { scoreLocalStorage, saveHighScore } from '../../score/user-score';
 import Button from '../../components/Button/Button';
 import '../../components/Button/Button.css';
 
+import { QuizSettings } from '../quiz-settings/quiz-settings';
+import { Answers } from '../QuizView/quizView';
+import Answer from '../../components/Answer/Answer';
+
 export function renderScorePage() {
-  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-  const recentUserScore = 12;
-  const questionsNumber = 12;
+  const recentUserScore = Answers.reduce((a, b) => a + b.getScore(), 0);
 
   const container = document.createElement('div');
   container.setAttribute('id', 'scorePage');
   container.append(
     renderGraphics(),
-    renderScore(recentUserScore, questionsNumber),
+    renderScore(recentUserScore),
     renderNickForm(),
     renderMenuButton(),
     renderPlayAgainButton(),
@@ -20,14 +21,14 @@ export function renderScorePage() {
   document.querySelector('#app').append(container);
 }
 
-function renderScore(score, questionsNumber) {
+function renderScore(score) {
   const container = document.createElement('div');
   const congratsText = document.createElement('h2');
   const scoreText = document.createElement('h2');
   const finalScore = document.createElement('h2');
   finalScore.setAttribute('id', 'finalScore');
   congratsText.innerText = 'CONGRATS!';
-  scoreText.innerText = 'YOUR SCORE IS: ';
+  scoreText.innerText = 'YOUR SCORE IS: ' + score;
   container.append(congratsText, scoreText, finalScore);
   return container;
 }
@@ -48,16 +49,8 @@ function renderNickForm() {
   const input = document.createElement('input');
   input.setAttribute('id', 'nickname');
   input.setAttribute('value', 'NICKNAME');
-  nickFormContainer.append(input, Button('SUBMIT', 'saveScoreBtn', false, 'click', saveNickname));
+  nickFormContainer.append(input, Button('SUBMIT', 'saveScoreBtn', false, 'click', saveQuizScore));
   return nickFormContainer;
-}
-
-function saveNickname() {
-  const saveButton = document.getElementsByClassName('saveScoreBtn')[0];
-  saveButton.addEventListener('click', saveHighScore);
-  if (!nicknameValidation()) {
-    alert('Type in your nickname!');
-  }
 }
 
 function nicknameValidation() {
@@ -66,6 +59,26 @@ function nicknameValidation() {
     return true;
   } else {
     return false;
+  }
+}
+
+function saveQuizScore() {
+  const quizScores = JSON.parse(localStorage.getItem('quizScores')) || [];
+  const recentUserScore = Answers.reduce((a, b) => a + b.getScore(), 0);
+
+  if (!nicknameValidation()) {
+    alert('Type in your nickname!');
+  } else {
+    const score = {
+      SCORE: recentUserScore,
+      ABOUT: QuizSettings.quizAbout,
+      NUMBER: QuizSettings.questionsNum,
+      TYPE: QuizSettings.questionsType,
+      NAME: document.getElementById('nickname').value,
+    };
+    quizScores.push(score);
+    localStorage.setItem('quizScores', JSON.stringify(quizScores));
+    nickname.value = null;
   }
 }
 
