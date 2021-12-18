@@ -1,5 +1,3 @@
-import Question from '../../model/Question';
-
 export default class Answer {
   constructor(timeOfAnswer, Question, answer, lifelineUsed) {
     this.timeOfAnswer = timeOfAnswer;
