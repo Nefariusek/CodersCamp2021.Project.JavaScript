@@ -68,13 +68,13 @@ input {
   #finalScore {
     height: 40px;
   }
-  img {
+  #catPNG {
     height: 250px;
     width: 250px;
   }
 }
 @media only screen and (max-device-height: 610px) {
-  img {
+  #catPNG {
     display: none;
   }
   #scorePage {

@@ -35,6 +35,7 @@ function renderScore(score, questionsNumber) {
 function renderGraphics() {
   const img = document.createElement('img');
   img.src = './cat.png';
+  img.setAttribute('id', 'catPNG');
   img.setAttribute('alt', 'Congrats!');
   img.setAttribute('width', '350');
   img.setAttribute('height', '350');
