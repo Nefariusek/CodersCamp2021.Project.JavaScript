@@ -82,7 +82,7 @@ function createLayout() {
 
 function renderQuizData() {
   if (current === QuizSettings.questionsNum) {
-    window.location.hash = 'score-page';
+    window.location.hash = 'confirm-choice';
     return;
   }
   current = current < 0 ? 0 : current;
@@ -141,3 +141,4 @@ function previousQuestion() {
   current--;
   renderQuizData();
 }
+export default Answers;

@@ -1,0 +1,15 @@
+#choicePage {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+#buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
