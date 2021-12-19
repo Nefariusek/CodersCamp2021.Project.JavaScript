@@ -11,7 +11,7 @@ let startTime;
 let endTime;
 let timerMinutes;
 let timerSeconds;
-export let Answers = [];
+export let userAnswers = [];
 
 export async function renderQuizView() {
   questions = await getRandomQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
@@ -115,7 +115,7 @@ function saveAnswer(answer) {
   endTime = getTime();
   const relativeTime = endTime - startTime;
   const ans = new Answer(relativeTime, questions[current], answer, false);
-  Answers.push(ans);
+  userAnswers.push(ans);
 }
 
 function nextQuestion(e) {

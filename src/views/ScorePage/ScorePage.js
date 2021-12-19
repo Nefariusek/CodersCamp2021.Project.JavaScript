@@ -3,11 +3,11 @@ import Button from '../../components/Button/Button';
 import '../../components/Button/Button.css';
 
 import { QuizSettings } from '../quiz-settings/quiz-settings';
-import { Answers } from '../QuizView/quizView';
+import { userAnswers } from '../QuizView/quizView';
 import Answer from '../../components/Answer/Answer';
 
 export function renderScorePage() {
-  const recentUserScore = Answers.reduce((a, b) => a + b.getScore(), 0);
+  const recentUserScore = getCurrentScore(userAnswers);
 
   const container = document.createElement('div');
   container.setAttribute('id', 'scorePage');
@@ -53,6 +53,10 @@ function renderNickForm() {
   return nickFormContainer;
 }
 
+function getCurrentScore(Answers) {
+  return Answers.reduce((sum, ans) => sum + ans.getScore(), 0);
+}
+
 function nicknameValidation() {
   const input = document.getElementById('nickname');
   if (input.value != '' && input.value != 'NICKNAME') {
@@ -64,8 +68,7 @@ function nicknameValidation() {
 
 function saveQuizScore() {
   const quizScores = JSON.parse(localStorage.getItem('quizScores')) || [];
-  const recentUserScore = Answers.reduce((a, b) => a + b.getScore(), 0);
-
+  const recentUserScore = getCurrentScore(userAnswers);
   if (!nicknameValidation()) {
     alert('Type in your nickname!');
   } else {
