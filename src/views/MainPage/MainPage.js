@@ -14,9 +14,10 @@ const FACT_ANIMAL = {
 const ADOPTION_ANIMAL = { url: 'http://placekitten.com/300/400', alt: 'the animal to adoption' };
 
 export function renderMainPage() {
+  const newFact = new Fact();
   renderMainView();
   renderNavigation();
-  renderAnimalFact();
+  renderAnimalFact(newFact);
 }
 
 function renderMainView() {
@@ -77,19 +78,15 @@ function renderNavigation() {
   navContainer.append(quizButton, leaderboardButton, adoptionButton, creditsButton);
 }
 
-function renderAnimalFact() {
+async function renderAnimalFact(factObj) {
   const factSentenceItem = document.querySelector('.bubble.fact .bubble-text');
   const factSentence = document.createElement('p');
 
-  retrieveAnimalFact()
-    .then((result) => {
-      const newFact = new Fact(result);
-      factSentence.innerText = newFact.makeFact;
-    })
-    .catch((error) => {
-      const newFact = new Fact(FACT_ANIMAL.fallbackFact);
-      factSentence.innerText = newFact.makeFact;
-    });
+  const fact = await retrieveAnimalFact();
+
+  factObj.sentence = fact;
+
+  factSentence.innerText = factObj.sentence;
 
   factSentenceItem.append(factSentence);
 }

@@ -1,6 +1,5 @@
 /********** CONTAINER ****************/
-
-.container {
+.main-page-container {
   display: grid;
   grid-template-columns: 2fr 5fr;
   grid-template-areas:
@@ -10,7 +9,7 @@
 }
 
 @media (max-width: 960px) {
-  .container {
+  .main-page-container {
     grid-template-columns: 1fr;
     grid-template-areas:
       'header'
