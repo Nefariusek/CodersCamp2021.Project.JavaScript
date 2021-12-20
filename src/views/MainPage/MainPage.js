@@ -5,22 +5,16 @@ import Button from '../../components/Button/Button.js';
 import { onNavigationChange } from '../../components/router/Router.js';
 
 const MAIN_ANIMAL = { path: './kangoroo.png', alt: 'kangoroo that tells informations' };
-const FACT_ANIMAL = {
-  url: 'http://placekitten.com/400/500',
-  alt: 'the animal the sentence is about',
-  fallbackFact:
-    "Cat's eyes shine in the dark because of the tapetum, a reflective layer in the eye, which acts like a mirror.",
-};
 const ADOPTION_ANIMAL = { url: 'http://placekitten.com/300/400', alt: 'the animal to adoption' };
 
 export function renderMainPage() {
   const newFact = new Fact();
-  renderMainView();
+  renderMainView(newFact);
   renderNavigation();
   renderAnimalFact(newFact);
 }
 
-function renderMainView() {
+function renderMainView(factObj) {
   document.querySelector('#app').innerHTML = `
   <div class="container main-page-container">
   
@@ -36,7 +30,7 @@ function renderMainView() {
       <div class="bubbles">
         <div class="bubble fact">
           <div class="bubble-img">
-            <img src="${FACT_ANIMAL.url}" alt="${FACT_ANIMAL.alt}">
+            <img src="${factObj.url}" alt="${factObj.alt}">
           </div>
           <div class="bubble-text">
             <h2>Did you know?</h2>
@@ -85,8 +79,6 @@ async function renderAnimalFact(factObj) {
   const fact = await retrieveAnimalFact();
 
   factObj.sentence = fact;
-
   factSentence.innerText = factObj.sentence;
-
   factSentenceItem.append(factSentence);
 }
