@@ -6,7 +6,7 @@ import Answers from '../QuizView/quizView';
 export function renderChoicePage() {
   const choicePage = document.createElement('div');
   choicePage.setAttribute('id', 'choicePage');
-  choicePage.append(renderQuestion(), renderInfo(), renderButtons());
+  choicePage.append(renderQuestion(), renderInfo(), renderYesButton(), renderNoButton());
   document.querySelector('#app').append(choicePage);
 }
 
@@ -20,15 +20,7 @@ function renderButtons() {
   const buttons = document.createElement('div');
   buttons.setAttribute('id', 'buttons');
   buttons.append(renderYesButton(), renderNoButton());
-  return buttons;
-}
-
-function renderYesButton() {
-  return Button('YES', 'yesButton', null, navigateToScorePage);
-}
-
-function renderNoButton() {
-  return Button('NO', 'noButton', null, navigateBackToQuiz);
+  document.getElementById('choicePage').append(buttons);
 }
 
 function renderInfo() {
@@ -45,9 +37,19 @@ function renderInfo() {
 }
 
 function navigateToScorePage() {
+  console.log('działam');
   window.location.hash = 'score-page';
 }
 
 function navigateBackToQuiz() {
+  console.log('działam');
   window.location.hash = 'quiz';
+}
+
+function renderYesButton() {
+  return Button('YES', 'yesButton', null, navigateToScorePage);
+}
+
+function renderNoButton() {
+  return Button('NO', 'noButton', null, navigateBackToQuiz);
 }
