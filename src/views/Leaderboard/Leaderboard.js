@@ -50,7 +50,7 @@ function renderPodium() {
 }
 
 function getScoreFromLocalStorage() {
-  const highScores = JSON.parse(localStorage.getItem('quizScores')) || [];
+  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
   highScores.sort((a, b) => b.score - a.score);
   function showScore() {
     nick1.innerText = `pts: ${Object.values(highScores[0])}`;
@@ -67,13 +67,12 @@ function getScoreFromLocalStorage() {
 }
 
 // klawisz funkcyjny powrót do Menu
-const handleNavigationButtonClick = (e) => onNavigationChange(e);
 
 function renderMenuBtn() {
-  const menuButton = document.getElementById('mainMenu');
-  menuButton.append(Button('MENU', 'menuButton', false, 'click', handleNavigationButtonClick));
+  const mainMenuButton = document.getElementById('mainMenu');
+  mainMenuButton.append(Button('MENU', 'menuButton', false, 'click', goToMainPage));
 }
 
-function onNavigationChange(e) {
-  window.location.hash = e.target.className;
+function goToMainPage() {
+  window.location.hash = '';
 }

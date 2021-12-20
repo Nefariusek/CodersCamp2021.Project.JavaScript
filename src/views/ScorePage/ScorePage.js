@@ -68,6 +68,7 @@ function nicknameValidation() {
 
 function saveQuizScore() {
   const quizScores = JSON.parse(localStorage.getItem('quizScores')) || [];
+  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
   const recentUserScore = getCurrentScore(userAnswers);
   if (!nicknameValidation()) {
     alert('Type in your nickname!');
@@ -79,7 +80,13 @@ function saveQuizScore() {
       TYPE: QuizSettings.questionsType,
       NAME: document.getElementById('nickname').value,
     };
+    const highScore = {
+      SCORE: recentUserScore,
+      NAME: document.getElementById('nickname').value,
+    };
     quizScores.push(score);
+    highScores.push(highScore);
+    localStorage.setItem('highScores', JSON.stringify(highScores));
     localStorage.setItem('quizScores', JSON.stringify(quizScores));
     nickname.value = null;
   }
