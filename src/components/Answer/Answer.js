@@ -10,7 +10,11 @@ export default class Answer {
     return this.answer.toUpperCase() === this.Question.correct.toUpperCase();
   }
 
-  static getScore() {
-    return 1;
+  getScore() {
+    if (this.checkIfCorrect()) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 }
