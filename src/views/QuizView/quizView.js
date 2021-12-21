@@ -13,7 +13,15 @@ let timerSeconds;
 let Answers = [];
 
 export async function renderQuizView() {
-  questions = await getRandomQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
+  if (Answers.length) {
+    questions = Answers.map((answer) => {
+      return answer.Question;
+    });
+    console.log('wczytano', questions);
+  } else {
+    questions = await getRandomQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
+    console.log('wylosowano', questions);
+  }
   current = 0;
   document.querySelector('#app').append(createLayout());
   startTimer();
@@ -111,10 +119,20 @@ function getTime() {
 }
 
 function saveAnswer(answer) {
+  let repeated = false;
   endTime = getTime();
   const relativeTime = endTime - startTime;
   const ans = new Answer(relativeTime, questions[current], answer, false);
-  Answers.push(ans);
+  for (let i = 0; i < Answers.length; i++) {
+    if (Answers[i].Question == ans.Question) {
+      Answers[i].answer = ans.answer;
+      repeated = true;
+      break;
+    }
+  }
+  if (!repeated) {
+    Answers.push(ans);
+  }
 }
 
 function nextQuestion(e) {
