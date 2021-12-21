@@ -4,6 +4,7 @@ import './confirmChoicePage.css';
 import Answers from '../QuizView/quizView';
 
 export function renderChoicePage() {
+  console.log(Answers);
   const choicePage = document.createElement('div');
   choicePage.setAttribute('id', 'choicePage');
   choicePage.append(renderQuestion(), renderInfo());

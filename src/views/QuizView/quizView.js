@@ -125,7 +125,9 @@ function saveAnswer(answer) {
   const ans = new Answer(relativeTime, questions[current], answer, false);
   for (let i = 0; i < Answers.length; i++) {
     if (Answers[i].Question == ans.Question) {
-      Answers[i].answer = ans.answer;
+      if (answer) {
+        Answers[i].answer = ans.answer;
+      }
       repeated = true;
       break;
     }
