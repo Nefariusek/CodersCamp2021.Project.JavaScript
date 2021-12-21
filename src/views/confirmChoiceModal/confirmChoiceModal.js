@@ -1,14 +1,14 @@
 import Button from '../../components/Button/Button';
 import '../../components/Button/Button.css';
-import './confirmChoicePage.css';
+import './confirmChoiceModal.css';
 import Answers from '../QuizView/quizView';
 
-export function renderChoicePage() {
+export function renderChoiceModal() {
   console.log(Answers);
-  const choicePage = document.createElement('div');
-  choicePage.setAttribute('id', 'choicePage');
-  choicePage.append(renderQuestion(), renderInfo());
-  document.querySelector('#app').append(choicePage);
+  const choiceModal = document.createElement('div');
+  choiceModal.setAttribute('id', 'choiceModal');
+  choiceModal.append(renderQuestion(), renderInfo());
+  document.querySelector('#app').append(choiceModal);
   renderButtons();
 }
 
@@ -22,18 +22,17 @@ function renderButtons() {
   const buttons = document.createElement('div');
   buttons.setAttribute('id', 'buttons');
   buttons.append(renderYesButton(), renderNoButton());
-  document.getElementById('choicePage').append(buttons);
+  document.getElementById('choiceModal').append(buttons);
 }
 
 function renderInfo() {
   const info = document.createElement('h3');
   info.setAttribute('id', 'infoText');
-  for (let i = 0; i < Answers.length; i++) {
-    if (Answers[i].answer === '') {
+  Answers.forEach((answer) => {
+    if (answer.answer === '') {
       info.innerText = 'There are unanswered questions.';
-      break;
     }
-  }
+  });
   return info;
 }
 
@@ -41,14 +40,15 @@ function navigateToScorePage() {
   window.location.hash = 'score-page';
 }
 
-function navigateBackToQuiz() {
-  window.location.hash = 'quiz';
-}
-
 function renderYesButton() {
   return Button('YES', 'yesButton', null, 'click', navigateToScorePage);
 }
 
 function renderNoButton() {
-  return Button('NO', 'noButton', null, 'click', navigateBackToQuiz);
+  return Button('NO', 'noButton', null, 'click', closeModal);
+}
+
+function closeModal() {
+  const choiceModal = document.getElementById('choiceModal');
+  document.querySelector('#app').removeChild(choiceModal);
 }

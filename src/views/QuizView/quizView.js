@@ -1,6 +1,7 @@
 import { QuizSettings } from '../quiz-settings/quiz-settings';
 import { createTimer, startTimer, stopTimer } from '../../components/timer/quiz-timer';
 import { getRandomQuizQuestions } from '../../model/randomizer.js';
+import { renderChoiceModal } from '../confirmChoiceModal/confirmChoiceModal';
 import Button from '../../components/Button/Button';
 import Answer from '../../components/Answer/Answer';
 
@@ -13,15 +14,7 @@ let timerSeconds;
 let Answers = [];
 
 export async function renderQuizView() {
-  if (Answers.length) {
-    questions = Answers.map((answer) => {
-      return answer.Question;
-    });
-    console.log('wczytano', questions);
-  } else {
-    questions = await getRandomQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
-    console.log('wylosowano', questions);
-  }
+  questions = await getRandomQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
   current = 0;
   document.querySelector('#app').append(createLayout());
   startTimer();
@@ -90,10 +83,10 @@ function createLayout() {
 
 function renderQuizData() {
   if (current === QuizSettings.questionsNum) {
-    window.location.hash = 'confirm-choice';
-    return;
+    renderChoiceModal();
   }
   current = current < 0 ? 0 : current;
+  current = current === QuizSettings.questionsNum ? current - 1 : current;
   const numbers = document.getElementById('question-numbers').children;
   numbers.item(current).setAttribute('id', 'current-question');
 
@@ -119,20 +112,19 @@ function getTime() {
 }
 
 function saveAnswer(answer) {
-  let repeated = false;
+  let isRepeated = false;
   endTime = getTime();
   const relativeTime = endTime - startTime;
   const ans = new Answer(relativeTime, questions[current], answer, false);
-  for (let i = 0; i < Answers.length; i++) {
-    if (Answers[i].Question == ans.Question) {
+  Answers.forEach((a) => {
+    if (a.Question == ans.Question) {
       if (answer) {
-        Answers[i].answer = ans.answer;
+        a.answer = ans.answer;
       }
-      repeated = true;
-      break;
+      isRepeated = true;
     }
-  }
-  if (!repeated) {
+  });
+  if (!isRepeated) {
     Answers.push(ans);
   }
 }

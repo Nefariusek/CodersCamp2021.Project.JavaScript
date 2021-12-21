@@ -3,7 +3,6 @@ import { renderQuizSettings } from '../../views/quiz-settings/quiz-settings.js';
 import { renderQuizView } from '../../views/QuizView/quizView.js';
 import { renderScorePage } from '../../views/ScorePage/ScorePage.js';
 import { renderLeaderboard } from '../../views/Leaderboard/Leaderboard.js';
-import { renderChoicePage } from '../../views/confirmChoicePage/confirmChoicePage';
 
 const app = document.getElementById('app');
 
@@ -13,7 +12,6 @@ const applicationRoutes = {
   '#quiz': renderQuizView,
   '#score-page': renderScorePage,
   '#leadearboard': renderLeaderboard,
-  '#confirm-choice': renderChoicePage,
 };
 
 function redirectToMainPage() {
