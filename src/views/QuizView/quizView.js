@@ -10,11 +10,13 @@ let startTime;
 let endTime;
 let timerMinutes;
 let timerSeconds;
+let lifeline = false;
 export let userAnswers = [];
 
 export async function renderQuizView() {
   questions = await getRandomQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
   current = 0;
+  userAnswers = [];
   document.querySelector('#app').append(createLayout());
   startTimer();
   renderQuizData();
@@ -52,13 +54,13 @@ function createLeftArrow() {
 }
 
 function createLifeline() {
-  const lifeline = document.createElement('div');
-  lifeline.setAttribute('id', 'lifeline');
+  const lifelineContainer = document.createElement('div');
+  lifelineContainer.setAttribute('id', 'lifeline');
   const lifelineImage = document.createElement('img');
   lifelineImage.src = './lifering.png';
-  lifeline.appendChild(lifelineImage);
+  lifelineContainer.appendChild(lifelineImage);
   lifelineImage.addEventListener('click', useLifeline);
-  return lifeline;
+  return lifelineContainer;
 }
 
 function createLayout() {
@@ -124,7 +126,7 @@ function getTime() {
 function saveAnswer(answer) {
   endTime = getTime();
   const relativeTime = endTime - startTime;
-  const ans = new Answer(relativeTime, questions[current], answer, false);
+  const ans = new Answer(relativeTime, questions[current], answer, lifeline);
   userAnswers.push(ans);
 }
 
@@ -139,6 +141,7 @@ function nextQuestion(e) {
   answersContainer.innerHTML = '';
 
   current++;
+  lifeline = false;
   renderQuizData();
 }
 
@@ -154,5 +157,19 @@ function previousQuestion() {
 }
 
 function useLifeline() {
-  console.log('50:50');
+  lifeline = true;
+  const lifelineDiv = document.getElementById('lifeline');
+  lifelineDiv.innerHTML = '';
+
+  const answersContainer = document.getElementById('answers');
+  const answers = answersContainer.children;
+  let removed = 0;
+  let n;
+  while (removed < 2) {
+    n = Math.floor(Math.random() * answers.length);
+    if (questions[current].correct.toUpperCase() != answers[n].children[0].innerText) {
+      answersContainer.removeChild(answers[n]);
+      removed++;
+    }
+  }
 }
