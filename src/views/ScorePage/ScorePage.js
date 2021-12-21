@@ -8,29 +8,48 @@ import Answer from '../../components/Answer/Answer';
 
 export function renderScorePage() {
   const recentUserScore = getCurrentScore(userAnswers);
-
+  const totalNumber = QuizSettings.questionsNum;
   const container = document.createElement('div');
   container.setAttribute('id', 'scorePage');
   container.append(
     renderGraphics(),
-    renderScore(recentUserScore),
+    renderScore(recentUserScore, totalNumber),
     renderNickForm(),
     renderMenuButton(),
     renderPlayAgainButton(),
   );
   document.querySelector('#app').append(container);
+  congratsMessage();
 }
 
-function renderScore(score) {
+function renderScore(score, totalNumber) {
   const container = document.createElement('div');
   const congratsText = document.createElement('h2');
   const scoreText = document.createElement('h2');
   const finalScore = document.createElement('h2');
   finalScore.setAttribute('id', 'finalScore');
-  congratsText.innerText = 'CONGRATS!';
-  scoreText.innerText = 'YOUR SCORE IS: ' + score;
+  congratsText.setAttribute('id', 'congratsText');
+  congratsText.innerText = '';
+  scoreText.innerText = `YOUR SCORE IS:  ${score} / ${totalNumber}`;
   container.append(congratsText, scoreText, finalScore);
   return container;
+}
+
+function congratsMessage() {
+  const recentUserScore = getCurrentScore(userAnswers);
+  const totalNumber = QuizSettings.questionsNum;
+  const finalMessage = document.getElementById('congratsText');
+  const totalPercent = Math.floor((recentUserScore / totalNumber) * 100);
+  if (totalPercent >= 80) {
+    finalMessage.innerText = '"WOW"! Your score is ' + totalPercent + '%! You are True animal lover!';
+  } else if (totalPercent >= 50) {
+    finalMessage.innerText =
+      'You could use a litte practice! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
+  } else {
+    finalMessage.innerText =
+      'Well, it could be better! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
+  }
+  return finalMessage;
 }
 
 function renderGraphics() {

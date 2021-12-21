@@ -5,8 +5,8 @@ import '../../components/Button/Button.css';
 
 export function renderLeaderboard() {
   renderPodium();
-  getScoreFromLocalStorage();
   renderMenuBtn();
+  getScoreFromLocalStorage();
 }
 
 function renderPodium() {
@@ -51,7 +51,7 @@ function renderPodium() {
 
 function getScoreFromLocalStorage() {
   const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-  highScores.sort((a, b) => b.score - a.score);
+  highScores.sort((a, b) => b.SCORE - a.SCORE);
   function showScore() {
     nick1.innerText = `pts: ${Object.values(highScores[0])}`;
     nick2.innerText = `pts: ${Object.values(highScores[1])}`;
