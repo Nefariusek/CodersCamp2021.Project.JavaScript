@@ -51,6 +51,16 @@ function createLeftArrow() {
   return leftArrow;
 }
 
+function createLifeline() {
+  const lifeline = document.createElement('div');
+  lifeline.setAttribute('id', 'lifeline');
+  const lifelineImage = document.createElement('img');
+  lifelineImage.src = './lifering.png';
+  lifeline.appendChild(lifelineImage);
+  lifelineImage.addEventListener('click', useLifeline);
+  return lifeline;
+}
+
 function createLayout() {
   const container = document.createElement('div');
   container.setAttribute('id', 'quizView');
@@ -68,6 +78,7 @@ function createLayout() {
 
   container.append(
     header,
+    createLifeline(),
     createQuestionNumbers(),
     image,
     createTimer(),
@@ -89,7 +100,7 @@ function renderQuizData() {
   const numbers = document.getElementById('question-numbers').children;
   numbers.item(current).setAttribute('id', 'current-question');
 
-  const image = document.querySelector('img');
+  const image = document.querySelector('#quizView > img');
   image.src = questions[current].imageUrl;
 
   const question = document.getElementById('question-text');
@@ -140,4 +151,8 @@ function previousQuestion() {
 
   current--;
   renderQuizData();
+}
+
+function useLifeline() {
+  console.log('50:50');
 }
