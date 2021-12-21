@@ -1,20 +1,20 @@
 import './MainPage.css';
 import { retrieveAnimalFact } from '../../api/FactsController.js';
-import { Fact } from '../../model/Fact.js';
+import { ImageFact } from '../../model/Fact.js';
 import Button from '../../components/Button/Button.js';
 import { onNavigationChange } from '../../components/router/Router.js';
 
-const MAIN_ANIMAL = { path: './kangoroo.png', alt: 'kangoroo that tells informations' };
-const ADOPTION_ANIMAL = { url: 'http://placekitten.com/300/400', alt: 'the animal to adoption' };
+const MAIN_ANIMAL = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
+const ADOPTION_ANIMAL = { pathOrUrl: 'http://placekitten.com/300/400', alt: 'the animal to adoption' };
 
-export function renderMainPage() {
-  const newFact = new Fact();
-  renderMainView(newFact);
+export async function renderMainPage() {
+  renderMainView();
   renderNavigation();
-  renderAnimalFact(newFact);
+  renderMainAnimalImg();
+  renderBubblesContent();
 }
 
-function renderMainView(factObj) {
+function renderMainView() {
   document.querySelector('#app').innerHTML = `
   <div class="container main-page-container">
   
@@ -30,7 +30,6 @@ function renderMainView(factObj) {
       <div class="bubbles">
         <div class="bubble fact">
           <div class="bubble-img">
-            <img src="${factObj.url}" alt="${factObj.alt}">
           </div>
           <div class="bubble-text">
             <h2>Did you know?</h2>
@@ -39,7 +38,6 @@ function renderMainView(factObj) {
 
         <div class="bubble adoption">
           <div class="bubble-img">
-            <img src="${ADOPTION_ANIMAL.url}" alt="${ADOPTION_ANIMAL.alt}">
           </div>
           <div class="bubble-text">
             <h2>Or maybe you'd like to adopt your own pet?</h2>
@@ -50,7 +48,6 @@ function renderMainView(factObj) {
       </div>
 
       <div class="animal">
-        <img src="${MAIN_ANIMAL.path}" alt="${MAIN_ANIMAL.alt}" />
       </div>        
 
     </div>
@@ -72,13 +69,54 @@ function renderNavigation() {
   navContainer.append(quizButton, leaderboardButton, adoptionButton, creditsButton);
 }
 
+function renderBubblesContent() {
+  renderAdoptionBubbleContent();
+  renderFactBubbleContent();
+}
+
+async function renderFactBubbleContent() {
+  const factObj = await getAnimalFact();
+  renderAnimalFact(factObj);
+  renderAnimalFactImg(factObj);
+}
+
+function renderAdoptionBubbleContent() {
+  renderAnimalAdoptionImg();
+}
+
 async function renderAnimalFact(factObj) {
   const factSentenceItem = document.querySelector('.bubble.fact .bubble-text');
   const factSentence = document.createElement('p');
 
-  const fact = await retrieveAnimalFact();
-
-  factObj.sentence = fact;
   factSentence.innerText = factObj.sentence;
   factSentenceItem.append(factSentence);
+}
+
+async function getAnimalFact() {
+  const newImageFact = new ImageFact();
+  const imageFact = await retrieveAnimalFact();
+  newImageFact.sentence = imageFact;
+  return newImageFact;
+}
+
+function renderAnimalFactImg(factObj) {
+  const factImageItem = document.querySelector('.bubble.fact .bubble-img');
+  createImage(factImageItem, factObj);
+}
+
+function renderAnimalAdoptionImg() {
+  const adoptionImageItem = document.querySelector('.bubble.adoption .bubble-img');
+  createImage(adoptionImageItem, ADOPTION_ANIMAL);
+}
+
+function renderMainAnimalImg() {
+  const mainAnimalImageItem = document.querySelector('.animal');
+  createImage(mainAnimalImageItem, MAIN_ANIMAL);
+}
+
+function createImage(domElem, obj) {
+  const imgElem = document.createElement('img');
+  imgElem.src = obj.pathOrUrl;
+  imgElem.alt = obj.alt;
+  domElem.append(imgElem);
 }

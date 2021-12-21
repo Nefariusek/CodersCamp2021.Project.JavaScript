@@ -9,7 +9,7 @@ export async function retrieveAnimalFact() {
     const json = await response.json();
     return json.text;
   } catch (e) {
-    console.log('Error while retrieving the fact from API. ' + e);
+    console.error('Error while retrieving the fact from API. ' + e);
   }
 }
 
