@@ -95,7 +95,8 @@ async function renderAnimalFact(factObj) {
 async function getAnimalFact() {
   const newImageFact = new ImageFact();
   const imageFact = await retrieveAnimalFact();
-  newImageFact.sentence = imageFact;
+  newImageFact.sentence = imageFact[0];
+  newImageFact.pathOrUrl = imageFact[1];
   return newImageFact;
 }
 
