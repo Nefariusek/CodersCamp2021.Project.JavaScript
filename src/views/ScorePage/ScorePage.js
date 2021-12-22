@@ -19,7 +19,7 @@ export function renderScorePage() {
     renderPlayAgainButton(),
   );
   document.querySelector('#app').append(container);
-  congratsMessage();
+  renderCongratsMessage(recentUserScore, totalNumber);
 }
 
 function renderScore(score, totalNumber) {
@@ -35,21 +35,23 @@ function renderScore(score, totalNumber) {
   return container;
 }
 
-function congratsMessage() {
-  const recentUserScore = getCurrentScore(userAnswers);
-  const totalNumber = QuizSettings.questionsNum;
+function renderCongratsMessage(recentUserScore, totalNumber) {
+  let message;
   const finalMessage = document.getElementById('congratsText');
-  const totalPercent = Math.floor((recentUserScore / totalNumber) * 100);
-  if (totalPercent >= 80) {
-    finalMessage.innerText = '"WOW"! Your score is ' + totalPercent + '%! You are True animal lover!';
-  } else if (totalPercent >= 50) {
-    finalMessage.innerText =
-      'You could use a litte practice! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
-  } else {
-    finalMessage.innerText =
-      'Well, it could be better! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
+  finalMessage.innerText = getCongratsMessage(message);
+
+  function getCongratsMessage() {
+    const totalPercent = Math.floor((recentUserScore / totalNumber) * 100);
+    if (totalPercent >= 80) {
+      message = '"WOW"! Your score is ' + totalPercent + '%! You are True animal lover!';
+    } else if (totalPercent >= 50) {
+      message =
+        'You could use a litte practice! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
+    } else {
+      message = 'Well, it could be better! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
+    }
+    return message;
   }
-  return finalMessage;
 }
 
 function renderGraphics() {
