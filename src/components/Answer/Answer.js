@@ -12,14 +12,13 @@ export default class Answer {
   }
 
   getScore() {
+    let score = 0;
     if (this.checkIfCorrect()) {
+      score = 1;
       if (this.changed) {
-        return 0.5;
-      } else {
-        return 1;
+        score = score / 2;
       }
-    } else {
-      return 0;
     }
+    return score;
   }
 }
