@@ -110,7 +110,7 @@ function renderQuizData() {
 
   const answersContainer = document.getElementById('answers');
   const answers = questions[current].getAnswers();
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < answers.length; i++) {
     answersContainer.appendChild(Button(answers[i], 'answer', false, 'click', nextQuestion));
   }
   startTime = getTime();
@@ -168,6 +168,10 @@ function useLifeline() {
   while (removed < 2) {
     n = Math.floor(Math.random() * answers.length);
     if (questions[current].correct.toUpperCase() != answers[n].children[0].innerText) {
+      let index = questions[current].incorrectAnswers
+        .map((ans) => ans.toUpperCase())
+        .indexOf(answers[n].children[0].innerText);
+      questions[current].incorrectAnswers.splice(index, 1);
       answersContainer.removeChild(answers[n]);
       removed++;
     }
