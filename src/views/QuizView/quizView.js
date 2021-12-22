@@ -23,6 +23,9 @@ export async function renderQuizView() {
 function createQuestionNumbers() {
   const circles = document.createElement('div');
   circles.setAttribute('id', 'question-numbers');
+  circles.onclick = function () {
+    selectQuestion();
+  };
   for (let i = 0; i < QuizSettings.questionsNum; i++) {
     const number = document.createElement('div');
     number.innerText = i + 1;
@@ -122,7 +125,7 @@ function nextQuestion(e) {
   saveAnswer(buttonValue);
 
   const currentQuestionNumber = document.getElementById('current-question');
-  currentQuestionNumber.setAttribute('id', '');
+  currentQuestionNumber.setAttribute('id', 'answered');
 
   const answersContainer = document.getElementById('answers');
   answersContainer.innerHTML = '';
@@ -139,5 +142,17 @@ function previousQuestion() {
   answersContainer.innerHTML = '';
 
   current--;
+  renderQuizData();
+}
+
+function selectQuestion() {
+  const currentQuestionNumber = document.getElementById('current-question');
+  currentQuestionNumber.setAttribute('id', '');
+
+  const answersContainer = document.getElementById('answers');
+  answersContainer.innerHTML = '';
+
+  const numbers = document.getElementById('question-numbers');
+
   renderQuizData();
 }
