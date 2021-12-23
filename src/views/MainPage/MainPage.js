@@ -23,7 +23,7 @@ export function renderMainPage() {
 
 function renderMainView() {
   document.querySelector('#app').innerHTML = `
-  <div class="container main-page-container">
+  <div class="container main-page">
   
     <div class="header">
       <h1>${PAGE_TITLE}</h1>
