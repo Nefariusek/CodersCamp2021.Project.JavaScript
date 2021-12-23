@@ -1,10 +1,10 @@
 import Button from '../../components/Button/Button';
 import '../../components/Button/Button.css';
 import './confirmChoiceModal.css';
-import Answers from '../QuizView/quizView';
+import {userAnswers} from '../QuizView/quizView';
 
 export function renderChoiceModal() {
-  console.log(Answers);
+  console.log(userAnswers);
   const choiceModal = document.createElement('div');
   choiceModal.setAttribute('id', 'choiceModal');
   choiceModal.append(renderQuestion(), renderInfo());
@@ -28,7 +28,7 @@ function renderButtons() {
 function renderInfo() {
   const info = document.createElement('h3');
   info.setAttribute('id', 'infoText');
-  Answers.forEach((answer) => {
+  userAnswers.forEach((answer) => {
     if (answer.answer === '') {
       info.innerText = 'There are unanswered questions.';
     }
