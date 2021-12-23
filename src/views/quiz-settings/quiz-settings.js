@@ -75,7 +75,7 @@ class QuizSettings {
     const buttonStartQuiz = document.createElement('input');
     buttonStartQuiz.type = 'submit';
     buttonStartQuiz.setAttribute('id', 'submit');
-    buttonStartQuiz.value = 'Start Quiz';
+    buttonStartQuiz.value = 'START QUIZ';
     return buttonStartQuiz;
   }
 
