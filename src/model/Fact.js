@@ -1,19 +1,21 @@
-const DEFAULT_FACT =
-  "Cat's eyes shine in the dark because of the tapetum, a reflective layer in the eye, which acts like a mirror.";
+const FactDefaults = {
+  FACT: "Cat's eyes shine in the dark because of the tapetum, a reflective layer in the eye, which acts like a mirror.",
+  IMG_URL: 'http://placekitten.com/400/500',
+};
 
 export class Fact {
-  _sentence = DEFAULT_FACT;
+  _sentence = FactDefaults.FACT;
 
   get sentence() {
     return this._sentence;
   }
   set sentence(value) {
-    this._sentence = value ? value : DEFAULT_FACT;
+    this._sentence = value ? value : FactDefaults.FACT;
   }
 }
 
 export class ImageFact extends Fact {
-  _pathOrUrl = 'http://placekitten.com/400/500';
+  _pathOrUrl = FactDefaults.IMG_URL;
   alt = 'the animal the sentence is about';
 
   get pathOrUrl() {
@@ -21,6 +23,6 @@ export class ImageFact extends Fact {
   }
 
   set pathOrUrl(value) {
-    this._pathOrUrl = value ? value : 'http://placekitten.com/400/500';
+    this._pathOrUrl = value ? value : FactDefaults.IMG_URL;
   }
 }

@@ -1,25 +1,32 @@
 import './MainPage.css';
-import { retrieveAnimalFact } from '../../api/FactsController.js';
-import { ImageFact } from '../../model/Fact.js';
 import Button from '../../components/Button/Button.js';
+import Bubble from '../../components/Bubble/Bubble.js';
+import { ImageFact } from '../../model/Fact.js';
+import { retrieveAnimalFact } from '../../api/FactsController.js';
 import { onNavigationChange } from '../../components/router/Router.js';
 
-const MAIN_ANIMAL = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
-const ADOPTION_ANIMAL = { pathOrUrl: 'http://placekitten.com/300/400', alt: 'the animal to adoption' };
+const PAGE_TITLE = 'ANIMALIADA';
+const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
+const AdoptionBubbleContent = {
+  IMG: { pathOrUrl: 'http://placekitten.com/300/400', alt: 'the animal to adoption' },
+  HEADER_TEXT: "Or maybe you'd like to adopt your own pet?",
+  SENTENCES: ['This one is looking for home', 'See more here: <a href="#adoption-page">Adoption Page</a>'],
+};
 
-export async function renderMainPage() {
+export function renderMainPage() {
   renderMainView();
   renderNavigation();
   renderMainAnimalImg();
+  renderBubbles();
   renderBubblesContent();
 }
 
 function renderMainView() {
   document.querySelector('#app').innerHTML = `
-  <div class="container main-page-container">
+  <div class="main-page-container">
   
     <div class="header">
-      <h1>ANIMALIADA</h1>
+      <h1>${PAGE_TITLE}</h1>
     </div>
 
     <div class="navigation-container">
@@ -28,23 +35,6 @@ function renderMainView() {
     <div class="info">
 
       <div class="bubbles">
-        <div class="bubble fact">
-          <div class="bubble-img">
-          </div>
-          <div class="bubble-text">
-            <h2>Did you know?</h2>
-          </div>
-        </div>
-
-        <div class="bubble adoption">
-          <div class="bubble-img">
-          </div>
-          <div class="bubble-text">
-            <h2>Or maybe you'd like to adopt your own pet?</h2>
-            <p>This one is looking for home</p>
-            <p>See more here: <a href="#">Adoption Page</a></p>
-          </div>
-        </div>
       </div>
 
       <div class="animal">
@@ -56,6 +46,7 @@ function renderMainView() {
   `;
 }
 
+// Render Navigation
 function renderNavigation() {
   const navContainer = document.querySelector('.navigation-container');
 
@@ -69,6 +60,27 @@ function renderNavigation() {
   navContainer.append(quizButton, leaderboardButton, adoptionButton, creditsButton);
 }
 
+// Render Bubbles structure
+function renderBubbles() {
+  const bubbleFact = createFactBubble();
+  document.querySelector('.bubbles').append(bubbleFact);
+  const bubbleAdoption = createAdoptionBubble();
+  document.querySelector('.bubbles').append(bubbleAdoption);
+}
+
+function createFactBubble() {
+  const bubbleFact = Bubble('higher', true, 'Did you know?');
+  bubbleFact.classList.add('fact');
+  return bubbleFact;
+}
+
+function createAdoptionBubble() {
+  const bubbleAdoption = Bubble('lower', true, AdoptionBubbleContent.HEADER_TEXT, AdoptionBubbleContent.SENTENCES);
+  bubbleAdoption.classList.add('adoption');
+  return bubbleAdoption;
+}
+
+// Render Bubbles content
 function renderBubblesContent() {
   renderAdoptionBubbleContent();
   renderFactBubbleContent();
@@ -92,14 +104,6 @@ async function renderAnimalFact(factObj) {
   factSentenceItem.append(factSentence);
 }
 
-async function getAnimalFact() {
-  const newImageFact = new ImageFact();
-  const imageFact = await retrieveAnimalFact();
-  newImageFact.sentence = imageFact[0];
-  newImageFact.pathOrUrl = imageFact[1];
-  return newImageFact;
-}
-
 function renderAnimalFactImg(factObj) {
   const factImageItem = document.querySelector('.bubble.fact .bubble-img');
   createImage(factImageItem, factObj);
@@ -107,17 +111,30 @@ function renderAnimalFactImg(factObj) {
 
 function renderAnimalAdoptionImg() {
   const adoptionImageItem = document.querySelector('.bubble.adoption .bubble-img');
-  createImage(adoptionImageItem, ADOPTION_ANIMAL);
-}
-
-function renderMainAnimalImg() {
-  const mainAnimalImageItem = document.querySelector('.animal');
-  createImage(mainAnimalImageItem, MAIN_ANIMAL);
+  createImage(adoptionImageItem, AdoptionBubbleContent.IMG);
 }
 
 function createImage(domElem, obj) {
-  const imgElem = document.createElement('img');
-  imgElem.src = obj.pathOrUrl;
-  imgElem.alt = obj.alt;
-  domElem.append(imgElem);
+  if (domElem instanceof Element) {
+    const imgElem = document.createElement('img');
+    imgElem.src = obj.pathOrUrl;
+    imgElem.alt = obj.alt;
+    domElem.append(imgElem);
+  }
+}
+
+async function getAnimalFact() {
+  const newImageFact = new ImageFact();
+  const imageFact = await retrieveAnimalFact();
+  if (imageFact) {
+    newImageFact.sentence = imageFact.fact;
+    newImageFact.pathOrUrl = imageFact.imageUrl;
+  }
+  return newImageFact;
+}
+
+// Render Main Animal
+function renderMainAnimalImg() {
+  const mainAnimalImageItem = document.querySelector('.animal');
+  createImage(mainAnimalImageItem, MAIN_ANIMAL_IMG);
 }
