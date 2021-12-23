@@ -1,7 +1,7 @@
 import './MainPage.css';
 import Button from '../../components/Button/Button.js';
 import Bubble from '../../components/Bubble/Bubble.js';
-import { ImageFact } from '../../model/Fact.js';
+import ImageFact from '../../model/Fact.js';
 import { retrieveAnimalFact } from '../../api/FactsController.js';
 import { onNavigationChange } from '../../components/router/Router.js';
 
@@ -17,13 +17,13 @@ export function renderMainPage() {
   renderMainView();
   renderNavigation();
   renderMainAnimalImg();
-  renderBubbles();
+  renderBubblesStructure();
   renderBubblesContent();
 }
 
 function renderMainView() {
   document.querySelector('#app').innerHTML = `
-  <div class="main-page-container">
+  <div class="container main-page-container">
   
     <div class="header">
       <h1>${PAGE_TITLE}</h1>
@@ -46,7 +46,6 @@ function renderMainView() {
   `;
 }
 
-// Render Navigation
 function renderNavigation() {
   const navContainer = document.querySelector('.navigation-container');
 
@@ -54,14 +53,13 @@ function renderNavigation() {
 
   const quizButton = Button('Start Quiz', 'quiz-settings', true, 'click', handleNavigationButtonClick);
   const leaderboardButton = Button('Leaderboard', 'leadearboard', true, 'click', handleNavigationButtonClick);
-  const adoptionButton = Button('Adoption', 'adoption-button', true, 'click', handleNavigationButtonClick);
-  const creditsButton = Button('Credits', 'credits-button', true, 'click', handleNavigationButtonClick);
+  const adoptionButton = Button('Adoption', 'adoption-page', true, 'click', handleNavigationButtonClick);
+  const creditsButton = Button('Credits', 'credits-page', true, 'click', handleNavigationButtonClick);
 
   navContainer.append(quizButton, leaderboardButton, adoptionButton, creditsButton);
 }
 
-// Render Bubbles structure
-function renderBubbles() {
+function renderBubblesStructure() {
   const bubbleFact = createFactBubble();
   document.querySelector('.bubbles').append(bubbleFact);
   const bubbleAdoption = createAdoptionBubble();
@@ -80,7 +78,6 @@ function createAdoptionBubble() {
   return bubbleAdoption;
 }
 
-// Render Bubbles content
 function renderBubblesContent() {
   renderAdoptionBubbleContent();
   renderFactBubbleContent();
@@ -115,12 +112,10 @@ function renderAnimalAdoptionImg() {
 }
 
 function createImage(domElem, obj) {
-  if (domElem instanceof Element) {
-    const imgElem = document.createElement('img');
-    imgElem.src = obj.pathOrUrl;
-    imgElem.alt = obj.alt;
-    domElem.append(imgElem);
-  }
+  const imgElem = document.createElement('img');
+  imgElem.src = obj.pathOrUrl;
+  imgElem.alt = obj.alt;
+  domElem.append(imgElem);
 }
 
 async function getAnimalFact() {
@@ -133,7 +128,6 @@ async function getAnimalFact() {
   return newImageFact;
 }
 
-// Render Main Animal
 function renderMainAnimalImg() {
   const mainAnimalImageItem = document.querySelector('.animal');
   createImage(mainAnimalImageItem, MAIN_ANIMAL_IMG);

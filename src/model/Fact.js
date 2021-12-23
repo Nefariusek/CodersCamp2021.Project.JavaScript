@@ -3,7 +3,7 @@ const FactDefaults = {
   IMG_URL: 'http://placekitten.com/400/500',
 };
 
-export class Fact {
+export default class Fact {
   _sentence = FactDefaults.FACT;
 
   get sentence() {
@@ -11,18 +11,5 @@ export class Fact {
   }
   set sentence(value) {
     this._sentence = value ? value : FactDefaults.FACT;
-  }
-}
-
-export class ImageFact extends Fact {
-  _pathOrUrl = FactDefaults.IMG_URL;
-  alt = 'the animal the sentence is about';
-
-  get pathOrUrl() {
-    return this._pathOrUrl;
-  }
-
-  set pathOrUrl(value) {
-    this._pathOrUrl = value ? value : FactDefaults.IMG_URL;
   }
 }

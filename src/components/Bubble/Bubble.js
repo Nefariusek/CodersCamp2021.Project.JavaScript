@@ -6,11 +6,25 @@ Input bubblePosition means that due to the "higher" or "lower" position of the b
 
 import './Bubble.css';
 
-export default function Bubble(bubblePosition, hasImage = false, header, sentences = '') {
+/**
+ * Component creates speech bubble with or without image, with given header and optional sentences.
+ * Component accepts following inputs:
+ * @param {string} bubblePosition - "higher" or "lower" means that due to the "higher" or "lower" position of the bubble on the page, the arrow will be placed appropriately.
+ * @param {boolean} hasImage - whether the bubble will contain an image
+ * @param {string} header - header text in bubble
+ * @param {Array.<string>} sentences - optional additional sentences in the bubble
+ **/
+export default function Bubble(bubblePosition, hasImage = false, header, sentences = []) {
   const bubble = document.createElement('div');
   bubble.classList.add('bubble', bubblePosition);
 
-  // image
+  createImageContainer(bubble, hasImage);
+  createTextContainer(bubble, header, sentences);
+
+  return bubble;
+}
+
+function createImageContainer(bubble, hasImage) {
   if (hasImage) {
     const bubbleImgContainer = document.createElement('div');
     bubbleImgContainer.classList.add('bubble-img');
@@ -18,29 +32,27 @@ export default function Bubble(bubblePosition, hasImage = false, header, sentenc
   } else {
     bubble.classList.add('no-image');
   }
+}
 
-  // text container
+function createTextContainer(bubble, header, sentences) {
   const bubbleTextContainer = document.createElement('div');
   bubbleTextContainer.classList.add('bubble-text');
   bubble.append(bubbleTextContainer);
 
-  // header
+  renderHeader(bubbleTextContainer, header);
+  renderSentences(bubbleTextContainer, sentences);
+}
+
+function renderHeader(bubbleTextContainer, header) {
   const bubbleHeader = document.createElement('h2');
   bubbleHeader.innerText = header;
   bubbleTextContainer.append(bubbleHeader);
+}
 
-  // sentence or sentences
-  if (typeof sentences === 'string') {
+function renderSentences(bubbleTextContainer, sentences) {
+  sentences.forEach((sentence) => {
     const bubbleTextLine = document.createElement('p');
-    bubbleTextLine.innerHTML = sentences;
+    bubbleTextLine.innerHTML = sentence;
     bubbleTextContainer.append(bubbleTextLine);
-  } else if (Array.isArray(sentences) && sentences.length) {
-    for (let i = 0; i < sentences.length; i++) {
-      const bubbleTextLine = document.createElement('p');
-      bubbleTextLine.innerHTML = sentences[i];
-      bubbleTextContainer.append(bubbleTextLine);
-    }
-  }
-
-  return bubble;
+  });
 }
