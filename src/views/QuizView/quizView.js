@@ -124,10 +124,17 @@ function getTime() {
 }
 
 function saveAnswer(answer) {
+  let change = false;
   endTime = getTime();
   const relativeTime = endTime - startTime;
-  const ans = new Answer(relativeTime, questions[current], answer, lifeline);
-  userAnswers.push(ans);
+  if (userAnswers[current] != undefined && userAnswers[current].answer != '') {
+    if (answer === '') {
+      return;
+    }
+    change = true;
+  }
+  const ans = new Answer(relativeTime, questions[current], answer, false, change);
+  userAnswers[current] = ans;
 }
 
 function nextQuestion(e) {

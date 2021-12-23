@@ -1,9 +1,10 @@
 export default class Answer {
-  constructor(timeOfAnswer, Question, answer, lifelineUsed) {
+  constructor(timeOfAnswer, Question, answer, lifelineUsed, changed) {
     this.timeOfAnswer = timeOfAnswer;
     this.Question = Question;
     this.lifelineUsed = lifelineUsed;
     this.answer = answer;
+    this.changed = changed;
   }
 
   checkIfCorrect() {
@@ -11,10 +12,13 @@ export default class Answer {
   }
 
   getScore() {
+    let score = 0;
     if (this.checkIfCorrect()) {
-      return 1;
-    } else {
-      return 0;
+      score = 1;
+      if (this.changed) {
+        score = score / 2;
+      }
     }
+    return score;
   }
 }
