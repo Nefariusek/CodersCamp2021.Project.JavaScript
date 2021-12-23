@@ -1,6 +1,7 @@
 import { QuizSettings } from '../quiz-settings/quiz-settings';
 import { createTimer, startTimer, stopTimer } from '../../components/timer/quiz-timer';
 import { getRandomQuizQuestions } from '../../model/randomizer.js';
+import { renderChoiceModal } from '../confirmChoiceModal/confirmChoiceModal';
 import Button from '../../components/Button/Button';
 import Answer from '../../components/Answer/Answer';
 
@@ -95,10 +96,10 @@ function createLayout() {
 
 function renderQuizData() {
   if (current === QuizSettings.questionsNum) {
-    window.location.hash = 'score-page';
-    return;
+    renderChoiceModal();
   }
   current = current < 0 ? 0 : current;
+  current = current === QuizSettings.questionsNum ? current - 1 : current;
   const numbers = document.getElementById('question-numbers').children;
   numbers.item(current).setAttribute('id', 'current-question');
 
