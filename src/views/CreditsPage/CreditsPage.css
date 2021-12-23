@@ -1,0 +1,117 @@
+/********** CONTAINER ****************/
+
+/* .container.credits-page {
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'nav info';
+  grid-gap: 10px;
+} */
+
+.container.credits-page {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 960px) {
+  .container.credits-page {
+    grid-template-columns: 1fr;
+  }
+
+  .container.credits-page {
+    grid-template-areas:
+      'header'
+      'info'
+      'nav';
+  }
+}
+
+/************ HEADER *****************/
+
+/* .credits-page .header {
+  grid-area: header;
+}
+
+.credits-page .header h1 {
+  margin: 50px 0;
+  font-size: 8vw;
+}
+
+@media (max-width: 480px) {
+  .credits-page .header h1 {
+    font-size: 38px;
+  }
+} */
+
+/************ NAVIGATION ************/
+
+.credits-page .navigation-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .credits-page .navigation-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.credits-page .navigation-container .wrapper:nth-child(1),
+.credits-page .navigation-container .wrapper:nth-last-child(2),
+.credits-page .navigation-container .wrapper:nth-last-child(1) {
+  grid-column: 1 / -1;
+  justify-content: center;
+}
+
+.credits-page button {
+  margin: 15px 5px;
+}
+
+.credits-page .navigation-container .mentor {
+  background-color: var(--secondary-btn-color);
+}
+
+.credits-page .navigation-container .go-home {
+  margin-top: 40px;
+}
+
+/********** BUBBLE SPACE *********/
+
+/* .credits-page .info {
+  grid-area: info;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: row;
+} */
+
+/* @media (max-width: 960px) {
+  .credits-page .info {
+    align-items: center;
+    flex-direction: column;
+  }
+} */
+
+.credits-page .bubbles {
+  width: 35%;
+}
+
+.credits-page .animal {
+  width: 75%;
+  align-self: center;
+}
+
+@media (max-width: 960px) {
+  .credits-page .bubbles {
+    width: 80%;
+  }
+
+  .credits-page .animal {
+    width: 60%;
+  }
+}
+
+/* .main-page .animal img,
+.credits-page .animal img {
+  width: 100%;
+} */
