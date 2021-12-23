@@ -18,13 +18,13 @@ export default function Bubble(bubblePosition, hasImage = false, header, sentenc
   const bubble = document.createElement('div');
   bubble.classList.add('bubble', bubblePosition);
 
-  createImageContainer(bubble, hasImage);
-  createTextContainer(bubble, header, sentences);
+  renderImageContainer(bubble, hasImage);
+  renderTextContainer(bubble, header, sentences);
 
   return bubble;
 }
 
-function createImageContainer(bubble, hasImage) {
+function renderImageContainer(bubble, hasImage) {
   if (hasImage) {
     const bubbleImgContainer = document.createElement('div');
     bubbleImgContainer.classList.add('bubble-img');
@@ -34,7 +34,7 @@ function createImageContainer(bubble, hasImage) {
   }
 }
 
-function createTextContainer(bubble, header, sentences) {
+function renderTextContainer(bubble, header, sentences) {
   const bubbleTextContainer = document.createElement('div');
   bubbleTextContainer.classList.add('bubble-text');
   bubble.append(bubbleTextContainer);
