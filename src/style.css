@@ -1,7 +1,3 @@
-body {
-  background-color: #8ab0ab;
-}
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -15,6 +11,7 @@ body {
 :root {
   --bg-color: #8ab0ab;
   --btn-color: #658080;
+  --secondary-btn-color: #655010;
   --hover-btn-color: #3e505b;
   --bubble-color: #410606;
 }

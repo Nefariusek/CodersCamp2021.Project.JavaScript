@@ -1,6 +1,5 @@
 /********** CONTAINER ****************/
-
-.container {
+.main-page-container {
   display: grid;
   grid-template-columns: 2fr 5fr;
   grid-template-areas:
@@ -10,7 +9,7 @@
 }
 
 @media (max-width: 960px) {
-  .container {
+  .main-page-container {
     grid-template-columns: 1fr;
     grid-template-areas:
       'header'
@@ -26,6 +25,7 @@
 }
 
 .header h1 {
+  margin: 50px 0;
   font-size: 8vw;
 }
 
@@ -39,7 +39,7 @@
   flex-direction: column;
 }
 
-@media (max-width: 960px) {
+@media (min-with: 320px) and (max-width: 960px) {
   .navigation-container button {
     width: 50vw;
   }
@@ -58,7 +58,7 @@
 
 @media (max-width: 960px) {
   .info {
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
   }
 }
@@ -74,7 +74,7 @@
 
 @media (max-width: 960px) {
   .bubbles {
-    width: 100%;
+    width: 80%;
   }
   .animal {
     width: 60%;
@@ -83,65 +83,4 @@
 
 .animal img {
   width: 100%;
-}
-
-/******* INFO BUBBLE ******/
-
-.bubble {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  grid-gap: 10px;
-  align-items: center;
-
-  background: var(--bubble-color);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  border-radius: 8px;
-  color: white;
-  font-weight: 100;
-  margin-bottom: 30px;
-
-  position: relative;
-}
-
-.bubble:after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  top: 20%;
-  left: 100%;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-left: 30px solid var(--bubble-color);
-}
-
-.bubble.fact:after {
-  top: 60%;
-}
-
-.bubble a {
-  color: white;
-}
-
-@media (max-width: 960px) {
-  .bubble:after {
-    top: 100%;
-    left: 40%;
-    border-bottom: 20px solid transparent;
-    border-top: 30px solid var(--bubble-color);
-    border-right: 20px solid transparent;
-    border-left: 20px solid transparent;
-  }
-
-  .bubble.fact:after {
-    top: 100%;
-    left: 20%;
-  }
-}
-
-.bubble img {
-  width: 100%;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
 }

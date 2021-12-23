@@ -1,22 +1,32 @@
-import Button from '../../components/Button/Button.js';
 import './MainPage.css';
+import Button from '../../components/Button/Button.js';
+import Bubble from '../../components/Bubble/Bubble.js';
+import ImageFact from '../../model/Fact.js';
+import { retrieveAnimalFact } from '../../api/FactsController.js';
 import { onNavigationChange } from '../../components/router/Router.js';
 
-const MAIN_ANIMAL_PATH = './kangoroo.png';
-const FACT_ANIMAL_URL = 'http://placekitten.com/400/500';
-const ADOPTION_ANIMAL_URL = 'http://placekitten.com/300/400';
+const PAGE_TITLE = 'ANIMALIADA';
+const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
+const AdoptionBubbleContent = {
+  IMG: { pathOrUrl: 'http://placekitten.com/300/400', alt: 'the animal to adoption' },
+  HEADER_TEXT: "Or maybe you'd like to adopt your own pet?",
+  SENTENCES: ['This one is looking for home', 'See more here: <a href="#adoption-page">Adoption Page</a>'],
+};
 
 export function renderMainPage() {
   renderMainView();
-  renderAnimalFact();
+  renderNavigation();
+  renderMainAnimalImg();
+  renderBubblesStructure();
+  renderBubblesContent();
 }
 
 function renderMainView() {
   document.querySelector('#app').innerHTML = `
-  <div class="container">
+  <div class="container main-page-container">
   
     <div class="header">
-      <h1>ANIMALIADA</h1>
+      <h1>${PAGE_TITLE}</h1>
     </div>
 
     <div class="navigation-container">
@@ -25,61 +35,100 @@ function renderMainView() {
     <div class="info">
 
       <div class="bubbles">
-        <div class="bubble fact">
-          <div class="bubble-img">
-            <img src="${FACT_ANIMAL_URL}" alt="the animal the sentence is about">
-          </div>
-          <div class="bubble-text">
-            <h2>Did you know?</h2>
-          </div>
-        </div>
-
-        <div class="bubble adoption">
-          <div class="bubble-img">
-            <img src="${ADOPTION_ANIMAL_URL}" alt="the animal to adoption">
-          </div>
-          <div class="bubble-text">
-            <h2>Or maybe you'd like to adopt your own pet?</h2>
-            <p>This one is looking for home</p>
-            <p>See more here: <a href="#">Adoption Page</a></p>
-          </div>
-        </div>
       </div>
 
       <div class="animal">
-        <img src="${MAIN_ANIMAL_PATH}" alt="kangoroo that tells informations" /></div>
       </div>        
 
     </div>
   
   </div>
   `;
+}
 
+function renderNavigation() {
   const navContainer = document.querySelector('.navigation-container');
 
   const handleNavigationButtonClick = (e) => onNavigationChange(e);
 
   const quizButton = Button('Start Quiz', 'quiz-settings', true, 'click', handleNavigationButtonClick);
   const leaderboardButton = Button('Leaderboard', 'leadearboard', true, 'click', handleNavigationButtonClick);
-  const adoptionButton = Button('Adoption', 'adoption-button', true, 'click', handleNavigationButtonClick);
-  const creditsButton = Button('Credits', 'credits-button', true, 'click', handleNavigationButtonClick);
+  const adoptionButton = Button('Adoption', 'adoption-page', true, 'click', handleNavigationButtonClick);
+  const creditsButton = Button('Credits', 'credits-page', true, 'click', handleNavigationButtonClick);
 
   navContainer.append(quizButton, leaderboardButton, adoptionButton, creditsButton);
-  const navItems = navContainer.querySelectorAll('a');
-
-  navItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      alert(`Hello! I'm ${item.dataset.name} site`);
-    });
-  });
 }
 
-async function renderAnimalFact() {
-  const factItem = document.querySelector('.bubble-text');
-  const factSentence = document.createElement('p');
-  const FACT =
-    "Cat's eyes shine in the dark because of the tapetum, a reflective layer in the eye, which acts like a mirror.";
+function renderBubblesStructure() {
+  const bubbleFact = createFactBubble();
+  document.querySelector('.bubbles').append(bubbleFact);
+  const bubbleAdoption = createAdoptionBubble();
+  document.querySelector('.bubbles').append(bubbleAdoption);
+}
 
-  factSentence.innerText = FACT;
-  factItem.append(factSentence);
+function createFactBubble() {
+  const bubbleFact = Bubble('higher', true, 'Did you know?');
+  bubbleFact.classList.add('fact');
+  return bubbleFact;
+}
+
+function createAdoptionBubble() {
+  const bubbleAdoption = Bubble('lower', true, AdoptionBubbleContent.HEADER_TEXT, AdoptionBubbleContent.SENTENCES);
+  bubbleAdoption.classList.add('adoption');
+  return bubbleAdoption;
+}
+
+function renderBubblesContent() {
+  renderAdoptionBubbleContent();
+  renderFactBubbleContent();
+}
+
+async function renderFactBubbleContent() {
+  const factObj = await getAnimalFact();
+  renderAnimalFact(factObj);
+  renderAnimalFactImg(factObj);
+}
+
+function renderAdoptionBubbleContent() {
+  renderAnimalAdoptionImg();
+}
+
+async function renderAnimalFact(factObj) {
+  const factSentenceItem = document.querySelector('.bubble.fact .bubble-text');
+  const factSentence = document.createElement('p');
+
+  factSentence.innerText = factObj.sentence;
+  factSentenceItem.append(factSentence);
+}
+
+function renderAnimalFactImg(factObj) {
+  const factImageItem = document.querySelector('.bubble.fact .bubble-img');
+  createImage(factImageItem, factObj);
+}
+
+function renderAnimalAdoptionImg() {
+  const adoptionImageItem = document.querySelector('.bubble.adoption .bubble-img');
+  createImage(adoptionImageItem, AdoptionBubbleContent.IMG);
+}
+
+function createImage(domElem, obj) {
+  const imgElem = document.createElement('img');
+  imgElem.src = obj.pathOrUrl;
+  imgElem.alt = obj.alt;
+  domElem.append(imgElem);
+}
+
+async function getAnimalFact() {
+  const newImageFact = new ImageFact();
+  const imageFact = await retrieveAnimalFact();
+  if (imageFact) {
+    newImageFact.sentence = imageFact.fact;
+    newImageFact.pathOrUrl = imageFact.imageUrl;
+  }
+  return newImageFact;
+}
+
+function renderMainAnimalImg() {
+  const mainAnimalImageItem = document.querySelector('.animal');
+  createImage(mainAnimalImageItem, MAIN_ANIMAL_IMG);
 }
