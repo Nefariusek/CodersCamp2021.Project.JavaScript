@@ -11,11 +11,13 @@ let startTime;
 let endTime;
 let timerMinutes;
 let timerSeconds;
+let lifeline = false;
 export let userAnswers = [];
 
 export async function renderQuizView() {
   questions = await getRandomQuizQuestions(QuizSettings.quizAbout.toUpperCase(), QuizSettings.questionsNum);
   current = 0;
+  userAnswers = [];
   document.querySelector('#app').append(createLayout());
   startTimer();
   renderQuizData();
@@ -52,6 +54,16 @@ function createLeftArrow() {
   return leftArrow;
 }
 
+function createLifeline() {
+  const lifelineContainer = document.createElement('div');
+  lifelineContainer.setAttribute('id', 'lifeline');
+  const lifelineImage = document.createElement('img');
+  lifelineImage.src = './lifering.png';
+  lifelineContainer.appendChild(lifelineImage);
+  lifelineImage.addEventListener('click', useLifeline);
+  return lifelineContainer;
+}
+
 function createLayout() {
   const container = document.createElement('div');
   container.setAttribute('id', 'quizView');
@@ -69,6 +81,7 @@ function createLayout() {
 
   container.append(
     header,
+    createLifeline(),
     createQuestionNumbers(),
     image,
     createTimer(),
@@ -90,7 +103,7 @@ function renderQuizData() {
   const numbers = document.getElementById('question-numbers').children;
   numbers.item(current).setAttribute('id', 'current-question');
 
-  const image = document.querySelector('img');
+  const image = document.querySelector('#quizView > img');
   image.src = questions[current].imageUrl;
 
   const question = document.getElementById('question-text');
@@ -98,7 +111,7 @@ function renderQuizData() {
 
   const answersContainer = document.getElementById('answers');
   const answers = questions[current].getAnswers();
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < answers.length; i++) {
     answersContainer.appendChild(Button(answers[i], 'answer', false, 'click', nextQuestion));
   }
   startTime = getTime();
@@ -112,23 +125,17 @@ function getTime() {
 }
 
 function saveAnswer(answer) {
-  let isRepeated = false;
+  let change = false;
   endTime = getTime();
   const relativeTime = endTime - startTime;
-  const ans = new Answer(relativeTime, questions[current], answer, false);
-
-  Answers.forEach((a) => {
-    if (a.Question == ans.Question) {
-      if (answer) {
-        a.answer = ans.answer;
-      }
-      isRepeated = true;
+  if (userAnswers[current] != undefined && userAnswers[current].answer != '') {
+    if (answer === '') {
+      return;
     }
-  });
-  if (!isRepeated) {
-    Answers.push(ans);
+    change = true;
   }
-
+  const ans = new Answer(relativeTime, questions[current], answer, false, change);
+  userAnswers[current] = ans;
 }
 
 function nextQuestion(e) {
@@ -142,6 +149,7 @@ function nextQuestion(e) {
   answersContainer.innerHTML = '';
 
   current++;
+  lifeline = false;
   renderQuizData();
 }
 
@@ -155,4 +163,25 @@ function previousQuestion() {
   current--;
   renderQuizData();
 }
-export default Answers;
+
+function useLifeline() {
+  lifeline = true;
+  const lifelineDiv = document.getElementById('lifeline');
+  lifelineDiv.innerHTML = '';
+
+  const answersContainer = document.getElementById('answers');
+  const answers = answersContainer.children;
+  let removed = 0;
+  let n;
+  while (removed < 2) {
+    n = Math.floor(Math.random() * answers.length);
+    if (questions[current].correct.toUpperCase() != answers[n].children[0].innerText) {
+      let index = questions[current].incorrectAnswers
+        .map((ans) => ans.toUpperCase())
+        .indexOf(answers[n].children[0].innerText);
+      questions[current].incorrectAnswers.splice(index, 1);
+      answersContainer.removeChild(answers[n]);
+      removed++;
+    }
+  }
+}

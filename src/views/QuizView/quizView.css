@@ -3,7 +3,7 @@
   grid-template-columns: 25vw 50vw 25vw;
   grid-template-rows: 8vh 15vh 40vh 10vh 27vh;
   grid-template-areas:
-    'header header  header'
+    '. header  lifeline'
     'number number number'
     '. photo  timer'
     'leftarrow question  rightarrow'
@@ -17,6 +17,17 @@
   color: black;
   font-size: 5vmin;
   width: auto;
+}
+
+#quizView #lifeline {
+  grid-area: lifeline;
+}
+
+#quizView #lifeline img {
+  height: 7vmin;
+  max-height: 70px;
+  width: auto;
+  vertical-align: middle;
 }
 
 #quizView #question-numbers {
