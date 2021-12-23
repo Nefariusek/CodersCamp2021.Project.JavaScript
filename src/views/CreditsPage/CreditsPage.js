@@ -45,11 +45,11 @@ function renderCredits() {
   credits.classList.add('navigation-container');
 
   AUTHORS.forEach((author) => {
-    const btn = Button(author.name, author.role, false, 'click', onAuthorClick);
-    credits.append(btn);
+    const button = Button(author.name, author.role, false, 'click', onAuthorClick);
+    credits.append(button);
   });
-  const goTomainPage = Button('Main page', 'go-home', false, 'click', onAuthorClick);
-  credits.append(goTomainPage);
+  const goToMainPage = Button('Main page', 'go-home', false, 'click', onAuthorClick);
+  credits.append(goToMainPage);
 
   return credits;
 }
@@ -58,15 +58,15 @@ const onAuthorClick = (e) => {
   if (e.target.className === 'go-home') {
     window.location.hash = '';
   } else {
-    const arrayIndex = getBtnIndexFromParent('navigation-container', e.target);
+    const arrayIndex = getButtonIndexFromParent('navigation-container', e.target);
     window.open(AUTHORS[arrayIndex].githubUrl, '_blank');
   }
 };
 
-function getBtnIndexFromParent(parentClass, btn) {
+function getButtonIndexFromParent(parentClass, button) {
   const parent = document.getElementsByClassName(parentClass)[0];
-  const btnWrapper = btn.parentNode;
-  const arrayIndex = Array.from(parent.children).indexOf(btnWrapper);
+  const buttonWrapper = button.parentNode;
+  const arrayIndex = Array.from(parent.children).indexOf(buttonWrapper);
   return arrayIndex;
 }
 

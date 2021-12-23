@@ -1,9 +1,3 @@
-/*
-Component creates speech bubble with or without image, with given header and optional sentences.
-Component accepts following inputs: bubblePosition ("higher" or "lower"), hasImage (Boolean), header (String), sentences (optional, String or Array of Strings).
-Input bubblePosition means that due to the "higher" or "lower" position of the bubble on the page, the arrow will be placed appropriately.
-*/
-
 import './Bubble.css';
 
 /**
