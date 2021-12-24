@@ -1,7 +1,7 @@
 import Button from '../../components/Button/Button';
 import '../../components/Button/Button.css';
 import './confirmChoiceModal.css';
-import {userAnswers} from '../QuizView/quizView';
+import { userAnswers } from '../QuizView/quizView';
 
 export function renderChoiceModal() {
   console.log(userAnswers);
