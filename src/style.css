@@ -42,13 +42,15 @@ body {
 /************ HEADER *****************/
 
 .main-page .header,
+.adoption-page .header,
 .credits-page .header {
   grid-area: header;
 }
 
 .main-page .header h1,
+.adoption-page .header h1,
 .credits-page .header h1 {
-  margin: 50px 0;
+  margin: 20px 0;
   font-size: 8vw;
 }
 

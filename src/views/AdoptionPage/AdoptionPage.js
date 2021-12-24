@@ -10,7 +10,7 @@ export function renderAdoptionPage() {
 
 function renderAdoptionPageView() {
   document.querySelector('#app').innerHTML = `
-    <div class="adoption-page-container">
+    <div class="container adoption-page">
     
       <div class="header">
         <h1>${PAGE_TITLE}</h1>
