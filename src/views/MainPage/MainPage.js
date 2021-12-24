@@ -1,7 +1,7 @@
 import './MainPage.css';
 import Button from '../../components/Button/Button.js';
 import Bubble from '../../components/Bubble/Bubble.js';
-import ImageFact from '../../model/Fact.js';
+import ImageFact from '../../model/ImageFact.js';
 import { retrieveAnimalFact } from '../../api/FactsController.js';
 import { onNavigationChange } from '../../components/router/Router.js';
 
@@ -23,7 +23,7 @@ export function renderMainPage() {
 
 function renderMainView() {
   document.querySelector('#app').innerHTML = `
-  <div class="container main-page-container">
+  <div class="container main-page">
   
     <div class="header">
       <h1>${PAGE_TITLE}</h1>

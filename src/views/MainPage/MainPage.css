@@ -1,16 +1,13 @@
 /********** CONTAINER ****************/
-.main-page-container {
-  display: grid;
-  grid-template-columns: 2fr 5fr;
-  grid-template-areas:
-    'header header'
-    'nav info';
-  grid-gap: 10px;
+
+@media (min-width: 961px) {
+  .main-page.container {
+    grid-template-columns: 2fr 5fr;
+  }
 }
 
 @media (max-width: 960px) {
-  .main-page-container {
-    grid-template-columns: 1fr;
+  .main-page.container {
     grid-template-areas:
       'header'
       'nav'
@@ -18,69 +15,32 @@
   }
 }
 
-/************ HEADER *****************/
+/************ NAVIGATION *******************/
 
-.header {
-  grid-area: header;
-}
-
-.header h1 {
-  margin: 50px 0;
-  font-size: 8vw;
-}
-
-/*********** NAVIGATION ************/
-
-.navigation-container {
+.main-page .navigation-container {
   grid-area: nav;
   display: flex;
-  justify-content: start;
   align-items: center;
+  justify-content: start;
   flex-direction: column;
+  flex-wrap: nowrap;
 }
 
-@media (min-with: 320px) and (max-width: 960px) {
-  .navigation-container button {
+@media (min-width: 320px) and (max-width: 960px) {
+  .main-page .navigation-container button {
     width: 50vw;
   }
 }
 
-/******* INFO SPACE ******/
+/********** BUBBLE SPACE *********/
 
-.info {
-  grid-area: info;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  flex-direction: row;
-}
-
-@media (max-width: 960px) {
-  .info {
-    align-items: center;
-    flex-direction: column;
-  }
-}
-
-.bubbles {
-  width: 60%;
-}
-
-.animal {
-  width: 40%;
-  align-self: center;
-}
-
-@media (max-width: 960px) {
-  .bubbles {
-    width: 80%;
-  }
-  .animal {
+@media (min-width: 961px) {
+  .main-page .bubbles {
     width: 60%;
   }
-}
 
-.animal img {
-  width: 100%;
+  .main-page .animal {
+    width: 40%;
+    align-self: center;
+  }
 }
