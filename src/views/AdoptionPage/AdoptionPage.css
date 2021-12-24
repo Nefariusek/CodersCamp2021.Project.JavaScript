@@ -1,0 +1,153 @@
+/********** CONTAINER ****************/
+
+.adoption-page-container {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    'header'
+    'text'
+    'options'
+    'animal';
+  grid-gap: 10px;
+}
+
+/************ HEADER *****************/
+
+.adoption-page-container .header {
+  grid-area: header;
+}
+
+.adoption-page-container .header h1 {
+  font-size: 8vw;
+  margin: 20px 0;
+}
+
+/*********** TEXT SPACE ******************/
+
+.adoption-page-container .text-container {
+  grid-area: text;
+}
+
+.adoption-page-container .text-container p {
+  margin: 20px 0;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+}
+
+/*********** OPTIONS ******************/
+.adoption-page-container .options-container {
+  margin: 40px 0;
+}
+
+.adoption-page-container .options-container ul {
+  grid-area: options;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+@media (max-width: 960px) {
+  .adoption-page-container .options-container ul {
+    flex-direction: column;
+  }
+
+  .adoption-page-container .options-container li {
+    /* position: relative; */
+    margin-bottom: 20px;
+  }
+}
+
+.adoption-page-container .options-container a {
+  background-color: var(--btn-color);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 290px;
+  height: 200px;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.adoption-page-container .options-container .dog {
+  /* background: url(../public/adoption-dog.jpg) no-repeat; */
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(./adoption-dog.jpg), no-repeat;
+  background-size: 290px;
+  background-position: center center;
+  /* opacity: 0.5; */
+}
+
+.adoption-page-container .options-container .dog:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-dog.jpg), no-repeat,
+    center center;
+  background-size: 290px;
+  background-position: center center;
+  transform: scale(1.1);
+  transition: ease-in-out all 0.4s;
+}
+
+.adoption-page-container .options-container .cat {
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(./adoption-cat.jpg), no-repeat;
+  background-size: 290px;
+  background-position: center center;
+}
+
+.adoption-page-container .options-container .cat:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-cat.jpg), no-repeat,
+    center center;
+  background-size: 290px;
+  background-position: center center;
+  transform: scale(1.1);
+  transition: ease-in-out all 0.4s;
+}
+
+.adoption-page-container .options-container .bird {
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(./adoption-bird.jpg), no-repeat;
+  background-size: 290px;
+  background-position: center center;
+}
+
+.adoption-page-container .options-container .bird:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-bird.jpg), no-repeat,
+    center center;
+  background-size: 300px;
+  background-position: center center;
+  transform: scale(1.1);
+  transition: ease-in-out all 0.4s;
+}
+
+.adoption-page-container .options-container span {
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  color: white;
+  font-size: 40px;
+  font-weight: 900;
+  text-shadow: 4px 4px 4px #000000;
+  /* opacity: 1; */
+}
+
+/******* ANIMAL SPACE ******/
+
+.adoption-page-container .main-animal {
+  grid-area: animal;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.adoption-page-container .main-animal img {
+  max-width: 400px;
+}
+
+@media (max-width: 960px) {
+  .adoption-page-container .main-animal img {
+    max-width: 80%;
+  }
+}
