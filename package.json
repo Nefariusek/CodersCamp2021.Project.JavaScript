@@ -19,8 +19,11 @@
     "format": "prettier --write \"src/**/*.{js,scss,css,md,json}\""
   },
   "devDependencies": {
+    "@babel/core": "7.16.5",
+    "@babel/preset-env": "7.16.5",
     "@testing-library/dom": "8.11.1",
     "@testing-library/user-event": "13.5.0",
+    "babel-jest": "27.4.5",
     "eslint": "7.32.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "8.3.0",

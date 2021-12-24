@@ -1,4 +1,5 @@
 import './style.css';
+import './sass/style.scss';
 import './components/timer/quiz-timer.css';
 import './views/quiz-settings/quiz-settings.css';
 import './views/QuizView/quizView.css';
