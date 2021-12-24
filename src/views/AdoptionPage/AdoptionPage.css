@@ -18,7 +18,7 @@
 }
 
 .adoption-page .text-container p {
-  margin: 20px 0;
+  margin: 10px 0;
   font-size: 40px;
   font-weight: bold;
   color: white;
@@ -26,7 +26,7 @@
 
 /*********** OPTIONS ******************/
 .adoption-page .options-container {
-  margin: 40px 0;
+  margin: 10px 0;
 }
 
 .adoption-page .options-container ul {
@@ -112,6 +112,10 @@
   font-size: 40px;
   font-weight: 900;
   text-shadow: 4px 4px 4px #000000;
+}
+
+.adoption-page .go-home {
+  margin-top: 40px;
 }
 
 /******* ANIMAL SPACE ******/

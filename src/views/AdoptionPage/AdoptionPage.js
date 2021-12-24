@@ -6,6 +6,7 @@ const MAIN_ANIMAL = { pathOrUrl: './bird.png', alt: 'flying bird' };
 
 export function renderAdoptionPage() {
   renderAdoptionPageView();
+  renderMainPageButton();
 }
 
 function renderAdoptionPageView() {
@@ -20,15 +21,13 @@ function renderAdoptionPageView() {
         <p>CHOOSE YOUR NEW PET:</p>
       </div>
 
-      <div class="options-container">
-        <nav>
-          <ul>
-            <li><a href="https://www.petfinder.com/" class="option cat"><span>CAT</span></a></li>
-            <li><a href="https://www.petfinder.com/" class="option dog"><span>DOG</span></a></li>
-            <li><a href="https://www.petfinder.com/" class="option bird"><span>BIRD</span></a></li>
-          </ul>
-        </nav>
-      </div>
+      <nav class="options-container">
+        <ul>
+          <li><a href="https://www.petfinder.com/" class="option cat"><span>CAT</span></a></li>
+          <li><a href="https://www.petfinder.com/" class="option dog"><span>DOG</span></a></li>
+          <li><a href="https://www.petfinder.com/" class="option bird"><span>BIRD</span></a></li>
+        </ul>
+       </nav>
 
       <div class="main-animal">
         <img src="${MAIN_ANIMAL.pathOrUrl}" alt="${MAIN_ANIMAL.alt}" /></div>
@@ -36,3 +35,15 @@ function renderAdoptionPageView() {
 
     </div>`;
 }
+
+function renderMainPageButton() {
+  const optionsContainer = document.querySelector('.options-container');
+
+  const goToMainPage = Button('Main Page', 'go-home', false, 'click', onMainPageClick);
+
+  optionsContainer.append(goToMainPage);
+}
+
+const onMainPageClick = (e) => {
+  window.location.hash = '';
+};
