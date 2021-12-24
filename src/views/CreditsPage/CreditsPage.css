@@ -1,15 +1,13 @@
 /********** CONTAINER ****************/
 
-.container.credits-page {
-  grid-template-columns: 1fr 1fr;
+@media (min-width: 961px) {
+  .credits-page.container {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 960px) {
-  .container.credits-page {
-    grid-template-columns: 1fr;
-  }
-
-  .container.credits-page {
+  .credits-page.container {
     grid-template-areas:
       'header'
       'info'
@@ -52,21 +50,13 @@
 
 /********** BUBBLE SPACE *********/
 
-.credits-page .bubbles {
-  width: 35%;
-}
-
-.credits-page .animal {
-  width: 75%;
-  align-self: center;
-}
-
-@media (max-width: 960px) {
+@media (min-width: 961px) {
   .credits-page .bubbles {
-    width: 80%;
+    width: 35%;
   }
 
   .credits-page .animal {
-    width: 60%;
+    width: 75%;
+    align-self: center;
   }
 }

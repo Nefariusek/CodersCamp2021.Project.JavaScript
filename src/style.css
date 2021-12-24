@@ -32,6 +32,13 @@ body {
   grid-gap: 10px;
 }
 
+@media (max-width: 960px) {
+  .container.main-page,
+  .container.credits-page {
+    grid-template-columns: 1fr;
+  }
+}
+
 /************ HEADER *****************/
 
 .main-page .header,
@@ -67,6 +74,18 @@ body {
   .credits-page .info {
     align-items: center;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 960px) {
+  .main-page .bubbles,
+  .credits-page .bubbles {
+    width: 80%;
+  }
+
+  .main-page .animal,
+  .credits-page .animal {
+    width: 60%;
   }
 }
 

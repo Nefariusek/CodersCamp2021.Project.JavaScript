@@ -1,6 +1,7 @@
 import './CreditsPage.css';
 import Button from '../../components/Button/Button.js';
 import Bubble from '../../components/Bubble/Bubble.js';
+
 const PAGE_TITLE = 'CREDITS';
 const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
 const CreditsBubbleContent = {
