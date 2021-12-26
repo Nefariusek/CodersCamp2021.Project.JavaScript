@@ -6,7 +6,7 @@ import '../../components/Button/Button.css';
 export function renderLeaderboard() {
   renderPodium();
   getScoreFromLocalStorage();
-  renderMenuBtn();
+  createMenuButton();
 }
 
 function renderPodium() {
@@ -53,27 +53,24 @@ function getScoreFromLocalStorage() {
   const highScores = JSON.parse(localStorage.getItem('quizScores')) || [];
   highScores.sort((a, b) => b.score - a.score);
   function showScore() {
-    nick1.innerText = `pts: ${Object.values(highScores[0])}`;
-    nick2.innerText = `pts: ${Object.values(highScores[1])}`;
-    nick3.innerText = `pts: ${Object.values(highScores[2])}`;
-    nick4.innerText = Object.values(highScores[3]);
-    nick5.innerText = Object.values(highScores[4]);
-    nick6.innerText = Object.values(highScores[5]);
-    nick7.innerText = Object.values(highScores[6]);
-    nick8.innerText = Object.values(highScores[7]);
-    nick9.innerText = Object.values(highScores[8]);
+    // nick1.innerText = `pts: ${Object.values(highScores[0])}`;
+    // nick2.innerText = `pts: ${Object.values(highScores[1])}`;
+    // nick3.innerText = `pts: ${Object.values(highScores[2])}`;
+    // nick4.innerText = Object.values(highScores[3]);
+    // nick5.innerText = Object.values(highScores[4]);
+    // nick6.innerText = Object.values(highScores[5]);
+    // nick7.innerText = Object.values(highScores[6]);
+    // nick8.innerText = Object.values(highScores[7]);
+    // nick9.innerText = Object.values(highScores[8]);
   }
   return showScore();
 }
 
-// klawisz funkcyjny powrót do Menu
-const handleNavigationButtonClick = (e) => onNavigationChange(e);
-
-function renderMenuBtn() {
-  const menuButton = document.getElementById('mainMenu');
-  menuButton.append(Button('MENU', 'menuButton', false, 'click', handleNavigationButtonClick));
+function createMenuButton() {
+  const menuButton = Button('MENU', 'leaderboardMenuButton', null, 'click', navigateToMenu);
+  document.querySelector('#app').append(menuButton);
 }
 
-function onNavigationChange(e) {
-  window.location.hash = e.target.className;
+function navigateToMenu() {
+  window.location.hash = '';
 }

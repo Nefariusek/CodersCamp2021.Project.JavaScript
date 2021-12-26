@@ -118,3 +118,8 @@
   width: 80%;
   font-size: 3vmin;
 }
+#quizView .quizViewMenuButton {
+  position: fixed;
+  top: 2%;
+  left: 2%;
+}

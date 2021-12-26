@@ -1,5 +1,6 @@
 import './quiz-settings.css';
 import '../../style.css';
+import Button from '../../components/Button/Button';
 
 class QuizSettings {
   quizAbout;
@@ -74,9 +75,17 @@ class QuizSettings {
   static createButtonStartQuiz() {
     const buttonStartQuiz = document.createElement('input');
     buttonStartQuiz.type = 'submit';
-    buttonStartQuiz.setAttribute('id', 'submit');
+    buttonStartQuiz.setAttribute('id', 'submitButton');
     buttonStartQuiz.value = 'START QUIZ';
     return buttonStartQuiz;
+  }
+  static navigateToMenu() {
+    window.location.hash = '';
+  }
+
+  static createMenuButton() {
+    const menuButton = Button('MENU', 'settingsMenuButton', null, 'click', this.navigateToMenu);
+    return menuButton;
   }
 
   static createForm() {
@@ -113,10 +122,13 @@ class QuizSettings {
   }
 
   static showSettings() {
+    this.quizAbout = undefined;
+    this.questionsNum = undefined;
+    this.questionsType = undefined;
     const settings = document.createElement('div');
     settings.appendChild(this.createForm());
     settings.setAttribute('id', 'quiz-settings');
-
+    settings.append(this.createMenuButton());
     document.querySelector('#app').append(settings);
   }
 }
