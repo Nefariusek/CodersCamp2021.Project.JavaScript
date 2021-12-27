@@ -7,7 +7,7 @@ const questionsApis = {
   CATS: { url: 'https://api.thecatapi.com/v1/breeds', api_key: '2d4cf1ee-1883-474f-80ab-f931262fd79b' },
 };
 
-export const getQuizQuestions = async (animal, numberOfQuestions) => {
+export const getQuizQuestions = async (animal) => {
   const questions = [];
   const data = await retrieveQuizQuestions(animal);
 
@@ -28,7 +28,7 @@ async function retrieveQuizQuestions(animal) {
 
     return data;
   } catch (error) {
-    console.error('Error:', error);
+    return console.error('Error:', error);
   }
 }
 

@@ -16,7 +16,7 @@ export default class Answer {
     if (this.checkIfCorrect()) {
       score = 1;
       if (this.changed) {
-        score = score / 2;
+        score /= score / 2;
       }
     }
     return score;
