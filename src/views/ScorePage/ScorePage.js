@@ -28,6 +28,8 @@ function renderScore(score, totalNumber) {
   const scoreText = document.createElement('h2');
   const finalScore = document.createElement('h2');
   finalScore.setAttribute('id', 'finalScore');
+  congratsText.innerText = 'CONGRATS!';
+  scoreText.innerText = 'YOUR SCORE IS: ' + score;
   congratsText.setAttribute('id', 'congratsText');
   congratsText.innerText = '';
   scoreText.innerText = `YOUR SCORE IS:  ${score} / ${totalNumber}`;
@@ -35,23 +37,23 @@ function renderScore(score, totalNumber) {
   return container;
 }
 
-function renderCongratsMessage(recentUserScore, totalNumber) {
+function getCongratsMessage(recentUserScore, totalNumber) {
   let message;
-  const finalMessage = document.getElementById('congratsText');
-  finalMessage.innerText = getCongratsMessage(message);
-
-  function getCongratsMessage() {
-    const totalPercent = Math.floor((recentUserScore / totalNumber) * 100);
-    if (totalPercent >= 80) {
-      message = '"WOW"! Your score is ' + totalPercent + '%! You are True animal lover!';
-    } else if (totalPercent >= 50) {
-      message =
-        'You could use a litte practice! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
-    } else {
-      message = 'Well, it could be better! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
-    }
-    return message;
+  const totalPercent = Math.floor((recentUserScore / totalNumber) * 100);
+  if (totalPercent >= 80) {
+    message = '"WOW"! Your score is ' + totalPercent + '%! You are True animal lover!';
+  } else if (totalPercent >= 50) {
+    message =
+      'You could use a litte practice! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
+  } else {
+    message = 'Well, it could be better! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
   }
+  return message;
+}
+
+function renderCongratsMessage(recentUserScore, totalNumber) {
+  const finalMessage = document.getElementById('congratsText');
+  finalMessage.innerText = getCongratsMessage(recentUserScore, totalNumber);
 }
 
 function renderGraphics() {
@@ -89,7 +91,6 @@ function nicknameValidation() {
 
 function saveQuizScore() {
   const quizScores = JSON.parse(localStorage.getItem('quizScores')) || [];
-  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
   const recentUserScore = getCurrentScore(userAnswers);
   if (!nicknameValidation()) {
     alert('Type in your nickname!');
@@ -101,13 +102,7 @@ function saveQuizScore() {
       TYPE: QuizSettings.questionsType,
       NAME: document.getElementById('nickname').value,
     };
-    const highScore = {
-      SCORE: recentUserScore,
-      NAME: document.getElementById('nickname').value,
-    };
     quizScores.push(score);
-    highScores.push(highScore);
-    localStorage.setItem('highScores', JSON.stringify(highScores));
     localStorage.setItem('quizScores', JSON.stringify(quizScores));
     nickname.value = null;
   }
