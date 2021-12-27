@@ -3,7 +3,6 @@ div#scorePage > * {
   background-color: #8ab0ab;
   margin: 0;
   padding: 0;
-  font-family: 'Bebas Neue', cursive;
 }
 
 #scorePage {
@@ -30,7 +29,7 @@ div#scorePage > * {
   display: flex;
   justify-content: center;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 1.5rem;
   word-wrap: break-word;
   max-width: 180px;
   color: whitesmoke;
@@ -73,10 +72,10 @@ td.step div:first-of-type {
 
 .listItem {
   display: inline-block;
-  width: 6rem;
+  width: fit-content;
   margin: 1rem;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 1.4rem;
   color: whitesmoke;
 }
 
@@ -90,8 +89,10 @@ button.menuButton {
 
 @media (max-width: 960px) {
   button.menuButton {
-    bottom: 0;
-    left: 0;
+    position: relative;
     width: min-content;
+  }
+  td.step div:first-of-type {
+    width: 100px;
   }
 }
