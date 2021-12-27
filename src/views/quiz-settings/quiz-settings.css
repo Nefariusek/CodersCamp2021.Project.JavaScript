@@ -75,18 +75,20 @@ form p {
 }
 
 #number {
+  color: white;
   width: 40%;
   grid-column-start: first;
   grid-column-end: third;
   text-align: center;
+  font-size: 16px;
 }
 
 #number:hover {
   background-color: #3e505b;
-  color: white;
 }
 
 #submit {
+  font-size: 16px;
   width: 40%;
   margin-top: 100px;
   color: white;
@@ -101,7 +103,7 @@ form p {
 label {
   color: white;
   position: relative;
-  top: -45px;
+  top: -35px;
 }
 
 p {
