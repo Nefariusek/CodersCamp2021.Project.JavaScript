@@ -29,9 +29,9 @@ h2 {
 }
 
 #nickname::placeholder {
-  color: white;
+  color: lightgray;
   text-align: center;
-  font-weight: 700;
+  font-weight: lighter;
 }
 
 input {
