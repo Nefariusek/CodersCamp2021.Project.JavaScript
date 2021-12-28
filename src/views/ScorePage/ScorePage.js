@@ -29,7 +29,7 @@ function renderScore(score, totalNumber) {
   const finalScore = document.createElement('h2');
   finalScore.setAttribute('id', 'finalScore');
   congratsText.innerText = 'CONGRATS!';
-  scoreText.innerText = 'YOUR SCORE IS: ' + score;
+  scoreText.innerText = `YOUR SCORE IS: ${score}`;
   congratsText.setAttribute('id', 'congratsText');
   congratsText.innerText = '';
   scoreText.innerText = `YOUR SCORE IS:  ${score} / ${totalNumber}`;
@@ -41,12 +41,11 @@ function getCongratsMessage(recentUserScore, totalNumber) {
   let message;
   const totalPercent = Math.floor((recentUserScore / totalNumber) * 100);
   if (totalPercent >= 80) {
-    message = '"WOW"! Your score is ' + totalPercent + '%! You are True animal lover!';
+    message = `"WOW"! Your score is ${totalPercent}%! You are True animal lover!`;
   } else if (totalPercent >= 50) {
-    message =
-      'You could use a litte practice! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
+    message = `You could use a litte practice! Your score is ${totalPercent}% Would you like to do the quiz again?`;
   } else {
-    message = 'Well, it could be better! Your score is ' + totalPercent + '% Would you like to do the quiz again?';
+    message = `Well, it could be better! Your score is ${totalPercent}% Would you like to do the quiz again?`;
   }
   return message;
 }
@@ -82,17 +81,17 @@ function getCurrentScore(Answers) {
 
 function nicknameValidation() {
   const input = document.getElementById('nickname');
-  if (input.value != '' && input.value != 'NICKNAME') {
+  if (input.value !== '' && input.value !== 'NICKNAME') {
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
 function saveQuizScore() {
   const quizScores = JSON.parse(localStorage.getItem('quizScores')) || [];
   const recentUserScore = getCurrentScore(userAnswers);
   if (!nicknameValidation()) {
+    // eslint-disable-next-line no-alert
     alert('Type in your nickname!');
   } else {
     const score = {
