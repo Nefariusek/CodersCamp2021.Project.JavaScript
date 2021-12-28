@@ -88,5 +88,5 @@ function resetLocalStorage() {
 
 function renderResetBtn() {
   const resetButton = document.getElementById('resetButton');
-  resetButton.append(Button('RESET', 'resetButton', false, 'click', resetLocalStorage));
+  resetButton.append(Button('RESET SCORE', 'resetButton', false, 'click', resetLocalStorage));
 }
