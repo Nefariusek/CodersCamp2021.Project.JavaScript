@@ -1,6 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/named */
+/* eslint radix: ["error", "as-needed"] */
+
 import { QuizSettings } from '../quiz-settings/quiz-settings';
 import { createTimer, startTimer, stopTimer } from '../../components/timer/quiz-timer';
-import { getRandomQuizQuestions } from '../../model/randomizer.js';
+import { getRandomQuizQuestions } from '../../model/randomizer';
 import { renderChoiceModal } from '../confirmChoiceModal/confirmChoiceModal';
 import Button from '../../components/Button/Button';
 import Answer from '../../components/Answer/Answer';
@@ -12,6 +16,7 @@ let endTime;
 let timerMinutes;
 let timerSeconds;
 let lifeline = false;
+// eslint-disable-next-line import/no-mutable-exports
 export let userAnswers = [];
 
 export async function renderQuizView() {
@@ -20,7 +25,6 @@ export async function renderQuizView() {
   userAnswers = [];
   document.querySelector('#app').append(createLayout());
   questions.forEach((q, idx) => userAnswers.push(new Answer(idx, 0, q, '', false, false)));
-  console.log(userAnswers);
   startTimer();
   renderQuizData();
 }
@@ -28,9 +32,7 @@ export async function renderQuizView() {
 function createQuestionNumbers() {
   const circles = document.createElement('div');
   circles.setAttribute('id', 'question-numbers');
-  circles.onclick = function (e) {
-    console.log('click');
-    console.log(e.target.innerText);
+  circles.onclick = function click(e) {
     selectQuestion(parseInt(e.target.innerText));
   };
   for (let i = 0; i < QuizSettings.questionsNum; i++) {
@@ -137,7 +139,7 @@ function saveAnswer(answer) {
 
   const currentAnswer = userAnswers.find((ans) => current === ans.index);
   currentAnswer.timeOfAnswer = relativeTime;
-  currentAnswer.changed = currentAnswer.answer && currentAnswer.answer != answer;
+  currentAnswer.changed = currentAnswer.answer && currentAnswer.answer !== answer;
   currentAnswer.answer = answer;
 }
 
@@ -147,7 +149,7 @@ function addAnsweredClass() {
 }
 
 function nextQuestion(e) {
-  let buttonValue = e.target.innerText;
+  const buttonValue = e.target.innerText;
   saveAnswer(buttonValue);
 
   if (userAnswers[current].answer) {
@@ -207,8 +209,8 @@ function useLifeline() {
   let n;
   while (removed < 2) {
     n = Math.floor(Math.random() * answers.length);
-    if (questions[current].correct.toUpperCase() != answers[n].children[0].innerText) {
-      let index = questions[current].incorrectAnswers
+    if (questions[current].correct.toUpperCase() !== answers[n].children[0].innerText) {
+      const index = questions[current].incorrectAnswers
         .map((ans) => ans.toUpperCase())
         .indexOf(answers[n].children[0].innerText);
       questions[current].incorrectAnswers.splice(index, 1);
