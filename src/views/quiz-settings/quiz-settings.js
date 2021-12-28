@@ -107,14 +107,6 @@ class QuizSettings {
       } else if (this.questionsType === undefined) {
         alert('Choose type of questions');
       } else {
-        alert(
-          'Quiz about: ' +
-            this.quizAbout +
-            '\nQuestions number: ' +
-            this.questionsNum +
-            '\nQuestions type: ' +
-            this.questionsType,
-        );
         window.location.hash = 'quiz';
       }
     });
