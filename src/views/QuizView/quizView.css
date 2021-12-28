@@ -61,7 +61,7 @@
   background-color: #000;
 }
 
-#quizView #question-numbers #answered {
+#quizView #question-numbers .answered {
   line-height: 4vmin;
   width: 4vmin;
   border-radius: 50%;

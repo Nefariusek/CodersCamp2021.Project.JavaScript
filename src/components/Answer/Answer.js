@@ -1,10 +1,11 @@
 export default class Answer {
-  constructor(timeOfAnswer, Question, answer, lifelineUsed, changed) {
+  constructor(index, timeOfAnswer, Question, answer, lifelineUsed, changed) {
     this.timeOfAnswer = timeOfAnswer;
     this.Question = Question;
     this.lifelineUsed = lifelineUsed;
     this.answer = answer;
     this.changed = changed;
+    this.index = index;
   }
 
   checkIfCorrect() {

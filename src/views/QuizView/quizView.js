@@ -19,6 +19,8 @@ export async function renderQuizView() {
   current = 0;
   userAnswers = [];
   document.querySelector('#app').append(createLayout());
+  questions.forEach((q, idx) => userAnswers.push(new Answer(idx, 0, q, '', false, false)));
+  console.log(userAnswers);
   startTimer();
   renderQuizData();
 }
@@ -26,8 +28,10 @@ export async function renderQuizView() {
 function createQuestionNumbers() {
   const circles = document.createElement('div');
   circles.setAttribute('id', 'question-numbers');
-  circles.onclick = function () {
-    selectQuestion();
+  circles.onclick = function (e) {
+    console.log('click');
+    console.log(e.target.innerText);
+    selectQuestion(parseInt(e.target.innerText));
   };
   for (let i = 0; i < QuizSettings.questionsNum; i++) {
     const number = document.createElement('div');
@@ -128,28 +132,30 @@ function getTime() {
 }
 
 function saveAnswer(answer) {
-  let change = false;
   endTime = getTime();
   const relativeTime = endTime - startTime;
-  if (userAnswers[current] != undefined && userAnswers[current].answer != '') {
-    if (answer === '') {
-      return;
-    }
-    change = true;
-  }
-  const ans = new Answer(relativeTime, questions[current], answer, false, change);
-  userAnswers[current] = ans;
+
+  const currentAnswer = userAnswers.find((ans) => current === ans.index);
+  currentAnswer.timeOfAnswer = relativeTime;
+  currentAnswer.changed = currentAnswer.answer && currentAnswer.answer != answer;
+  currentAnswer.answer = answer;
+}
+
+function addAnsweredClass() {
+  const currentQuestionNumber = document.getElementById('current-question');
+  currentQuestionNumber.setAttribute('class', 'answered');
 }
 
 function nextQuestion(e) {
   let buttonValue = e.target.innerText;
   saveAnswer(buttonValue);
 
-  const currentQuestionNumber = document.getElementById('current-question');
-  currentQuestionNumber.setAttribute('id', 'answered');
+  if (userAnswers[current].answer) {
+    addAnsweredClass();
+  }
 
-  const answersContainer = document.getElementById('answers');
-  answersContainer.innerHTML = '';
+  clearCurrentQuestionId();
+  clearAnswerContainer();
 
   current++;
   lifeline = false;
@@ -157,25 +163,36 @@ function nextQuestion(e) {
 }
 
 function previousQuestion() {
-  const currentQuestionNumber = document.getElementById('current-question');
-  currentQuestionNumber.setAttribute('id', '');
+  if (userAnswers[current].answer) {
+    addAnsweredClass();
+  }
 
-  const answersContainer = document.getElementById('answers');
-  answersContainer.innerHTML = '';
+  clearCurrentQuestionId();
+  clearAnswerContainer();
 
   current--;
   renderQuizData();
 }
 
-function selectQuestion() {
+function clearCurrentQuestionId() {
   const currentQuestionNumber = document.getElementById('current-question');
-  currentQuestionNumber.setAttribute('id', '');
+  currentQuestionNumber.removeAttribute('id');
+}
 
+function clearAnswerContainer() {
   const answersContainer = document.getElementById('answers');
   answersContainer.innerHTML = '';
+}
 
-  const numbers = document.getElementById('question-numbers');
+function selectQuestion(selectedNumber) {
+  if (userAnswers[current].answer) {
+    addAnsweredClass();
+  }
 
+  clearCurrentQuestionId();
+  clearAnswerContainer();
+
+  current = selectedNumber - 1;
   renderQuizData();
 }
 
