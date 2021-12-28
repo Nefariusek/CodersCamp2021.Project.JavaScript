@@ -95,3 +95,17 @@ button.menuButton {
     width: min-content;
   }
 }
+
+button.resetButton {
+  position: fixed;
+  bottom: 2%;
+  right: 4%;
+}
+
+@media (max-width: 960px) {
+  button.resetButton {
+    bottom: 0;
+    right: 0;
+    width: min-content;
+  }
+}
