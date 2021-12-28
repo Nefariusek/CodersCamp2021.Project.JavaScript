@@ -1,12 +1,18 @@
 import './AdoptionPage.css';
-import Button from '../../../../Project1.JS/src/components/Button/Button.js';
+import Button from '../../components/Button/Button';
 
 const PAGE_TITLE = 'ADOPTION';
+const MAIN_TEXT = 'CHOOSE YOUR NEW PET:';
 const MAIN_ANIMAL = { pathOrUrl: './bird.png', alt: 'flying bird' };
+const ANIMAL_TYPES = [
+  { type: 'cat', pathOrUrl: 'https://www.petfinder.com/' },
+  { type: 'dog', pathOrUrl: 'https://www.petfinder.com/' },
+  { type: 'bird', pathOrUrl: 'https://www.petfinder.com/' },
+];
 
 export function renderAdoptionPage() {
   renderAdoptionPageView();
-  renderMainPageButton();
+  renderNavigation();
 }
 
 function renderAdoptionPageView() {
@@ -18,16 +24,11 @@ function renderAdoptionPageView() {
       </div>
  
       <div class="text-container">
-        <p>CHOOSE YOUR NEW PET:</p>
+        <p>${MAIN_TEXT}</p>
       </div>
 
-      <nav class="options-container">
-        <ul>
-          <li><a href="https://www.petfinder.com/" class="option cat"><span>CAT</span></a></li>
-          <li><a href="https://www.petfinder.com/" class="option dog"><span>DOG</span></a></li>
-          <li><a href="https://www.petfinder.com/" class="option bird"><span>BIRD</span></a></li>
-        </ul>
-       </nav>
+      <div class="navigation-container">
+      </div>
 
       <div class="main-animal">
         <img src="${MAIN_ANIMAL.pathOrUrl}" alt="${MAIN_ANIMAL.alt}" /></div>
@@ -36,14 +37,23 @@ function renderAdoptionPageView() {
     </div>`;
 }
 
-function renderMainPageButton() {
-  const optionsContainer = document.querySelector('.options-container');
+function renderNavigation() {
+  const navContainer = document.querySelector('.navigation-container');
+  const animalList = document.createElement('ul');
+
+  ANIMAL_TYPES.forEach((animal) => {
+    const animalOption = document.createElement('li');
+    animalOption.innerHTML = `<a href="${animal.pathOrUrl}" class="option ${
+      animal.type
+    }"><span>${animal.type.toUpperCase()}</span></a>`;
+    animalList.append(animalOption);
+  });
 
   const goToMainPage = Button('Main Page', 'go-home', false, 'click', onMainPageClick);
 
-  optionsContainer.append(goToMainPage);
+  navContainer.append(animalList, goToMainPage);
 }
 
-const onMainPageClick = (e) => {
+const onMainPageClick = () => {
   window.location.hash = '';
 };

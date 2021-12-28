@@ -24,12 +24,12 @@
   color: white;
 }
 
-/*********** OPTIONS ******************/
-.adoption-page .options-container {
+/*********** NAVIGATION ******************/
+.adoption-page .navigation-container {
   margin: 10px 0;
 }
 
-.adoption-page .options-container ul {
+.adoption-page .navigation-container ul {
   grid-area: options;
   display: flex;
   justify-content: space-around;
@@ -40,17 +40,16 @@
 }
 
 @media (max-width: 960px) {
-  .adoption-page .options-container ul {
+  .adoption-page .navigation-container ul {
     flex-direction: column;
   }
 
-  .adoption-page .options-container li {
+  .adoption-page .navigation-container li {
     margin-bottom: 20px;
   }
 }
 
-.adoption-page .options-container a {
-  background-color: var(--btn-color);
+.adoption-page .navigation-container a {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -60,54 +59,49 @@
   border-radius: 10px;
 }
 
-.adoption-page .options-container .dog {
-  /* background: url(../public/adoption-dog.jpg) no-repeat; */
+.adoption-page .navigation-container .dog {
   background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(./adoption-dog.jpg), no-repeat;
   background-size: 290px;
   background-position: center center;
-  /* opacity: 0.5; */
 }
 
-.adoption-page .options-container .dog:hover {
-  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-dog.jpg), no-repeat,
-    center center;
+.adoption-page .navigation-container .dog:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-dog.jpg), no-repeat;
   background-size: 290px;
   background-position: center center;
   transform: scale(1.1);
   transition: ease-in-out all 0.4s;
 }
 
-.adoption-page .options-container .cat {
+.adoption-page .navigation-container .cat {
   background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(./adoption-cat.jpg), no-repeat;
   background-size: 290px;
   background-position: center center;
 }
 
-.adoption-page .options-container .cat:hover {
-  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-cat.jpg), no-repeat,
-    center center;
+.adoption-page .navigation-container .cat:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-cat.jpg), no-repeat;
   background-size: 290px;
   background-position: center center;
   transform: scale(1.1);
   transition: ease-in-out all 0.4s;
 }
 
-.adoption-page .options-container .bird {
+.adoption-page .navigation-container .bird {
   background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(./adoption-bird.jpg), no-repeat;
   background-size: 290px;
   background-position: center center;
 }
 
-.adoption-page .options-container .bird:hover {
-  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-bird.jpg), no-repeat,
-    center center;
+.adoption-page .navigation-container .bird:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-bird.jpg), no-repeat;
   background-size: 300px;
   background-position: center center;
   transform: scale(1.1);
   transition: ease-in-out all 0.4s;
 }
 
-.adoption-page .options-container span {
+.adoption-page .navigation-container span {
   color: white;
   font-size: 40px;
   font-weight: 900;
