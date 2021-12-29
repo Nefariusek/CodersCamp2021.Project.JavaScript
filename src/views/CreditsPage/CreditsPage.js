@@ -1,6 +1,6 @@
 import './CreditsPage.css';
-import Button from '../../components/Button/Button.js';
-import Bubble from '../../components/Bubble/Bubble.js';
+import Button from '../../components/Button/Button';
+import Bubble from '../../components/Bubble/Bubble';
 
 const PAGE_TITLE = 'CREDITS';
 const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
@@ -82,7 +82,7 @@ function renderInfoSpace() {
   return infoSpace;
 }
 
-function renderBubbles(infoSpace) {
+function renderBubbles() {
   const infoBubbles = document.createElement('div');
   infoBubbles.classList.add('bubbles');
 
@@ -92,7 +92,7 @@ function renderBubbles(infoSpace) {
   return infoBubbles;
 }
 
-function renderAnimal(infoSpace) {
+function renderAnimal() {
   const infoAnimal = document.createElement('div');
   infoAnimal.classList.add('animal');
 

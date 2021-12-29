@@ -1,4 +1,4 @@
-export async function retrieveAnimalFact() {
+export default async function retrieveAnimalFact() {
   const animalTypes = ['dog', 'cat'];
   const randomNumber = randomIntFromInterval(0, animalTypes.length - 1);
   const randomAnimalType = animalTypes[randomNumber];
@@ -17,7 +17,8 @@ export async function retrieveAnimalFact() {
     };
     return factResult;
   } catch (e) {
-    console.error('Error while retrieving the fact from API. ' + e);
+    console.error(`Error while retrieving the fact from API. ${e}`);
+    return { fact: null, imageUrl: null };
   }
 }
 

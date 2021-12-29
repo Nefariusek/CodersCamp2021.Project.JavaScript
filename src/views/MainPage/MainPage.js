@@ -1,9 +1,9 @@
 import './MainPage.css';
-import Button from '../../components/Button/Button.js';
-import Bubble from '../../components/Bubble/Bubble.js';
+import Button from '../../components/Button/Button';
+import Bubble from '../../components/Bubble/Bubble';
 import ImageFact from '../../model/ImageFact.js';
-import { retrieveAnimalFact } from '../../api/FactsController.js';
-import { onNavigationChange } from '../../components/router/Router.js';
+import retrieveAnimalFact from '../../api/FactsController';
+import { onNavigationChange } from '../../components/router/Router';
 
 const PAGE_TITLE = 'ANIMALIADA';
 const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
