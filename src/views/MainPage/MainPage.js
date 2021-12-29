@@ -121,10 +121,8 @@ function createImage(domElem, obj) {
 async function getAnimalFact() {
   const newImageFact = new ImageFact();
   const imageFact = await retrieveAnimalFact();
-  if (imageFact) {
-    newImageFact.sentence = imageFact.fact;
-    newImageFact.pathOrUrl = imageFact.imageUrl;
-  }
+  newImageFact.sentence = imageFact.fact;
+  newImageFact.pathOrUrl = imageFact.imageUrl;
   return newImageFact;
 }
 
