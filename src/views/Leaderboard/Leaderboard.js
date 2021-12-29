@@ -5,8 +5,9 @@ import '../../components/Button/Button.css';
 
 export function renderLeaderboard() {
   renderPodium();
-  getScoreFromLocalStorage();
   createMenuButton();
+  renderResetBtn();
+  getScoreFromLocalStorage();
 }
 
 function renderPodium() {
@@ -44,6 +45,8 @@ function renderPodium() {
   </div>
   <div id="mainMenu">
   </div>
+  <div id="resetButton">
+  </div>
   
  </div> 
   `;
@@ -73,4 +76,14 @@ function createMenuButton() {
 
 function navigateToMenu() {
   window.location.hash = '';
+}
+
+function resetLocalStorage() {
+  localStorage.removeItem('quizScores');
+  renderLeaderboard();
+}
+
+function renderResetBtn() {
+  const resetButton = document.getElementById('resetButton');
+  resetButton.append(Button('RESET SCORE', 'resetButton', false, 'click', resetLocalStorage));
 }
