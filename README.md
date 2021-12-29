@@ -19,4 +19,11 @@ To stop local press `Ctrl+C`
 
 **Credits**
 
-Graphics Designed By karacis studio From `<a href="https://lovepik.com/image-450013302/cute-koala-cartoon-vector.html">LovePik.com</a>`
+Graphics Designed by:
+* karacis studio from <a href="https://lovepik.com/image-450013302/cute-koala-cartoon-vector.html">LovePik.com</a>
+* Damian Orellana from <a href="https://dribbble.com/damianthebear">dribbble.com/damianthebear</a>
+
+Photos by:
+* <a href="https://unsplash.com/@ralu_gal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ralu Gal</a> on <a href="https://unsplash.com/s/photos/dog?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+* <a href="https://unsplash.com/@alvannee?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alvan Nee</a> on <a href="https://unsplash.com/s/photos/cat?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+* <a href="https://unsplash.com/@yazoone?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">yaz00ne alani</a> on <a href="https://unsplash.com/s/photos/parrot?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
