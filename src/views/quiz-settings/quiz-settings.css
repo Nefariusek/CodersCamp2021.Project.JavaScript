@@ -51,7 +51,6 @@ input[type='radio'] {
   -webkit-appearance: none;
   width: 100%;
   max-width: 450px;
-  min-height: 50px;
 }
 
 input[type='radio']:checked {
@@ -66,7 +65,6 @@ input[type='radio']:hover {
 
 input[type='submit']:active {
   background-color: #3e505b;
-  color: white;
 }
 
 form p {
@@ -87,16 +85,28 @@ form p {
   background-color: #3e505b;
 }
 
-#submit {
+#submitButton {
+  margin-bottom: 20px;
+  height: min-content !important;
+  padding: 15px 32px;
+  width: 200px;
+  position: fixed;
+  bottom: 2%;
+  right: 4%;
   font-size: 16px;
-  width: 40%;
-  margin-top: 100px;
-  color: white;
+  font-weight: bold;
 }
 
-#submit:hover {
-  width: 40%;
-  margin-top: 100px;
+.settingsMenuButton {
+  position: fixed;
+  bottom: 2%;
+  left: 4%;
+}
+
+.settingsMenuButton:hover {
+  background-color: #3e505b;
+}
+#submitButton:hover {
   background-color: #3e505b;
 }
 
@@ -116,11 +126,17 @@ p {
     gap: 10px;
   }
 
-  #submit {
-    position: fixed;
-    bottom: 4%;
+  #submitButton {
+    top: 470px;
     width: 80%;
-    background-color: #455757;
+    left: 10%;
+  }
+
+  .settingsMenuButton {
+    top: 540px;
+    width: 80%;
+    left: 10%;
+    height: min-content;
   }
 
   label {
