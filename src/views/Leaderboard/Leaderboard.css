@@ -93,8 +93,20 @@ button.resetButton {
 }
 
 @media (max-width: 960px) {
-  button.menuButton {
-    position: relative;
+  .podiumNick {
+    font-size: 1rem;
+  }
+  .listItem {
+    font-size: 0.8rem;
+  }
+
+  #scorePageTitle {
+    font-size: 3rem;
+  }
+
+  button.leaderboardMenuButton {
+    bottom: 0;
+    left: 0;
     width: min-content;
   }
   td.step div:first-of-type {
