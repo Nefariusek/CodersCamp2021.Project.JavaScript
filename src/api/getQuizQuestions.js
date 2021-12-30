@@ -7,7 +7,7 @@ const questionsApis = {
   CATS: { url: 'https://api.thecatapi.com/v1/breeds', api_key: '2d4cf1ee-1883-474f-80ab-f931262fd79b' },
 };
 
-export const getQuizQuestions = async (animal, numberOfQuestions) => {
+export const getQuizQuestions = async (animal) => {
   const questions = [];
   const data = await retrieveQuizQuestions(animal);
 
@@ -36,8 +36,10 @@ const mapDataToQuestions = (data) => {
   const allQuestions = getQuestionsFromData(data);
   const quizQuestions = [];
   allQuestions.forEach((q) => {
-    const question = new Question(q.img, q.name, getFalseAnswers(q.name, allQuestions), QUESTION_TEXT);
-    quizQuestions.push(question);
+    if (q.img !== undefined) {
+      const question = new Question(q.img, q.name, getFalseAnswers(q.name, allQuestions), QUESTION_TEXT);
+      quizQuestions.push(question);
+    }
   });
 
   return quizQuestions;
