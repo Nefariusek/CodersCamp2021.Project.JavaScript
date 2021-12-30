@@ -4,7 +4,6 @@ import '../../components/Button/Button.css';
 
 import { QuizSettings } from '../quiz-settings/quiz-settings';
 import { userAnswers } from '../QuizView/quizView';
-import Answer from '../../components/Answer/Answer';
 
 export function renderScorePage() {
   const recentUserScore = getCurrentScore(userAnswers);
