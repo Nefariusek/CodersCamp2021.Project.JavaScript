@@ -67,7 +67,7 @@ function renderBubblesStructure() {
 }
 
 function createFactBubble() {
-  const bubbleFact = Bubble('higher', 'Did you know?', undefined, true);
+  const bubbleFact = Bubble('higher', '', undefined, true);
   bubbleFact.classList.add('fact');
   return bubbleFact;
 }
@@ -85,37 +85,49 @@ function renderBubblesContent() {
 
 async function renderFactBubbleContent() {
   const factObj = await getAnimalFact();
-  renderAnimalFact(factObj);
-  renderAnimalFactImg(factObj);
+  const imgElem = new Image();
+  imgElem.addEventListener(
+    'load',
+    () => {
+      renderAnimalFact(factObj);
+    },
+    false,
+  );
+  renderAnimalFactImg(factObj, imgElem);
 }
 
 function renderAdoptionBubbleContent() {
   renderAnimalAdoptionImg();
 }
 
-async function renderAnimalFact(factObj) {
-  const factSentenceItem = document.querySelector('.bubble.fact .bubble-text');
+function renderAnimalFact(factObj) {
+  const factSentenceSpace = document.querySelector('.bubble.fact .bubble-text');
+  const factHeader = document.querySelector('.bubble.fact .bubble-text h2');
   const factSentence = document.createElement('p');
 
+  factHeader.innerText = 'Did you know?';
   factSentence.innerText = factObj.sentence;
-  factSentenceItem.append(factSentence);
+  factSentenceSpace.append(factSentence);
 }
 
-function renderAnimalFactImg(factObj) {
-  const factImageItem = document.querySelector('.bubble.fact .bubble-img');
-  createImage(factImageItem, factObj);
+function renderAnimalFactImg(factObj, imgElem) {
+  const factBubble = document.querySelector('.bubble.fact');
+  factBubble.classList.add('fade-in');
+  const factImageSpace = document.querySelector('.bubble.fact .bubble-img');
+
+  createImage(factImageSpace, factObj, imgElem);
 }
 
 function renderAnimalAdoptionImg() {
-  const adoptionImageItem = document.querySelector('.bubble.adoption .bubble-img');
-  createImage(adoptionImageItem, AdoptionBubbleContent.IMG);
+  const adoptionImageSpace = document.querySelector('.bubble.adoption .bubble-img');
+  createImage(adoptionImageSpace, AdoptionBubbleContent.IMG);
 }
 
-function createImage(domElem, obj) {
-  const imgElem = document.createElement('img');
-  imgElem.src = obj.pathOrUrl;
-  imgElem.alt = obj.alt;
-  domElem.append(imgElem);
+function createImage(domElem, obj, imgElem) {
+  const img = imgElem || document.createElement('img');
+  img.src = obj.pathOrUrl;
+  img.alt = obj.alt;
+  domElem.append(img);
 }
 
 async function getAnimalFact() {

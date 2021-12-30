@@ -8,7 +8,7 @@ import './Bubble.css';
  * @param {string} header - header text in bubble
  * @param {Array.<string>} sentences - optional additional sentences in the bubble
  */
-export default function Bubble(bubblePosition, header, sentences = [], hasImage = false) {
+export default function Bubble(bubblePosition, header = '', sentences = [], hasImage = false) {
   const bubble = document.createElement('div');
   bubble.classList.add('bubble', bubblePosition);
 
