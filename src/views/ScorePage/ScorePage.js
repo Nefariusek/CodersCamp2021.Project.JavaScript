@@ -47,7 +47,9 @@ function renderNickForm() {
   nickFormContainer.setAttribute('id', 'nickFormDiv');
   const input = document.createElement('input');
   input.setAttribute('id', 'nickname');
-  input.setAttribute('value', 'NICKNAME');
+  input.setAttribute('placeholder', 'Enter Nickname');
+  input.setAttribute('type', 'text');
+  input.setAttribute('style', 'text-transform: uppercase');
   nickFormContainer.append(input, Button('SUBMIT', 'saveScoreBtn', false, 'click', saveQuizScore));
   return nickFormContainer;
 }
