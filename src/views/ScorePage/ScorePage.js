@@ -4,7 +4,6 @@ import '../../components/Button/Button.css';
 
 import { QuizSettings } from '../quiz-settings/quiz-settings';
 import { userAnswers } from '../QuizView/quizView';
-import Answer from '../../components/Answer/Answer';
 
 export function renderScorePage() {
   const recentUserScore = getCurrentScore(userAnswers);
@@ -28,7 +27,7 @@ function renderScore(score) {
   const finalScore = document.createElement('h2');
   finalScore.setAttribute('id', 'finalScore');
   congratsText.innerText = 'CONGRATS!';
-  scoreText.innerText = 'YOUR SCORE IS: ' + score;
+  scoreText.innerText = `YOUR SCORE IS: ${score}`;
   container.append(congratsText, scoreText, finalScore);
   return container;
 }
@@ -48,7 +47,9 @@ function renderNickForm() {
   nickFormContainer.setAttribute('id', 'nickFormDiv');
   const input = document.createElement('input');
   input.setAttribute('id', 'nickname');
-  input.setAttribute('value', 'NICKNAME');
+  input.setAttribute('placeholder', 'Enter Nickname');
+  input.setAttribute('type', 'text');
+  input.setAttribute('style', 'text-transform: uppercase');
   nickFormContainer.append(input, Button('SUBMIT', 'saveScoreBtn', false, 'click', saveQuizScore));
   return nickFormContainer;
 }
@@ -59,11 +60,10 @@ function getCurrentScore(Answers) {
 
 function nicknameValidation() {
   const input = document.getElementById('nickname');
-  if (input.value != '' && input.value != 'NICKNAME') {
+  if (input.value !== '' && input.value !== 'NICKNAME') {
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
 function saveQuizScore() {
@@ -81,12 +81,11 @@ function saveQuizScore() {
     };
     quizScores.push(score);
     localStorage.setItem('quizScores', JSON.stringify(quizScores));
-    nickname.value = null;
   }
 }
 
 function renderMenuButton() {
-  return Button('MENU', 'menuButton', false, 'click', goToMainPage);
+  return Button('MENU', 'scorePageMenuButton', false, 'click', goToMainPage);
 }
 
 function renderPlayAgainButton() {

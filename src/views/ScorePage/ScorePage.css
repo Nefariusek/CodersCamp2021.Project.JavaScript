@@ -28,11 +28,18 @@ h2 {
   color: white;
 }
 
-input {
+#nickname::placeholder {
+  color: lightgray;
   text-align: center;
+  font-weight: lighter;
 }
 
-.menuButton {
+input {
+  text-align: center;
+  font-weight: bold;
+}
+
+.scorePageMenuButton {
   position: fixed;
   bottom: 2%;
   left: 4%;
@@ -47,7 +54,7 @@ input {
   height: 70px;
 }
 @media only screen and (min-device-width: 280px) and (max-device-width: 480px) {
-  .menuButton {
+  .scorePageMenuButton {
     position: relative;
     align-self: center;
     bottom: 0%;

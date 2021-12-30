@@ -1,6 +1,6 @@
 import { QuizSettings } from '../quiz-settings/quiz-settings';
 import { createTimer, startTimer, stopTimer } from '../../components/timer/quiz-timer';
-import { getRandomQuizQuestions } from '../../model/randomizer.js';
+import { getRandomQuizQuestions } from '../../model/randomizer';
 import { renderChoiceModal } from '../confirmChoiceModal/confirmChoiceModal';
 import Button from '../../components/Button/Button';
 import Answer from '../../components/Answer/Answer';
@@ -64,6 +64,15 @@ function createLifeline() {
   return lifelineContainer;
 }
 
+function createMenuButton() {
+  const menuButton = Button('MENU', 'quizViewMenuButton', null, 'click', navigateToMenu);
+  return menuButton;
+}
+
+function navigateToMenu() {
+  window.location.hash = '';
+}
+
 function createLayout() {
   const container = document.createElement('div');
   container.setAttribute('id', 'quizView');
@@ -89,6 +98,7 @@ function createLayout() {
     createRightArrow(),
     createLeftArrow(),
     answers,
+    createMenuButton(),
   );
 
   return container;
