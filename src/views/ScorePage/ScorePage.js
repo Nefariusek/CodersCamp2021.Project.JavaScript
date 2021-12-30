@@ -20,6 +20,7 @@ export function renderScorePage() {
   );
   document.querySelector('#app').append(container);
   renderCongratsMessage(recentUserScore, totalNumber);
+  document.querySelector('.saveScoreBtn').disabled = true;
 }
 
 function renderScore(score, totalNumber) {
@@ -73,6 +74,9 @@ function renderNickForm() {
   input.setAttribute('placeholder', 'Enter Nickname');
   input.setAttribute('type', 'text');
   input.setAttribute('style', 'text-transform: uppercase');
+  input.addEventListener('keyup', () => {
+    document.querySelector('.saveScoreBtn').disabled = !input.value;
+  });
   nickFormContainer.append(input, Button('SUBMIT', 'saveScoreBtn', false, 'click', saveQuizScore));
   return nickFormContainer;
 }
@@ -83,7 +87,7 @@ function getCurrentScore(Answers) {
 
 function nicknameValidation() {
   const input = document.getElementById('nickname');
-  if (input.value !== '' && input.value !== 'NICKNAME') {
+  if (input.value !== '') {
     return true;
   }
   return false;
@@ -92,20 +96,20 @@ function nicknameValidation() {
 function saveQuizScore() {
   const quizScores = JSON.parse(localStorage.getItem('quizScores')) || [];
   const recentUserScore = getCurrentScore(userAnswers);
-  if (!nicknameValidation()) {
-    // eslint-disable-next-line no-alert
-    alert('Type in your nickname!');
-  } else {
+  const nickName = document.getElementById('nickname');
+  if (nicknameValidation()) {
     const score = {
       SCORE: recentUserScore,
       ABOUT: QuizSettings.quizAbout,
       NUMBER: QuizSettings.questionsNum,
       TYPE: QuizSettings.questionsType,
-      NAME: document.getElementById('nickname').value,
+      NAME: nickName.value,
     };
     quizScores.push(score);
     localStorage.setItem('quizScores', JSON.stringify(quizScores));
-    nickname.value = null;
+    nickName.value = null;
+    nickName.disabled = true;
+    document.querySelector('.saveScoreBtn').disabled = true;
   }
 }
 
