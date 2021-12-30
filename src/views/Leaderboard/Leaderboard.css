@@ -80,20 +80,42 @@ td.step div:first-of-type {
   color: whitesmoke;
 }
 
-/*mainMenuBtn*/
-
-button.menuButton {
+.leaderboardMenuButton {
   position: fixed;
   bottom: 2%;
   left: 4%;
 }
 
+button.resetButton {
+  position: fixed;
+  bottom: 2%;
+  right: 4%;
+}
+
 @media (max-width: 960px) {
-  button.menuButton {
-    position: relative;
+  .podiumNick {
+    font-size: 1rem;
+  }
+  .listItem {
+    font-size: 0.8rem;
+  }
+
+  #scorePageTitle {
+    font-size: 3rem;
+  }
+
+  button.leaderboardMenuButton {
+    bottom: 0;
+    left: 0;
     width: min-content;
   }
   td.step div:first-of-type {
     width: 100px;
+  }
+
+  button.resetButton {
+    bottom: 0;
+    right: 0;
+    width: min-content;
   }
 }

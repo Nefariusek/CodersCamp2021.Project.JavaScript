@@ -11,28 +11,38 @@ h2 {
 
 #nickFormDiv {
   margin-top: 10px;
+  display: flex;
   justify-content: center;
   width: 70%;
   margin: auto;
-  display: flex;
   gap: 5%;
 }
 
 #nickname {
   border: 0px solid;
-  width: 400px;
+  width: 250px;
   height: 48px;
 }
 
 #nickname:hover {
   color: white;
 }
+#nickname:disabled {
+  opacity: 0;
+}
+
+#nickname::placeholder {
+  color: lightgray;
+  text-align: center;
+  font-weight: lighter;
+}
 
 input {
   text-align: center;
+  font-weight: bold;
 }
 
-.menuButton {
+.scorePageMenuButton {
   position: fixed;
   bottom: 2%;
   left: 4%;
@@ -43,11 +53,16 @@ input {
   bottom: 2%;
   right: 4%;
 }
+
+.saveScoreBtn:disabled {
+  opacity: 0;
+}
+
 #finalScore {
   height: 70px;
 }
 @media only screen and (min-device-width: 280px) and (max-device-width: 480px) {
-  .menuButton {
+  .scorePageMenuButton {
     position: relative;
     align-self: center;
     bottom: 0%;

@@ -42,18 +42,21 @@ body {
 /************ HEADER *****************/
 
 .main-page .header,
+.adoption-page .header,
 .credits-page .header {
   grid-area: header;
 }
 
 .main-page .header h1,
+.adoption-page .header h1,
 .credits-page .header h1 {
-  margin: 50px 0;
+  margin: 20px 0;
   font-size: 8vw;
 }
 
 @media (max-width: 480px) {
   .main-page .header h1,
+  .adoption-page .header h1,
   .credits-page .header h1 {
     font-size: 38px;
   }
@@ -64,7 +67,6 @@ body {
 .credits-page .info {
   grid-area: info;
   display: flex;
-  justify-content: space-between;
   align-items: start;
   flex-direction: row;
 }

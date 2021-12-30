@@ -7,8 +7,8 @@ import './Bubble.css';
  * @param {boolean} hasImage - whether the bubble will contain an image
  * @param {string} header - header text in bubble
  * @param {Array.<string>} sentences - optional additional sentences in the bubble
- **/
-export default function Bubble(bubblePosition, hasImage = false, header, sentences = []) {
+ */
+export default function Bubble(bubblePosition, header, sentences = [], hasImage = false) {
   const bubble = document.createElement('div');
   bubble.classList.add('bubble', bubblePosition);
 
