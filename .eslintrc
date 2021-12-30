@@ -23,6 +23,7 @@
     ],
     "no-use-before-define": "off",
     "no-plusplus": "off",
-    "import/no-cycle": "off"
+    "import/no-cycle": "off",
+    "no-underscore-dangle": 0
   }
 }
