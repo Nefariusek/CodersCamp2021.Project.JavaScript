@@ -4,7 +4,6 @@ import './confirmChoiceModal.css';
 import { userAnswers } from '../QuizView/quizView';
 
 export function renderChoiceModal() {
-  console.log(userAnswers);
   const choiceModal = document.createElement('div');
   choiceModal.setAttribute('id', 'choiceModal');
   choiceModal.append(renderQuestion(), renderInfo());

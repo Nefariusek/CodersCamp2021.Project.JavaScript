@@ -113,7 +113,7 @@ function saveQuizScore() {
 }
 
 function renderMenuButton() {
-  return Button('MENU', 'menuButton', false, 'click', goToMainPage);
+  return Button('MENU', 'scorePageMenuButton', false, 'click', goToMainPage);
 }
 
 function renderPlayAgainButton() {

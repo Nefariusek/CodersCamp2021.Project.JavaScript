@@ -1,4 +1,4 @@
-import Fact from '../model/Fact';
+import Fact from './Fact';
 
 const ImageFactDefaults = {
   IMG_URL: 'http://placekitten.com/400/500',
@@ -7,6 +7,7 @@ const ImageFactDefaults = {
 
 export default class ImageFact extends Fact {
   _pathOrUrl = ImageFactDefaults.IMG_URL;
+
   _alt = ImageFactDefaults.ALT;
 
   get alt() {
@@ -14,7 +15,7 @@ export default class ImageFact extends Fact {
   }
 
   set alt(value) {
-    this._alt = value ? value : ImageFactDefaults.ALT;
+    this._alt = value || ImageFactDefaults.ALT;
   }
 
   get pathOrUrl() {
@@ -22,6 +23,6 @@ export default class ImageFact extends Fact {
   }
 
   set pathOrUrl(value) {
-    this._pathOrUrl = value ? value : ImageFactDefaults.IMG_URL;
+    this._pathOrUrl = value || ImageFactDefaults.IMG_URL;
   }
 }

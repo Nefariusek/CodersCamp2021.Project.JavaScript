@@ -1,9 +1,9 @@
 import './MainPage.css';
-import Button from '../../components/Button/Button.js';
-import Bubble from '../../components/Bubble/Bubble.js';
-import ImageFact from '../../model/ImageFact.js';
-import { retrieveAnimalFact } from '../../api/FactsController.js';
-import { onNavigationChange } from '../../components/router/Router.js';
+import Button from '../../components/Button/Button';
+import Bubble from '../../components/Bubble/Bubble';
+import ImageFact from '../../model/ImageFact';
+import { retrieveAnimalFact } from '../../api/FactsController';
+import { onNavigationChange } from '../../components/router/Router';
 
 const PAGE_TITLE = 'ANIMALIADA';
 const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
@@ -67,13 +67,13 @@ function renderBubblesStructure() {
 }
 
 function createFactBubble() {
-  const bubbleFact = Bubble('higher', true, 'Did you know?');
+  const bubbleFact = Bubble('higher', 'Did you know?', undefined, true);
   bubbleFact.classList.add('fact');
   return bubbleFact;
 }
 
 function createAdoptionBubble() {
-  const bubbleAdoption = Bubble('lower', true, AdoptionBubbleContent.HEADER_TEXT, AdoptionBubbleContent.SENTENCES);
+  const bubbleAdoption = Bubble('lower', AdoptionBubbleContent.HEADER_TEXT, AdoptionBubbleContent.SENTENCES, true);
   bubbleAdoption.classList.add('adoption');
   return bubbleAdoption;
 }
@@ -121,10 +121,8 @@ function createImage(domElem, obj) {
 async function getAnimalFact() {
   const newImageFact = new ImageFact();
   const imageFact = await retrieveAnimalFact();
-  if (imageFact) {
-    newImageFact.sentence = imageFact.fact;
-    newImageFact.pathOrUrl = imageFact.imageUrl;
-  }
+  newImageFact.sentence = imageFact.fact;
+  newImageFact.pathOrUrl = imageFact.imageUrl;
   return newImageFact;
 }
 
