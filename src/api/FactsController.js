@@ -1,4 +1,4 @@
-export default async function retrieveAnimalFact() {
+export async function retrieveAnimalFact() {
   const animalTypes = ['dog', 'cat'];
   const randomNumber = randomIntFromInterval(0, animalTypes.length - 1);
   const randomAnimalType = animalTypes[randomNumber];
