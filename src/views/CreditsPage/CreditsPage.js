@@ -86,7 +86,7 @@ function renderBubbles() {
   const infoBubbles = document.createElement('div');
   infoBubbles.classList.add('bubbles');
 
-  const infoBubble = Bubble('higher', false, CreditsBubbleContent.HEADER_TEXT, [CreditsBubbleContent.SENTENCE]);
+  const infoBubble = Bubble('higher', CreditsBubbleContent.HEADER_TEXT, [CreditsBubbleContent.SENTENCE], false);
   infoBubbles.append(infoBubble);
 
   return infoBubbles;

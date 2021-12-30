@@ -67,13 +67,13 @@ function renderBubblesStructure() {
 }
 
 function createFactBubble() {
-  const bubbleFact = Bubble('higher', true, 'Did you know?');
+  const bubbleFact = Bubble('higher', 'Did you know?', undefined, true);
   bubbleFact.classList.add('fact');
   return bubbleFact;
 }
 
 function createAdoptionBubble() {
-  const bubbleAdoption = Bubble('lower', true, AdoptionBubbleContent.HEADER_TEXT, AdoptionBubbleContent.SENTENCES);
+  const bubbleAdoption = Bubble('lower', AdoptionBubbleContent.HEADER_TEXT, AdoptionBubbleContent.SENTENCES, true);
   bubbleAdoption.classList.add('adoption');
   return bubbleAdoption;
 }

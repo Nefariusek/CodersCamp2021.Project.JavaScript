@@ -7,7 +7,8 @@ export default class Fact {
   get sentence() {
     return this._sentence;
   }
+
   set sentence(value) {
-    this._sentence = value ? value : DEFAULT_FACT;
+    this._sentence = value || DEFAULT_FACT;
   }
 }
