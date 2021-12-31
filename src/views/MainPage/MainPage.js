@@ -85,38 +85,38 @@ function renderBubblesContent() {
 }
 
 async function renderFactBubbleContent() {
-  const factObj = await getAnimalFact();
-  const imgElem = new Image();
-  imgElem.addEventListener(
+  const imageFact = await getAnimalImageFact();
+  const imageObject = new Image();
+  imageObject.addEventListener(
     'load',
     () => {
-      renderAnimalFact(factObj);
+      renderAnimalFact(imageFact);
     },
     false,
   );
-  renderAnimalFactImg(factObj, imgElem);
+  renderAnimalFactImg(imageFact, imageObject);
 }
 
 function renderAdoptionBubbleContent() {
   renderAnimalAdoptionImg();
 }
 
-function renderAnimalFact(factObj) {
+function renderAnimalFact(fact) {
   const factSentenceSpace = document.querySelector('.bubble.fact .bubble-text');
   const factHeader = factSentenceSpace.querySelector('h2');
   const factSentence = document.createElement('p');
 
   factHeader.innerText = FACT_HEADER;
-  factSentence.innerText = factObj.sentence;
+  factSentence.innerText = fact.sentence;
   factSentenceSpace.append(factSentence);
 }
 
-function renderAnimalFactImg(factObj, imgElem) {
+function renderAnimalFactImg(imageFact, imageObject) {
   const factBubble = document.querySelector('.bubble.fact');
   const factImageSpace = document.querySelector('.bubble.fact .bubble-img');
-  createImage(factImageSpace, factObj, imgElem);
+  createImage(factImageSpace, imageFact, imageObject);
 
-  imgElem.addEventListener(
+  imageObject.addEventListener(
     'load',
     () => {
       factBubble.classList.remove('invisible');
@@ -131,14 +131,14 @@ function renderAnimalAdoptionImg() {
   createImage(adoptionImageSpace, AdoptionBubbleContent.IMG);
 }
 
-function createImage(domElem, obj, imgElem) {
-  const img = imgElem || document.createElement('img');
-  img.src = obj.pathOrUrl;
-  img.alt = obj.alt;
-  domElem.append(img);
+function createImage(domElement, imageData, imageElement) {
+  const image = imageElement || document.createElement('img');
+  image.src = imageData.pathOrUrl;
+  image.alt = imageData.alt;
+  domElement.append(image);
 }
 
-async function getAnimalFact() {
+async function getAnimalImageFact() {
   const newImageFact = new ImageFact();
   const imageFact = await retrieveAnimalFact();
   newImageFact.sentence = imageFact.fact;
