@@ -7,6 +7,7 @@ import { onNavigationChange } from '../../components/router/Router';
 
 const PAGE_TITLE = 'ANIMALIADA';
 const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
+const FACT_HEADER = 'Did you know?';
 const AdoptionBubbleContent = {
   IMG: { pathOrUrl: 'http://placekitten.com/300/400', alt: 'the animal to adoption' },
   HEADER_TEXT: "Or maybe you'd like to adopt your own pet?",
@@ -68,7 +69,7 @@ function renderBubblesStructure() {
 
 function createFactBubble() {
   const bubbleFact = Bubble('higher', '', undefined, true);
-  bubbleFact.classList.add('fact');
+  bubbleFact.classList.add('fact', 'invisible');
   return bubbleFact;
 }
 
@@ -102,20 +103,27 @@ function renderAdoptionBubbleContent() {
 
 function renderAnimalFact(factObj) {
   const factSentenceSpace = document.querySelector('.bubble.fact .bubble-text');
-  const factHeader = document.querySelector('.bubble.fact .bubble-text h2');
+  const factHeader = factSentenceSpace.querySelector('h2');
   const factSentence = document.createElement('p');
 
-  factHeader.innerText = 'Did you know?';
+  factHeader.innerText = FACT_HEADER;
   factSentence.innerText = factObj.sentence;
   factSentenceSpace.append(factSentence);
 }
 
 function renderAnimalFactImg(factObj, imgElem) {
   const factBubble = document.querySelector('.bubble.fact');
-  factBubble.classList.add('fade-in');
   const factImageSpace = document.querySelector('.bubble.fact .bubble-img');
-
   createImage(factImageSpace, factObj, imgElem);
+
+  imgElem.addEventListener(
+    'load',
+    () => {
+      factBubble.classList.remove('invisible');
+      factBubble.classList.add('fade-in');
+    },
+    false,
+  );
 }
 
 function renderAnimalAdoptionImg() {

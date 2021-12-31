@@ -20,9 +20,9 @@ export default function Bubble(bubblePosition, header = '', sentences = [], hasI
 
 function renderImageContainer(bubble, hasImage) {
   if (hasImage) {
-    const bubbleImgContainer = document.createElement('div');
-    bubbleImgContainer.classList.add('bubble-img');
-    bubble.append(bubbleImgContainer);
+    const bubbleImageContainer = document.createElement('div');
+    bubbleImageContainer.classList.add('bubble-img');
+    bubble.append(bubbleImageContainer);
   } else {
     bubble.classList.add('no-image');
   }

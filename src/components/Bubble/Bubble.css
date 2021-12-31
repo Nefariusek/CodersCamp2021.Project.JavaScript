@@ -10,6 +10,7 @@
 
   padding: 20px;
   margin-bottom: 30px;
+  min-height: 150px;
 
   background: var(--bubble-color);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -30,6 +31,22 @@
 
 .bubble.no-image h2 {
   font-size: 1.3em;
+}
+
+.bubble .bubble-img img {
+  border-radius: 8px;
+}
+
+.bubble.invisible .bubble-text,
+.bubble.invisible .bubble-img {
+  opacity: 0;
+}
+
+.bubble.fade-in .bubble-text,
+.bubble.fade-in .bubble-img {
+  opacity: 1;
+  transition: opacity 0.1s;
+  transition-timing-function: ease-in;
 }
 
 .bubble a {
