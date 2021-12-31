@@ -11,21 +11,24 @@ h2 {
 
 #nickFormDiv {
   margin-top: 10px;
+  display: flex;
   justify-content: center;
   width: 70%;
   margin: auto;
-  display: flex;
   gap: 5%;
 }
 
 #nickname {
   border: 0px solid;
-  width: 400px;
+  width: 250px;
   height: 48px;
 }
 
 #nickname:hover {
   color: white;
+}
+#nickname:disabled {
+  opacity: 0;
 }
 
 #nickname::placeholder {
@@ -50,6 +53,11 @@ input {
   bottom: 2%;
   right: 4%;
 }
+
+.saveScoreBtn:disabled {
+  opacity: 0;
+}
+
 #finalScore {
   height: 70px;
 }
