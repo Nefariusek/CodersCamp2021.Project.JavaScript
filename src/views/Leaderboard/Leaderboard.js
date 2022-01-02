@@ -55,24 +55,13 @@ function getScoreFromLocalStorage() {
   const highScores = JSON.parse(localStorage.getItem('quizScores')) || [];
   highScores.sort((a, b) => b.SCORE - a.SCORE);
   function showScore() {
-    if (highScores.length >= 1)
-      document.getElementById('nick1').innerText = `${highScores[0].NAME} Pts:${highScores[0].SCORE}`;
-    if (highScores.length >= 2)
-      document.getElementById('nick2').innerText = `${highScores[1].NAME} Pts:${highScores[1].SCORE}`;
-    if (highScores.length >= 3)
-      document.getElementById('nick3').innerText = `${highScores[2].NAME} Pts:${highScores[2].SCORE}`;
-    if (highScores.length >= 4)
-      document.getElementById('nick4').innerText = `${highScores[3].NAME} Pts:${highScores[3].SCORE}`;
-    if (highScores.length >= 5)
-      document.getElementById('nick5').innerText = `${highScores[4].NAME} Pts:${highScores[4].SCORE}`;
-    if (highScores.length >= 6)
-      document.getElementById('nick6').innerText = `${highScores[5].NAME} Pts:${highScores[5].SCORE}`;
-    if (highScores.length >= 7)
-      document.getElementById('nick7').innerText = `${highScores[6].NAME} Pts:${highScores[6].SCORE}`;
-    if (highScores.length >= 8)
-      document.getElementById('nick8').innerText = `${highScores[7].NAME} Pts:${highScores[7].SCORE}`;
-    if (highScores.length >= 9)
-      document.getElementById('nick9').innerText = `${highScores[8].NAME} Pts:${highScores[8].SCORE}`;
+    for (let i = 1; i <= highScores.length; i++) {
+      if (i > 9) {
+        break;
+      }
+      const nick = `nick${i}`;
+      document.getElementById(nick).innerText = `${highScores[i - 1].NAME} Pts:${highScores[i - 1].SCORE}`;
+    }
   }
   return showScore();
 }
