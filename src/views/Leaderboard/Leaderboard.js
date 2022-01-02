@@ -60,8 +60,10 @@ function renderPodium() {
 }
 
 function getScoreFromLocalStorage() {
-  const highScores = JSON.parse(localStorage.getItem('quizScores')) || [];
-  highScores.sort((a, b) => b.SCORE - a.SCORE);
+  const scores = JSON.parse(localStorage.getItem('quizScores')) || [];
+  scores.sort((a, b) => b.SCORE - a.SCORE);
+  console.log(scores);
+  const highScores = scores.filter((score) => filterHighScores(score, 'CATS'));
   function showScore() {
     nick1.innerText = `${highScores[0].NAME} Pts:${highScores[0].SCORE}`;
     nick2.innerText = `${highScores[1].NAME} Pts:${highScores[1].SCORE}`;
@@ -96,5 +98,8 @@ function renderResetBtn() {
 }
 
 function filterHighScores(item, about) {
+  if (about === 'default') {
+    return item;
+  }
   return item.ABOUT === about;
 }

@@ -1,6 +1,6 @@
 import './ScoreFilter.css';
 
-const settings = {
+export const settings = {
   ABOUT: 'default',
   TYPE: 'default',
   MIN: 1,
@@ -11,27 +11,27 @@ export default function ScoreFilter() {
   const scoreFilter = document.createElement('div');
   scoreFilter.classList.add('score-filter');
 
+  const button = ClearButton();
+
   const dropdownAbout = Dropdown('about-dropdown', 'animal', 'cat', 'dog');
   const dropdownType = Dropdown('type-dropdown', 'quiz type', 'multiple choice', 'open');
   scoreFilter.append(dropdownAbout, dropdownType);
 
   dropdownAbout.addEventListener('change', (e) => {
     settings.ABOUT = e.target.value;
+    scoreFilter.append(button);
     console.log(settings.ABOUT);
   });
   dropdownType.addEventListener('change', (e) => {
     settings.TYPE = e.target.value;
+    scoreFilter.append(button);
     console.log(settings.TYPE);
   });
   const questionRange = RangeSelect();
   scoreFilter.appendChild(questionRange);
 
-  const button = ClearButton();
-
   if (settings.ABOUT !== 'default' || settings.TYPE !== 'default' || settings.MIN !== 1 || settings.MAX !== 20) {
     scoreFilter.append(button);
-  } else if (settings.ABOUT === 'default' && settings.TYPE === 'default' && settings.MIN === 1 && settings.MAX === 20) {
-    scoreFilter.remove(button);
   }
 
   return scoreFilter;
@@ -115,6 +115,7 @@ function ClearButton() {
     settings.TYPE = 'default';
     settings.MIN = 1;
     settings.MAX = 20;
+    button.remove();
   });
 
   return button;
