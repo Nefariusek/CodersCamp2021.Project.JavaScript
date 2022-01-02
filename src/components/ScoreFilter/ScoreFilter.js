@@ -20,12 +20,10 @@ export default function ScoreFilter() {
   dropdownAbout.addEventListener('change', (e) => {
     settings.ABOUT = e.target.value;
     scoreFilter.append(button);
-    console.log(settings.ABOUT);
   });
   dropdownType.addEventListener('change', (e) => {
     settings.TYPE = e.target.value;
     scoreFilter.append(button);
-    console.log(settings.TYPE);
   });
   const questionRange = RangeSelect();
   scoreFilter.appendChild(questionRange);
@@ -61,7 +59,6 @@ function RangeSelect() {
 
   inputMin.addEventListener('change', (e) => {
     settings.MIN = e.target.value;
-    console.log(settings.MIN);
     if (settings.MAX < settings.MIN) {
       settings.MAX = settings.MIN;
     }
@@ -69,7 +66,6 @@ function RangeSelect() {
 
   inputMax.addEventListener('change', (e) => {
     settings.MAX = e.target.value;
-    console.log(settings.MAX);
     if (settings.MIN > settings.MAX) {
       settings.MIN = settings.MAX;
     }

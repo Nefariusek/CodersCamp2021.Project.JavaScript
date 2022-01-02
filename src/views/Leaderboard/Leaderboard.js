@@ -12,6 +12,16 @@ export function renderLeaderboard() {
   getScoreFromLocalStorage();
 }
 
+let nick1;
+let nick2;
+let nick3;
+let nick4;
+let nick5;
+let nick6;
+let nick7;
+let nick8;
+let nick9;
+
 function renderPodium() {
   document.querySelector('#app').innerHTML = ` 
 
@@ -62,7 +72,6 @@ function renderPodium() {
 function getScoreFromLocalStorage() {
   const scores = JSON.parse(localStorage.getItem('quizScores')) || [];
   scores.sort((a, b) => b.SCORE - a.SCORE);
-  console.log(scores);
   const highScores = scores.filter((score) => filterHighScores(score, 'CATS'));
   function showScore() {
     nick1.innerText = `${highScores[0].NAME} Pts:${highScores[0].SCORE}`;
