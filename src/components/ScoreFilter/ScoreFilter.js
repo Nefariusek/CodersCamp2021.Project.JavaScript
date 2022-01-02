@@ -15,6 +15,14 @@ export default function ScoreFilter() {
   const dropdownType = Dropdown('type-dropdown', 'quiz type', 'multiple choice', 'open');
   scoreFilter.append(dropdownAbout, dropdownType);
 
+  dropdownAbout.addEventListener('change', (e) => {
+    settings.ABOUT = e.target.value;
+    console.log(settings.ABOUT);
+  });
+  dropdownType.addEventListener('change', (e) => {
+    settings.TYPE = e.target.value;
+    console.log(settings.TYPE);
+  });
   const questionRange = RangeSelect();
   scoreFilter.appendChild(questionRange);
 
@@ -51,6 +59,22 @@ function RangeSelect() {
   inputMax.min = 0;
   inputMax.max = 20;
 
+  inputMin.addEventListener('change', (e) => {
+    settings.MIN = e.target.value;
+    console.log(settings.MIN);
+    if (settings.MAX < settings.MIN) {
+      settings.MAX = settings.MIN;
+    }
+  });
+
+  inputMax.addEventListener('change', (e) => {
+    settings.MAX = e.target.value;
+    console.log(settings.MAX);
+    if (settings.MIN > settings.MAX) {
+      settings.MIN = settings.MAX;
+    }
+  });
+
   range.append(label, labelMin, inputMin, labelMax, inputMax);
 
   return range;
@@ -70,7 +94,7 @@ function Dropdown(className, dropdownLabel, option1, option2) {
   defaultSetting.innerHTML = `Select ${dropdownLabel}`;
 
   const option1Setting = document.createElement('option');
-  option1Setting.setAttribute('value', `${option2}`);
+  option1Setting.setAttribute('value', `${option1}`);
   option1Setting.innerHTML = option1;
 
   const option2Setting = document.createElement('option');
@@ -78,7 +102,6 @@ function Dropdown(className, dropdownLabel, option1, option2) {
   option2Setting.innerHTML = option2;
 
   select.append(defaultSetting, option1Setting, option2Setting);
-
   dropdown.append(select);
 
   return dropdown;

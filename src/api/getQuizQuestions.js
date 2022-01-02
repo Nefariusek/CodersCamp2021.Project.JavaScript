@@ -36,8 +36,10 @@ const mapDataToQuestions = (data) => {
   const allQuestions = getQuestionsFromData(data);
   const quizQuestions = [];
   allQuestions.forEach((q) => {
-    const question = new Question(q.img, q.name, getFalseAnswers(q.name, allQuestions), QUESTION_TEXT);
-    quizQuestions.push(question);
+    if (q.img !== undefined) {
+      const question = new Question(q.img, q.name, getFalseAnswers(q.name, allQuestions), QUESTION_TEXT);
+      quizQuestions.push(question);
+    }
   });
 
   return quizQuestions;

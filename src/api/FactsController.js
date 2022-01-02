@@ -17,7 +17,8 @@ export async function retrieveAnimalFact() {
     };
     return factResult;
   } catch (e) {
-    console.error('Error while retrieving the fact from API. ' + e);
+    console.error(`Error while retrieving the fact from API. ${e}`);
+    return { fact: null, imageUrl: null };
   }
 }
 

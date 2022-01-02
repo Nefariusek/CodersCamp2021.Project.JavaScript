@@ -7,8 +7,9 @@ import ScoreFilter from '../../components/ScoreFilter/ScoreFilter';
 
 export function renderLeaderboard() {
   renderPodium();
+  createMenuButton();
+  renderResetBtn();
   getScoreFromLocalStorage();
-  renderMenuBtn();
 }
 
 function renderPodium() {
@@ -48,43 +49,50 @@ function renderPodium() {
   </div>
   <div id="mainMenu">
   </div>
+  <div id="resetButton">
+  </div>
   
  </div> 
   `;
   const filter = document.querySelector('.filter');
-  const score_filter = ScoreFilter();
-  filter.append(score_filter);
+  const scorefilter = ScoreFilter();
+  filter.append(scorefilter);
 }
 
 function getScoreFromLocalStorage() {
   const highScores = JSON.parse(localStorage.getItem('quizScores')) || [];
-  highScores.sort((a, b) => b.score - a.score);
-  highScores.filter(filterHighScores);
-  console.log(highScores);
+  highScores.sort((a, b) => b.SCORE - a.SCORE);
   function showScore() {
-    nick1.innerText = `pts: ${Object.values(highScores[0])}`;
-    nick2.innerText = `pts: ${Object.values(highScores[1])}`;
-    nick3.innerText = `pts: ${Object.values(highScores[2])}`;
-    nick4.innerText = Object.values(highScores[3]);
-    nick5.innerText = Object.values(highScores[4]);
-    nick6.innerText = Object.values(highScores[5]);
-    nick7.innerText = Object.values(highScores[6]);
-    nick8.innerText = Object.values(highScores[7]);
-    nick9.innerText = Object.values(highScores[8]);
+    nick1.innerText = `${highScores[0].NAME} Pts:${highScores[0].SCORE}`;
+    nick2.innerText = `${highScores[1].NAME} Pts:${highScores[1].SCORE}`;
+    nick3.innerText = `${highScores[2].NAME} Pts:${highScores[2].SCORE}`;
+    nick4.innerText = `${highScores[3].NAME} Pts:${highScores[3].SCORE}`;
+    nick5.innerText = `${highScores[4].NAME} Pts:${highScores[4].SCORE}`;
+    nick6.innerText = `${highScores[5].NAME} Pts:${highScores[5].SCORE}`;
+    nick7.innerText = `${highScores[6].NAME} Pts:${highScores[6].SCORE}`;
+    nick8.innerText = `${highScores[7].NAME} Pts:${highScores[7].SCORE}`;
+    nick9.innerText = `${highScores[8].NAME} Pts:${highScores[8].SCORE}`;
   }
   return showScore();
 }
 
-// klawisz funkcyjny powrót do Menu
-const handleNavigationButtonClick = (e) => onNavigationChange(e);
-
-function renderMenuBtn() {
-  const menuButton = document.getElementById('mainMenu');
-  menuButton.append(Button('MENU', 'menuButton', false, 'click', handleNavigationButtonClick));
+function createMenuButton() {
+  const menuButton = Button('MENU', 'leaderboardMenuButton', null, 'click', navigateToMenu);
+  document.querySelector('#app').append(menuButton);
 }
 
-function onNavigationChange(e) {
-  window.location.hash = e.target.className;
+function navigateToMenu() {
+  window.location.hash = '';
+}
+
+function resetLocalStorage() {
+  localStorage.removeItem('quizScores');
+  renderLeaderboard();
+}
+
+function renderResetBtn() {
+  const resetButton = document.getElementById('resetButton');
+  resetButton.append(Button('RESET SCORE', 'resetButton', false, 'click', resetLocalStorage));
 }
 
 function filterHighScores(item, about) {
