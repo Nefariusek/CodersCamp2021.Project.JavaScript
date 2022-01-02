@@ -9,8 +9,8 @@ const PAGE_TITLE = 'ANIMALIADA';
 const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
 const FACT_HEADER = 'Did you know?';
 const AdoptionBubbleContent = {
-  IMG: { pathOrUrl: 'http://placekitten.com/300/400', alt: 'the animal to adoption' },
-  HEADER_TEXT: "Or maybe you'd like to adopt your own pet?",
+  IMG: { pathOrUrl: 'https://placedog.net/300/400?random', alt: 'the animal to adoption' },
+  HEADER_TEXT: "Maybe you'd like to adopt your own pet?",
   SENTENCES: ['This one is looking for home', 'See more here: <a href="#adoption-page">Adoption Page</a>'],
 };
 
@@ -61,20 +61,20 @@ function renderNavigation() {
 }
 
 function renderBubblesStructure() {
-  const bubbleFact = createFactBubble();
-  document.querySelector('.bubbles').append(bubbleFact);
   const bubbleAdoption = createAdoptionBubble();
   document.querySelector('.bubbles').append(bubbleAdoption);
+  const bubbleFact = createFactBubble();
+  document.querySelector('.bubbles').append(bubbleFact);
 }
 
 function createFactBubble() {
-  const bubbleFact = Bubble('higher', '', undefined, true);
+  const bubbleFact = Bubble('lower', '', undefined, true);
   bubbleFact.classList.add('fact', 'invisible');
   return bubbleFact;
 }
 
 function createAdoptionBubble() {
-  const bubbleAdoption = Bubble('lower', AdoptionBubbleContent.HEADER_TEXT, AdoptionBubbleContent.SENTENCES, true);
+  const bubbleAdoption = Bubble('higher', AdoptionBubbleContent.HEADER_TEXT, AdoptionBubbleContent.SENTENCES, true);
   bubbleAdoption.classList.add('adoption');
   return bubbleAdoption;
 }
@@ -90,10 +90,14 @@ async function renderFactBubbleContent() {
   imageObject.addEventListener(
     'load',
     () => {
+      const factBubble = document.querySelector('.bubble.fact');
       renderAnimalFact(imageFact);
+      factBubble.classList.remove('invisible');
+      factBubble.classList.add('fade-in');
     },
     false,
   );
+
   renderAnimalFactImg(imageFact, imageObject);
 }
 
@@ -112,18 +116,8 @@ function renderAnimalFact(fact) {
 }
 
 function renderAnimalFactImg(imageFact, imageObject) {
-  const factBubble = document.querySelector('.bubble.fact');
   const factImageSpace = document.querySelector('.bubble.fact .bubble-img');
   createImage(factImageSpace, imageFact, imageObject);
-
-  imageObject.addEventListener(
-    'load',
-    () => {
-      factBubble.classList.remove('invisible');
-      factBubble.classList.add('fade-in');
-    },
-    false,
-  );
 }
 
 function renderAnimalAdoptionImg() {

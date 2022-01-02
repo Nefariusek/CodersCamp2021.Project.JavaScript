@@ -10,7 +10,7 @@
 
   padding: 20px;
   margin-bottom: 30px;
-  min-height: 150px;
+  min-height: 200px;
 
   background: var(--bubble-color);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -37,15 +37,15 @@
   border-radius: 8px;
 }
 
-.bubble.invisible .bubble-text,
-.bubble.invisible .bubble-img {
+.bubble.invisible,
+.bubble.invisible {
   opacity: 0;
 }
 
-.bubble.fade-in .bubble-text,
-.bubble.fade-in .bubble-img {
+.bubble.fade-in,
+.bubble.fade-in {
   opacity: 1;
-  transition: opacity 0.1s;
+  transition: opacity 0.12s;
   transition-timing-function: ease-in;
 }
 
