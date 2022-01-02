@@ -59,6 +59,8 @@ function renderPodium() {
 function getScoreFromLocalStorage() {
   const highScores = JSON.parse(localStorage.getItem('quizScores')) || [];
   highScores.sort((a, b) => b.score - a.score);
+  highScores.filter(filterHighScores);
+  console.log(highScores);
   function showScore() {
     nick1.innerText = `pts: ${Object.values(highScores[0])}`;
     nick2.innerText = `pts: ${Object.values(highScores[1])}`;
@@ -83,4 +85,8 @@ function renderMenuBtn() {
 
 function onNavigationChange(e) {
   window.location.hash = e.target.className;
+}
+
+function filterHighScores(item, about) {
+  return item.ABOUT === about;
 }
