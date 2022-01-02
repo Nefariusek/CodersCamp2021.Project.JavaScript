@@ -3,6 +3,8 @@ import './Leaderboard.css';
 import Button from '../../components/Button/Button';
 import '../../components/Button/Button.css';
 
+import ScoreFilter from '../../components/ScoreFilter/ScoreFilter';
+
 export function renderLeaderboard() {
   renderPodium();
   getScoreFromLocalStorage();
@@ -14,6 +16,8 @@ function renderPodium() {
 
   <div id="scorePage">
   <h1 id = "scorePageTitle">LEADERBOARD<h1>
+  <div class='filter'>
+  </div>
   <div class="podium">
     <table id="ladder">
       <tr>
@@ -47,6 +51,9 @@ function renderPodium() {
   
  </div> 
   `;
+  const filter = document.querySelector('.filter');
+  const score_filter = ScoreFilter();
+  filter.append(score_filter);
 }
 
 function getScoreFromLocalStorage() {
