@@ -93,6 +93,7 @@ function nicknameValidation() {
 }
 
 function saveQuizScore() {
+  alert('YOUR SCORE HAS BEEN SAVED');
   const quizScores = JSON.parse(localStorage.getItem('quizScores')) || [];
   const recentUserScore = getCurrentScore(userAnswers);
   const nickName = document.getElementById('nickname');
