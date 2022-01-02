@@ -4,8 +4,9 @@ export default function ScoreFilter() {
   const scoreFilter = document.createElement('div');
   scoreFilter.classList.add('score-filter');
 
-  const dropdown = Dropdown();
-  scoreFilter.appendChild(dropdown);
+  const dropdownAbout = Dropdown('about-dropdown', 'animal species', 'cat', 'dog');
+  const dropdownType = Dropdown('type-dropdown', 'quiz type', 'multiple choice', 'open');
+  scoreFilter.append(dropdownAbout, dropdownType);
 
   const questionRange = RangeSelect();
   scoreFilter.appendChild(questionRange);
@@ -36,12 +37,12 @@ function RangeSelect() {
   return range;
 }
 
-function Dropdown() {
+function Dropdown(className, dropdownLabel, option1, option2) {
   const dropdown = document.createElement('div');
-  dropdown.classList.add('dropdown');
+  dropdown.classList.add(className);
 
   const label = document.createElement('label');
-  label.innerHTML = 'Filter results by:';
+  label.innerHTML = `Sort by ${dropdownLabel}`;
   label.setAttribute('for', 'settings');
 
   dropdown.appendChild(label);
@@ -50,15 +51,19 @@ function Dropdown() {
   select.setAttribute('name', 'settings');
   select.setAttribute('id', 'settings');
 
-  const typeSetting = document.createElement('option');
-  typeSetting.setAttribute('value', 'type-setting');
-  typeSetting.innerHTML = 'Type';
+  const defaultSetting = document.createElement('option');
+  defaultSetting.setAttribute('value', 'all');
+  defaultSetting.innerHTML = 'all';
 
-  const aboutSetting = document.createElement('option');
-  aboutSetting.setAttribute('value', 'about-setting');
-  aboutSetting.innerHTML = 'About';
+  const option1Setting = document.createElement('option');
+  option1Setting.setAttribute('value', `${option2}`);
+  option1Setting.innerHTML = option1;
 
-  select.append(typeSetting, aboutSetting);
+  const option2Setting = document.createElement('option');
+  option2Setting.setAttribute('value', `${option2}`);
+  option2Setting.innerHTML = option2;
+
+  select.append(defaultSetting, option1Setting, option2Setting);
 
   dropdown.append(select);
 
