@@ -88,8 +88,8 @@ function ClearButton() {
 
   return button;
 }
-/*
-function resetSettings() {
+
+/* function resetSettings() {
   settings.about = DEFAULT_ABOUT;
   settings.type = DEFAULT_TYPE;
   settings.min = DEFAULT_MIN;
@@ -101,7 +101,8 @@ function resetSettings() {
     select.selectedIndex = 0;
   });
 
-  this.remove();
+  const button = document.querySelector('.reset-settings');
+  button.remove();
 } */
 
 function filterScores() {
