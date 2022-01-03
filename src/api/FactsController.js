@@ -4,7 +4,7 @@ export async function retrieveAnimalFact() {
   const randomAnimalType = animalTypes[randomNumber];
   const factUrls = {
     sentenceUrl: `https://cat-fact.herokuapp.com/facts/random?animal_type=${randomAnimalType}&amount=1`,
-    imageUrl: `https://api.the${randomAnimalType}api.com/v1/images/search?size=full`,
+    imageUrl: `https://api.the${randomAnimalType}api.com/v1/images/search?size=med`,
   };
 
   try {
