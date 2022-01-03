@@ -1,7 +1,7 @@
 export default class Answer {
-  constructor(index, timeOfAnswer, Question, answer, lifelineUsed, changed) {
+  constructor(index, timeOfAnswer, question, answer, lifelineUsed, changed) {
     this.timeOfAnswer = timeOfAnswer;
-    this.Question = Question;
+    this.question = question;
     this.lifelineUsed = lifelineUsed;
     this.answer = answer;
     this.changed = changed;
@@ -9,7 +9,7 @@ export default class Answer {
   }
 
   checkIfCorrect() {
-    return this.answer.toUpperCase() === this.Question.correct.toUpperCase();
+    return this.answer.toUpperCase() === this.question.correct.toUpperCase();
   }
 
   getScore() {
@@ -17,7 +17,7 @@ export default class Answer {
     if (this.checkIfCorrect()) {
       score = 1;
       if (this.changed) {
-        score = score / 2;
+        score /= 2;
       }
     }
     return score;

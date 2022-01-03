@@ -1,9 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/named */
-/* eslint radix: ["error", "as-needed"] */
-
 import { QuizSettings } from '../quiz-settings/quiz-settings';
-import { createTimer, startTimer, stopTimer } from '../../components/timer/quiz-timer';
+import { createTimer, startTimer } from '../../components/timer/quiz-timer';
 import { getRandomQuizQuestions } from '../../model/randomizer';
 import { renderChoiceModal } from '../confirmChoiceModal/confirmChoiceModal';
 import Button from '../../components/Button/Button';
@@ -16,7 +12,6 @@ let endTime;
 let timerMinutes;
 let timerSeconds;
 let lifeline = false;
-// eslint-disable-next-line import/no-mutable-exports
 export let userAnswers = [];
 
 export async function renderQuizView() {
@@ -33,7 +28,7 @@ function createQuestionNumbers() {
   const circles = document.createElement('div');
   circles.setAttribute('id', 'question-numbers');
   circles.onclick = function click(e) {
-    selectQuestion(parseInt(e.target.innerText));
+    selectQuestion(parseFloat(e.target.innerText));
   };
   for (let i = 0; i < QuizSettings.questionsNum; i++) {
     const number = document.createElement('div');
@@ -121,17 +116,21 @@ function renderQuizData() {
   current = current === QuizSettings.questionsNum ? current - 1 : current;
   const numbers = document.getElementById('question-numbers').children;
   numbers.item(current).setAttribute('id', 'current-question');
-
   const image = document.querySelector('#quizView > img');
-  image.src = questions[current].imageUrl;
+  image.src = userAnswers[current].question.imageUrl;
 
   const question = document.getElementById('question-text');
-  question.innerText = questions[current].question.toUpperCase();
+  question.innerText = userAnswers[current].question.question.toUpperCase();
 
   const answersContainer = document.getElementById('answers');
-  const answers = questions[current].getAnswers();
+  const answers = userAnswers[current].question.getAnswers();
+
   for (let i = 0; i < answers.length; i++) {
-    answersContainer.appendChild(Button(answers[i], 'answer', false, 'click', nextQuestion));
+    const answerBtn = Button(answers[i], 'answer', false, 'click', nextQuestion);
+    if (answers[i].toUpperCase() === userAnswers[current].answer) {
+      answerBtn.classList.add('selected');
+    }
+    answersContainer.appendChild(answerBtn);
   }
   startTime = getTime();
 }

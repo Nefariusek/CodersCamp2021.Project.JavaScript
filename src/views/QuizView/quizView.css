@@ -134,6 +134,11 @@
   left: 2%;
 }
 
+.wrapper.selected .answer {
+  background-color: #3e505b;
+  color: white;
+}
+
 @media only screen and (min-device-width: 280px) and (max-device-width: 660px) {
   .quizViewMenuButton {
     width: min-content;
