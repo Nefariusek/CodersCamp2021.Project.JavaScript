@@ -23,7 +23,7 @@ div#scorePage > * {
   justify-content: center;
 }
 
-.podiumNick {
+.podiumNickname {
   margin-top: 30px;
   margin-left: 15px;
   display: flex;
@@ -94,7 +94,7 @@ button.resetButton {
 }
 
 @media (max-width: 960px) {
-  .podiumNick {
+  .podiumNickname {
     font-size: 1rem;
   }
   .listItem {
