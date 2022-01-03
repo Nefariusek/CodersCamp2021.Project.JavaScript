@@ -1,6 +1,8 @@
-import Dropdown from '../components/Dropdown/Dropdown';
-import RangeSelect from '../components/RangeSelect/RangeSelect';
-import { getScoreFromLocalStorage, renderScores } from '../views/Leaderboard/Leaderboard';
+import './ScoreFilter.css';
+
+import Dropdown from '../Dropdown/Dropdown';
+import RangeSelect from '../RangeSelect/RangeSelect';
+import { getScoreFromLocalStorage, renderScores } from '../../views/Leaderboard/Leaderboard';
 
 const DEFAULT_ABOUT = 'Select animal';
 const DEFAULT_TYPE = 'Select quiz type';
@@ -89,23 +91,17 @@ function ClearButton() {
 /*
 function resetSettings() {
   settings.about = DEFAULT_ABOUT;
-    settings.type = DEFAULT_TYPE;
-    settings.min = DEFAULT_MIN;
-    settings.max = DEFAULT_MAX;
-    filterScores();
+  settings.type = DEFAULT_TYPE;
+  settings.min = DEFAULT_MIN;
+  settings.max = DEFAULT_MAX;
+  filterScores();
 
-    const dropdowns = document.querySelectorAll('select');
-    dropdowns.forEach((select) => {
-      select.selectedIndex = 0;
-    });
+  const dropdowns = document.querySelectorAll('select');
+  dropdowns.forEach((select) => {
+    select.selectedIndex = 0;
+  });
 
-    const minRange = document.querySelector('.min');
-    minRange.value = DEFAULT_MIN;
-
-    const maxRange = document.querySelector('.max');
-    maxRange.value = DEFAULT_MAX;
-
-    button.remove();
+  this.remove();
 } */
 
 function filterScores() {

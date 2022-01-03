@@ -1,0 +1,21 @@
+.score-filter {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  margin-top: 5vh;
+}
+
+.score-range {
+  display: flex;
+}
+
+input {
+  height: 5vh;
+  width: 40px;
+  font-size: 60%;
+  text-align: right;
+}
+
+button {
+  margin-top: 2vh;
+}

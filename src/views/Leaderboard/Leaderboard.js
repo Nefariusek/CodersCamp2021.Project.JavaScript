@@ -2,7 +2,7 @@ import './Leaderboard.css';
 import Button from '../../components/Button/Button';
 import '../../components/Button/Button.css';
 
-import ScoreFilter from '../../model/ScoreFilter';
+import ScoreFilter from '../../components/ScoreFilter/ScoreFilter';
 
 export function renderLeaderboard() {
   renderPodium();

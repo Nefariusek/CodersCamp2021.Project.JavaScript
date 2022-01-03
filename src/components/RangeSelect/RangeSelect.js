@@ -1,8 +1,9 @@
 import './RangeSelect.css';
-import { DEFAULT_MIN, DEFAULT_MAX } from '../../model/ScoreFilter';
+import { DEFAULT_MIN, DEFAULT_MAX } from '../ScoreFilter/ScoreFilter';
 
 export default function RangeSelect(labelName) {
   const range = document.createElement('div');
+  range.className = 'range';
   const label = document.createElement('p');
   label.innerHTML = labelName;
 
