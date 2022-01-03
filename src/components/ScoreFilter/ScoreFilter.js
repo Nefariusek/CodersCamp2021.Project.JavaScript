@@ -13,20 +13,38 @@ export default function ScoreFilter() {
 
   const button = ClearButton();
 
-  const dropdownAbout = Dropdown('about-dropdown', 'animal', 'cat', 'dog');
+  const dropdownAbout = Dropdown('about-dropdown', 'animal', 'cats', 'dogs');
   const dropdownType = Dropdown('type-dropdown', 'quiz type', 'multiple choice', 'open');
   scoreFilter.append(dropdownAbout, dropdownType);
 
   dropdownAbout.addEventListener('change', (e) => {
-    settings.ABOUT = e.target.value;
+    settings.ABOUT = e.target.value.toUpperCase();
+    // new settings
+    filterScores();
     scoreFilter.append(button);
   });
   dropdownType.addEventListener('change', (e) => {
-    settings.TYPE = e.target.value;
+    settings.TYPE = e.target.value.toUpperCase();
+    filterScores();
     scoreFilter.append(button);
   });
-  const questionRange = RangeSelect();
-  scoreFilter.appendChild(questionRange);
+
+  const minRange = RangeSelect('min');
+  const maxRange = RangeSelect('max');
+
+  scoreFilter.append(minRange, maxRange);
+
+  minRange.addEventListener('change', (e) => {
+    settings.MIN = e.target.value;
+    console.log('changing min', settings);
+    scoreFilter.append(button);
+  });
+
+  maxRange.addEventListener('change', (e) => {
+    settings.MAX = e.target.value;
+    console.log('changing max', settings);
+    scoreFilter.append(button);
+  });
 
   if (settings.ABOUT !== 'default' || settings.TYPE !== 'default' || settings.MIN !== 1 || settings.MAX !== 20) {
     scoreFilter.append(button);
@@ -35,43 +53,17 @@ export default function ScoreFilter() {
   return scoreFilter;
 }
 
-function RangeSelect() {
+function RangeSelect(labelName) {
   const range = document.createElement('div');
-  range.classList.add('score-range');
+  const label = document.createElement('p');
+  label.innerHTML = labelName;
 
-  const label = document.createElement('label');
-  label.innerHTML = 'Question number range';
+  const input = document.createElement('input');
+  input.type = 'number';
+  input.min = 0;
+  input.max = 20;
 
-  const labelMin = document.createElement('p');
-  labelMin.innerHTML = 'Min';
-
-  const inputMin = document.createElement('input');
-  inputMin.type = 'number';
-  inputMin.min = 0;
-  inputMin.max = 20;
-
-  const labelMax = document.createElement('p');
-  labelMax.innerHTML = 'Max';
-  const inputMax = document.createElement('input');
-  inputMax.type = 'number';
-  inputMax.min = 0;
-  inputMax.max = 20;
-
-  inputMin.addEventListener('change', (e) => {
-    settings.MIN = e.target.value;
-    if (settings.MAX < settings.MIN) {
-      settings.MAX = settings.MIN;
-    }
-  });
-
-  inputMax.addEventListener('change', (e) => {
-    settings.MAX = e.target.value;
-    if (settings.MIN > settings.MAX) {
-      settings.MIN = settings.MAX;
-    }
-  });
-
-  range.append(label, labelMin, inputMin, labelMax, inputMax);
+  range.append(label, input);
 
   return range;
 }
@@ -111,8 +103,41 @@ function ClearButton() {
     settings.TYPE = 'default';
     settings.MIN = 1;
     settings.MAX = 20;
+
+    const dropdowns = document.querySelectorAll('select');
+    // eslint-disable-next-line no-return-assign
+    dropdowns.forEach((select) => (select.selectedIndex = 0));
+
     button.remove();
   });
 
   return button;
+}
+
+function filterScores() {
+  const scores = getScoreFromLocalStorage();
+  const filteredScores = scores.filter(filterAbout).filter(filterType);
+  console.log(scores);
+  console.log(filteredScores);
+  return filteredScores;
+}
+
+function filterAbout(item) {
+  if (settings.ABOUT === 'default') {
+    return item;
+  }
+  return item.ABOUT === settings.ABOUT;
+}
+
+function filterType(item) {
+  if (settings.TYPE === 'default') {
+    return item;
+  }
+  return item.TYPE === settings.TYPE;
+}
+
+function getScoreFromLocalStorage() {
+  const scores = JSON.parse(localStorage.getItem('quizScores')) || [];
+  scores.sort((a, b) => b.SCORE - a.SCORE);
+  return scores;
 }

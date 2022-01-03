@@ -9,7 +9,7 @@ export function renderLeaderboard() {
   renderPodium();
   createMenuButton();
   renderResetBtn();
-  getScoreFromLocalStorage();
+  renderScores();
 }
 
 let nick1;
@@ -69,10 +69,11 @@ function renderPodium() {
   filter.append(scorefilter);
 }
 
-function getScoreFromLocalStorage() {
-  const scores = JSON.parse(localStorage.getItem('quizScores')) || [];
+function renderScores() {
+  /* const scores = JSON.parse(localStorage.getItem('quizScores')) || [];
   scores.sort((a, b) => b.SCORE - a.SCORE);
-  const highScores = scores.filter((score) => filterHighScores(score, 'CATS'));
+  const highScores = scores.filter((score) => filterHighScores(score, 'CATS')); */
+  const highScores = getScoreFromLocalStorage();
   function showScore() {
     nick1.innerText = `${highScores[0].NAME} Pts:${highScores[0].SCORE}`;
     nick2.innerText = `${highScores[1].NAME} Pts:${highScores[1].SCORE}`;
@@ -106,9 +107,19 @@ function renderResetBtn() {
   resetButton.append(Button('RESET SCORE', 'resetButton', false, 'click', resetLocalStorage));
 }
 
+function getScoreFromLocalStorage() {
+  const scores = JSON.parse(localStorage.getItem('quizScores')) || [];
+  scores.sort((a, b) => b.SCORE - a.SCORE);
+  return scores;
+}
+
+/*
+
 function filterHighScores(item, about) {
   if (about === 'default') {
     return item;
   }
   return item.ABOUT === about;
 }
+
+*/
