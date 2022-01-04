@@ -11,9 +11,10 @@ div#scorePage > * {
 }
 
 #scorePageTitle {
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: bold;
   color: #2c3e50;
+  margin-bottom: 0;
 }
 /*podium*/
 
@@ -66,7 +67,7 @@ td.step div:first-of-type {
 
 .list {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   color: whitesmoke;
   bottom: 20%;
 }
@@ -93,12 +94,12 @@ button.resetButton {
   right: 4%;
 }
 
-@media (max-width: 960px) {
+@media (min-width: 320px) and (max-width: 960px) {
   .podiumNickname {
     font-size: 1rem;
   }
   .listItem {
-    font-size: 0.8rem;
+    font-size: 2vmin;
   }
 
   #scorePageTitle {
@@ -107,25 +108,36 @@ button.resetButton {
 
   button.leaderboardMenuButton {
     bottom: 0;
-    left: 0;
-    width: min-content;
+    left: 5%;
+    width: fit-content;
+    font-size: 2vmin;
   }
   td.step div:first-of-type {
     width: 100px;
+    font-size: 3rem;
+  }
+
+  #gold {
+    height: 150px;
+    margin: 20px auto;
+  }
+  #silver {
+    height: 100px;
+  }
+  #bronze {
+    height: 80px;
   }
 
   button.resetButton {
     bottom: 0;
-    right: 0;
-    width: min-content;
+    right: 5%;
+    width: fit-content;
+    font-size: 1.5vmin;
   }
-}
-@media only screen and (min-device-width: 280px) and (max-device-width: 480px) {
-  td.step div:first-of-type {
-    margin: 20px 0px;
-    width: 75px;
-  }
-  #scorePageTitle {
-    font-size: 2rem;
+
+  .list {
+    justify-content: center;
+    margin-bottom: 10%;
+    font-size: 3vmin;
   }
 }

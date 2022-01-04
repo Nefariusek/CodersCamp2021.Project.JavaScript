@@ -70,7 +70,7 @@ function renderNicknameForm() {
   nicknameFormContainer.setAttribute('id', 'nicknameFormDiv');
   const input = document.createElement('input');
   input.setAttribute('id', 'nicknamename');
-  input.setAttribute('placeholder', 'Enter Nicknamename');
+  input.setAttribute('placeholder', 'Enter Nickname');
   input.setAttribute('type', 'text');
   input.setAttribute('style', 'text-transform: uppercase');
   input.addEventListener('keyup', () => {

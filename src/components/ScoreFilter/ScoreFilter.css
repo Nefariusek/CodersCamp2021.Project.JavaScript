@@ -1,25 +1,37 @@
 .score-filter {
   display: flex;
+  flex-direction: row;
   align-items: center;
   align-content: center;
-  margin-top: 5vh;
+  margin-top: 0;
+}
+
+select {
+  width: 80%;
+  min-width: 15ch;
+  max-width: 30ch;
+}
+
+.dropList-filter {
+  display: flex;
+  flex-direction: row;
 }
 
 .score-range {
   display: flex;
 }
 
-input {
+input.min,
+input.max {
   text-align: center;
   margin-left: 10px;
-  height: 5vh;
   width: 40px;
   font-size: 60%;
   text-align: right;
 }
 
-button {
-  margin-top: 2vh;
+#clearFilterBtn {
+  margin-top: 3vh;
 }
 
 #settings {
@@ -29,13 +41,33 @@ button {
 #option {
   text-align: center;
 }
-
-@media only screen and (min-device-width: 280px) and (max-device-width: 1200px) {
-  .score-filter {
-    flex-direction: column;
-    margin-top: 2vh;
+@media (min-width: 320px) and (max-width: 960px) {
+  .filter {
+    margin: 0 2vh;
   }
   #settings {
     margin: 10px auto;
+  }
+  input.min,
+  input.max {
+    flex-direction: row;
+    width: 40px;
+    font-size: 3vmin;
+  }
+  .range {
+    font-size: 4vmin;
+  }
+  #clearFilterBtn {
+    width: min-content;
+    font-size: 2vmin;
+  }
+  .dropList-filter {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  select {
+    min-width: 10ch;
+    max-width: 20ch;
+    height: 2.3rem;
   }
 }
