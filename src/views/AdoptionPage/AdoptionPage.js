@@ -3,7 +3,7 @@ import Button from '../../components/Button/Button';
 
 const PAGE_TITLE = 'ADOPTION';
 const MAIN_TEXT = 'CHOOSE YOUR NEW PET:';
-const MAIN_ANIMAL = { pathOrUrl: '../bird.png', alt: 'flying bird' };
+const MAIN_ANIMAL = { pathOrUrl: './bird.png', alt: 'flying bird' };
 const ANIMAL_TYPES = [
   { type: 'cat', pathOrUrl: 'https://www.petfinder.com/' },
   { type: 'dog', pathOrUrl: 'https://www.petfinder.com/' },
