@@ -3,10 +3,10 @@ select {
   -moz-appearance: button;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -webkit-padding-end: 20px;
-  -moz-padding-end: 20px;
-  -webkit-padding-start: 2px;
-  -moz-padding-start: 2px;
+  -webkit-padding-end: 10px;
+  -moz-padding-end: 10px;
+  -webkit-padding-start: 5px;
+  -moz-padding-start: 5px;
   background-color: #648080;
   border: 1px solid #aaa;
   border-radius: 10px;
