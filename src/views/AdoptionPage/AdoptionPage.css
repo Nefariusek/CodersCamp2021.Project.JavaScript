@@ -60,13 +60,13 @@
 }
 
 .adoption-page .navigation-container .dog {
-  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(./adoption-dog.jpg), no-repeat;
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(../adoption-dog.jpg), no-repeat;
   background-size: 290px;
   background-position: center center;
 }
 
 .adoption-page .navigation-container .dog:hover {
-  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-dog.jpg), no-repeat;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(../adoption-dog.jpg), no-repeat;
   background-size: 290px;
   background-position: center center;
   transform: scale(1.1);
@@ -74,13 +74,13 @@
 }
 
 .adoption-page .navigation-container .cat {
-  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(./adoption-cat.jpg), no-repeat;
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(../adoption-cat.jpg), no-repeat;
   background-size: 290px;
   background-position: center center;
 }
 
 .adoption-page .navigation-container .cat:hover {
-  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-cat.jpg), no-repeat;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(../adoption-cat.jpg), no-repeat;
   background-size: 290px;
   background-position: center center;
   transform: scale(1.1);
@@ -88,13 +88,13 @@
 }
 
 .adoption-page .navigation-container .bird {
-  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(./adoption-bird.jpg), no-repeat;
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(../adoption-bird.jpg), no-repeat;
   background-size: 290px;
   background-position: center center;
 }
 
 .adoption-page .navigation-container .bird:hover {
-  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(./adoption-bird.jpg), no-repeat;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(../adoption-bird.jpg), no-repeat;
   background-size: 300px;
   background-position: center center;
   transform: scale(1.1);
