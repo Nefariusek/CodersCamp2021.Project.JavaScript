@@ -20,11 +20,15 @@ export default function ScoreFilter() {
   const scoreFilter = document.createElement('div');
   scoreFilter.classList.add('score-filter');
 
+  const dropListFilter = document.createElement('div');
+  dropListFilter.classList.add('dropList-filter');
+  scoreFilter.appendChild(dropListFilter);
+
   const button = ClearButton();
 
   const dropdownAbout = Dropdown('about-dropdown', DEFAULT_ABOUT, 'CATS', 'DOGS');
   const dropdownType = Dropdown('type-dropdown', DEFAULT_TYPE, 'MULTIPLE CHOICE', 'OPEN');
-  scoreFilter.append(dropdownAbout, dropdownType);
+  dropListFilter.append(dropdownAbout, dropdownType);
 
   dropdownAbout.addEventListener('change', (e) => {
     settings.about = e.target.value;
@@ -64,6 +68,7 @@ export default function ScoreFilter() {
 // TODO: use Button component instead
 function ClearButton() {
   const button = document.createElement('button');
+  button.setAttribute('id', 'clearFilterBtn');
   button.innerHTML = 'clear filters';
   button.addEventListener('click', () => {
     settings.about = DEFAULT_ABOUT;

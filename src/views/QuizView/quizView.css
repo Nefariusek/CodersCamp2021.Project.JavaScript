@@ -139,9 +139,10 @@
   color: white;
 }
 
-@media only screen and (min-device-width: 280px) and (max-device-width: 660px) {
+@media (min-width: 320px) and (max-width: 960px) {
   .quizViewMenuButton {
     width: min-content;
     padding-top: 12px;
+    font-size: 3vmin;
   }
 }
