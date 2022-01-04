@@ -1,5 +1,3 @@
-import './Bubble.css';
-
 /**
  * Component creates speech bubble with or without image, with given header and optional sentences.
  * Component accepts following inputs:

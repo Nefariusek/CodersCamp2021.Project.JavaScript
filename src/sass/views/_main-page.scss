@@ -1,0 +1,54 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.main-page {
+  /********** CONTAINER ****************/
+
+  @include bp-min($media-delta) {
+    &.container {
+      grid-template-columns: 2fr 5fr;
+    }
+  }
+
+  @include bp-max($media-delta) {
+    &.container {
+      grid-template-areas:
+        'header'
+        'nav'
+        'info';
+    }
+  }
+
+  /************ NAVIGATION *******************/
+
+  .navigation-container {
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    @include bp-min-max($media-alpha, $media-delta) {
+      & button {
+        width: 50vw;
+      }
+    }
+  }
+
+  /********** BUBBLE SPACE *********/
+
+  .animal {
+    align-self: center;
+  }
+
+  @include bp-min($media-delta) {
+    .bubbles {
+      width: 60%;
+    }
+
+    .animal {
+      width: 40%;
+    }
+  }
+}

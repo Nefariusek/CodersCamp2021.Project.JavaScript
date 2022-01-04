@@ -1,0 +1,107 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.adoption-page {
+  /********** CONTAINER ****************/
+
+  &.container {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      'header'
+      'text'
+      'options'
+      'animal';
+    grid-gap: 10px;
+  }
+
+  /*********** TEXT SPACE ******************/
+
+  .text-container {
+    grid-area: text;
+
+    p {
+      margin: 10px 0;
+      font-size: 40px;
+      font-weight: bold;
+      color: white;
+    }
+  }
+
+  /*********** NAVIGATION ******************/
+  .navigation-container {
+    margin: 10px 0;
+
+    ul {
+      grid-area: options;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: nowrap;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    @include bp-max($media-delta) {
+      ul {
+        flex-direction: column;
+      }
+
+      li {
+        margin-bottom: 20px;
+      }
+    }
+
+    a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 290px;
+      height: 200px;
+      text-decoration: none;
+      border-radius: 10px;
+    }
+
+    @each $animal, $path in $animal-list {
+      .#{$animal} {
+        @include animal-background(0.7, $path);
+      }
+
+      .#{$animal}:hover {
+        @include animal-background(1, $path);
+        transform: scale(1.1);
+        transition: ease-in-out all 0.4s;
+      }
+    }
+
+    span {
+      color: white;
+      font-size: 40px;
+      font-weight: 900;
+      text-shadow: 4px 4px 4px #000000;
+    }
+  }
+
+  .go-home {
+    margin-top: 40px;
+  }
+
+  /******* ANIMAL SPACE ******/
+
+  .main-animal {
+    grid-area: animal;
+
+    @include centerer();
+    flex-direction: row;
+
+    img {
+      max-width: 400px;
+    }
+
+    @include bp-max($media-delta) {
+      img {
+        max-width: 80%;
+      }
+    }
+  }
+}

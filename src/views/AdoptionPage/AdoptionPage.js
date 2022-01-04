@@ -1,9 +1,8 @@
-import './AdoptionPage.css';
 import Button from '../../components/Button/Button';
 
 const PAGE_TITLE = 'ADOPTION';
 const MAIN_TEXT = 'CHOOSE YOUR NEW PET:';
-const MAIN_ANIMAL = { pathOrUrl: './bird.png', alt: 'flying bird' };
+const MAIN_ANIMAL = { pathOrUrl: '../bird.png', alt: 'flying bird' };
 const ANIMAL_TYPES = [
   { type: 'cat', pathOrUrl: 'https://www.petfinder.com/' },
   { type: 'dog', pathOrUrl: 'https://www.petfinder.com/' },
@@ -43,7 +42,7 @@ function renderNavigation() {
 
   ANIMAL_TYPES.forEach((animal) => {
     const animalOption = document.createElement('li');
-    animalOption.innerHTML = `<a href="${animal.pathOrUrl}" class="option ${
+    animalOption.innerHTML = `<a href="${animal.pathOrUrl}" target="_blank" class="option ${
       animal.type
     }"><span>${animal.type.toUpperCase()}</span></a>`;
     animalList.append(animalOption);

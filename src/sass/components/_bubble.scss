@@ -1,0 +1,89 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/*********** INFO BUBBLE ***********/
+
+.bubble {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-gap: 12px;
+  align-items: center;
+
+  padding: 20px;
+  margin-bottom: 30px;
+  min-height: 180px;
+
+  background: $bubble-color;
+  box-shadow: 0 0 20px transparentize(black, 0.4);
+  border-radius: 8px;
+  color: white;
+  font-weight: 100;
+
+  @include bp-max($media-gamma) {
+    & {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &.no-image {
+    grid-template-columns: 1fr;
+  }
+
+  &.no-image h2 {
+    font-size: 1.3em;
+  }
+
+  .bubble-img img {
+    border-radius: 8px;
+  }
+
+  &.invisible,
+  &.invisible {
+    opacity: 0;
+  }
+
+  &.fade-in,
+  &.fade-in {
+    opacity: 1;
+    transition: opacity 0.12s;
+    transition-timing-function: ease-in;
+  }
+
+  a {
+    color: white;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 55%;
+    left: 100%;
+    @include arrow(left);
+  }
+
+  &.lower:after {
+    top: 20%;
+  }
+
+  @include bp-max($media-delta) {
+    &:after {
+      top: 100%;
+      left: 20%;
+      @include arrow(top);
+    }
+
+    &.lower:after {
+      top: 100%;
+      left: 40%;
+    }
+  }
+
+  img {
+    width: 100%;
+    box-shadow: 0 0 30px transparentize(white, 0.5);
+  }
+}

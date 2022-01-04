@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.container.main-page,
+.container.credits-page {
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'nav info';
+  grid-gap: 10px;
+
+  @include bp-max($media-delta) {
+    & {
+      grid-template-columns: 1fr;
+    }
+  }
+}
