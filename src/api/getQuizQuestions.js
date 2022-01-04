@@ -28,7 +28,7 @@ async function retrieveQuizQuestions(animal) {
 
     return data;
   } catch (error) {
-    console.error('Error:', error);
+    return console.error('Error:', error);
   }
 }
 
