@@ -9,7 +9,7 @@ const PAGE_TITLE = 'ANIMALIADA';
 const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
 const FACT_HEADER = 'Did you know?';
 const AdoptionBubbleContent = {
-  IMG: { pathOrUrl: 'https://placedog.net/300/400?random', alt: 'the animal to adoption' },
+  IMG: { pathOrUrl: 'https://placedog.net/150/150?random', alt: 'the animal to adoption' },
   HEADER_TEXT: "Maybe you'd like to adopt your own pet?",
   SENTENCES: ['This one is looking for home', 'See more here: <a href="#adoption-page">Adoption Page</a>'],
 };
@@ -75,7 +75,7 @@ function createFactBubble() {
 
 function createAdoptionBubble() {
   const bubbleAdoption = Bubble('higher', AdoptionBubbleContent.HEADER_TEXT, AdoptionBubbleContent.SENTENCES, true);
-  bubbleAdoption.classList.add('adoption');
+  bubbleAdoption.classList.add('adoption', 'invisible');
   return bubbleAdoption;
 }
 
@@ -90,10 +90,8 @@ async function renderFactBubbleContent() {
   imageObject.addEventListener(
     'load',
     () => {
-      const factBubble = document.querySelector('.bubble.fact');
       renderAnimalFact(imageFact);
-      factBubble.classList.remove('invisible');
-      factBubble.classList.add('fade-in');
+      fadeInBubble('fact');
     },
     false,
   );
@@ -102,7 +100,22 @@ async function renderFactBubbleContent() {
 }
 
 function renderAdoptionBubbleContent() {
-  renderAnimalAdoptionImg();
+  const imageObject = new Image();
+  imageObject.addEventListener(
+    'load',
+    () => {
+      fadeInBubble('adoption');
+    },
+    false,
+  );
+
+  renderAnimalAdoptionImg(imageObject);
+}
+
+function fadeInBubble(bubbleClass) {
+  const bubble = document.querySelector(`.bubble.${bubbleClass}`);
+  bubble.classList.remove('invisible');
+  bubble.classList.add('fade-in');
 }
 
 function renderAnimalFact(fact) {
@@ -120,9 +133,9 @@ function renderAnimalFactImg(imageFact, imageObject) {
   createImage(factImageSpace, imageFact, imageObject);
 }
 
-function renderAnimalAdoptionImg() {
+function renderAnimalAdoptionImg(imageObject) {
   const adoptionImageSpace = document.querySelector('.bubble.adoption .bubble-img');
-  createImage(adoptionImageSpace, AdoptionBubbleContent.IMG);
+  createImage(adoptionImageSpace, AdoptionBubbleContent.IMG, imageObject);
 }
 
 function createImage(domElement, imageData, imageElement) {
