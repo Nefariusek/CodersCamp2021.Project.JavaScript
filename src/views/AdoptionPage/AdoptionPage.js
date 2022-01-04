@@ -1,4 +1,3 @@
-import './AdoptionPage.css';
 import Button from '../../components/Button/Button';
 
 const PAGE_TITLE = 'ADOPTION';
@@ -43,7 +42,7 @@ function renderNavigation() {
 
   ANIMAL_TYPES.forEach((animal) => {
     const animalOption = document.createElement('li');
-    animalOption.innerHTML = `<a href="${animal.pathOrUrl}" class="option ${
+    animalOption.innerHTML = `<a href="${animal.pathOrUrl}" target="_blank" class="option ${
       animal.type
     }"><span>${animal.type.toUpperCase()}</span></a>`;
     animalList.append(animalOption);

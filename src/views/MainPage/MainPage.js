@@ -1,4 +1,3 @@
-import './MainPage.css';
 import Button from '../../components/Button/Button';
 import Bubble from '../../components/Bubble/Bubble';
 import ImageFact from '../../model/ImageFact';
@@ -9,7 +8,7 @@ const PAGE_TITLE = 'ANIMALIADA';
 const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
 const FACT_HEADER = 'Did you know?';
 const AdoptionBubbleContent = {
-  IMG: { pathOrUrl: 'https://placedog.net/300/400?random', alt: 'the animal to adoption' },
+  IMG: { pathOrUrl: 'https://placedog.net/150/150?random', alt: 'the animal to adoption' },
   HEADER_TEXT: "Maybe you'd like to adopt your own pet?",
   SENTENCES: ['This one is looking for home', 'See more here: <a href="#adoption-page">Adoption Page</a>'],
 };
@@ -97,7 +96,6 @@ async function renderFactBubbleContent() {
     },
     false,
   );
-
   renderAnimalFactImg(imageFact, imageObject);
 }
 

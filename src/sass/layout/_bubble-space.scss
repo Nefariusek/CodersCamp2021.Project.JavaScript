@@ -1,0 +1,33 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.main-page,
+.credits-page {
+  .info {
+    grid-area: info;
+    display: flex;
+    align-items: start;
+    flex-direction: row;
+
+    @include bp-max($media-delta) {
+      & {
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+  }
+
+  @include bp-max($media-delta) {
+    .bubbles {
+      width: 80%;
+    }
+
+    .animal {
+      width: 60%;
+    }
+  }
+
+  .animal img {
+    width: 100%;
+  }
+}

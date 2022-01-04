@@ -1,0 +1,69 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.credits-page {
+  /********** CONTAINER ****************/
+
+  @include bp-min($media-delta) {
+    &.container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @include bp-max($media-delta) {
+    &.container {
+      grid-template-areas:
+        'header'
+        'info'
+        'nav';
+    }
+  }
+
+  /************ NAVIGATION ************/
+
+  .navigation-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+
+    @include bp-max($media-beta) {
+      & {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .wrapper:nth-child(1),
+    .wrapper:nth-last-child(2),
+    .wrapper:nth-last-child(1) {
+      grid-column: 1 / -1;
+      justify-content: center;
+    }
+
+    .mentor {
+      background-color: $secondary-btn-color;
+    }
+
+    .go-home {
+      margin-top: 40px;
+    }
+  }
+
+  button {
+    margin: 15px 5px;
+  }
+
+  /********** BUBBLE SPACE *********/
+  .animal {
+    align-self: center;
+  }
+
+  @media (min-width: $media-delta) {
+    .bubbles {
+      width: 35%;
+    }
+
+    .animal {
+      width: 75%;
+    }
+  }
+}

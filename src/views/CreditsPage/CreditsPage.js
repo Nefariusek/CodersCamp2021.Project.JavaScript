@@ -1,4 +1,3 @@
-import './CreditsPage.css';
 import Button from '../../components/Button/Button';
 import Bubble from '../../components/Bubble/Bubble';
 
