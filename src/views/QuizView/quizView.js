@@ -1,5 +1,5 @@
 import { QuizSettings } from '../quiz-settings/quiz-settings';
-import { createTimer, startTimer, stopTimer } from '../../components/timer/quiz-timer';
+import { createTimer, startTimer } from '../../components/timer/quiz-timer';
 import { getRandomQuizQuestions } from '../../model/randomizer';
 import { renderChoiceModal } from '../confirmChoiceModal/confirmChoiceModal';
 import Button from '../../components/Button/Button';
@@ -19,6 +19,7 @@ export async function renderQuizView() {
   current = 0;
   userAnswers = [];
   document.querySelector('#app').append(createLayout());
+  questions.forEach((q, idx) => userAnswers.push(new Answer(idx, 0, q, '', false, false)));
   startTimer();
   renderQuizData();
 }
@@ -26,6 +27,9 @@ export async function renderQuizView() {
 function createQuestionNumbers() {
   const circles = document.createElement('div');
   circles.setAttribute('id', 'question-numbers');
+  circles.onclick = function click(e) {
+    selectQuestion(parseFloat(e.target.innerText));
+  };
   for (let i = 0; i < QuizSettings.questionsNum; i++) {
     const number = document.createElement('div');
     number.innerText = i + 1;
@@ -112,17 +116,21 @@ function renderQuizData() {
   current = current === QuizSettings.questionsNum ? current - 1 : current;
   const numbers = document.getElementById('question-numbers').children;
   numbers.item(current).setAttribute('id', 'current-question');
-
   const image = document.querySelector('#quizView > img');
-  image.src = questions[current].imageUrl;
+  image.src = userAnswers[current].question.imageUrl;
 
   const question = document.getElementById('question-text');
-  question.innerText = questions[current].question.toUpperCase();
+  question.innerText = userAnswers[current].question.question.toUpperCase();
 
   const answersContainer = document.getElementById('answers');
-  const answers = questions[current].getAnswers();
+  const answers = userAnswers[current].question.getAnswers();
+
   for (let i = 0; i < answers.length; i++) {
-    answersContainer.appendChild(Button(answers[i], 'answer', false, 'click', nextQuestion));
+    const answerBtn = Button(answers[i], 'answer', false, 'click', nextQuestion);
+    if (answers[i].toUpperCase() === userAnswers[current].answer) {
+      answerBtn.classList.add('selected');
+    }
+    answersContainer.appendChild(answerBtn);
   }
   startTime = getTime();
 }
@@ -135,28 +143,30 @@ function getTime() {
 }
 
 function saveAnswer(answer) {
-  let change = false;
   endTime = getTime();
   const relativeTime = endTime - startTime;
-  if (userAnswers[current] != undefined && userAnswers[current].answer != '') {
-    if (answer === '') {
-      return;
-    }
-    change = true;
-  }
-  const ans = new Answer(relativeTime, questions[current], answer, false, change);
-  userAnswers[current] = ans;
+
+  const currentAnswer = userAnswers.find((ans) => current === ans.index);
+  currentAnswer.timeOfAnswer = relativeTime;
+  currentAnswer.changed = currentAnswer.answer && currentAnswer.answer !== answer;
+  currentAnswer.answer = answer;
+}
+
+function addAnsweredClass() {
+  const currentQuestionNumber = document.getElementById('current-question');
+  currentQuestionNumber.setAttribute('class', 'answered');
 }
 
 function nextQuestion(e) {
-  let buttonValue = e.target.innerText;
+  const buttonValue = e.target.innerText;
   saveAnswer(buttonValue);
 
-  const currentQuestionNumber = document.getElementById('current-question');
-  currentQuestionNumber.setAttribute('id', '');
+  if (userAnswers[current].answer) {
+    addAnsweredClass();
+  }
 
-  const answersContainer = document.getElementById('answers');
-  answersContainer.innerHTML = '';
+  clearCurrentQuestionId();
+  clearAnswerContainer();
 
   current++;
   lifeline = false;
@@ -164,13 +174,36 @@ function nextQuestion(e) {
 }
 
 function previousQuestion() {
-  const currentQuestionNumber = document.getElementById('current-question');
-  currentQuestionNumber.setAttribute('id', '');
+  if (userAnswers[current].answer) {
+    addAnsweredClass();
+  }
 
-  const answersContainer = document.getElementById('answers');
-  answersContainer.innerHTML = '';
+  clearCurrentQuestionId();
+  clearAnswerContainer();
 
   current--;
+  renderQuizData();
+}
+
+function clearCurrentQuestionId() {
+  const currentQuestionNumber = document.getElementById('current-question');
+  currentQuestionNumber.removeAttribute('id');
+}
+
+function clearAnswerContainer() {
+  const answersContainer = document.getElementById('answers');
+  answersContainer.innerHTML = '';
+}
+
+function selectQuestion(selectedNumber) {
+  if (userAnswers[current].answer) {
+    addAnsweredClass();
+  }
+
+  clearCurrentQuestionId();
+  clearAnswerContainer();
+
+  current = selectedNumber - 1;
   renderQuizData();
 }
 
@@ -185,8 +218,8 @@ function useLifeline() {
   let n;
   while (removed < 2) {
     n = Math.floor(Math.random() * answers.length);
-    if (questions[current].correct.toUpperCase() != answers[n].children[0].innerText) {
-      let index = questions[current].incorrectAnswers
+    if (questions[current].correct.toUpperCase() !== answers[n].children[0].innerText) {
+      const index = questions[current].incorrectAnswers
         .map((ans) => ans.toUpperCase())
         .indexOf(answers[n].children[0].innerText);
       questions[current].incorrectAnswers.splice(index, 1);

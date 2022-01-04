@@ -50,8 +50,18 @@
   text-align: center;
   font-weight: bold;
 }
-
 #quizView #question-numbers #current-question {
+  line-height: 5vmin;
+  width: 5vmin;
+  border-radius: 50%;
+  padding: 2vmin;
+  border: 0.3vmin solid #000;
+  color: white;
+  text-align: center;
+  background-color: #000;
+}
+
+#quizView #question-numbers .answered {
   line-height: 4vmin;
   width: 4vmin;
   border-radius: 50%;
@@ -122,6 +132,11 @@
   position: fixed;
   top: 2%;
   left: 2%;
+}
+
+.wrapper.selected .answer {
+  background-color: #3e505b;
+  color: white;
 }
 
 @media only screen and (min-device-width: 280px) and (max-device-width: 660px) {
