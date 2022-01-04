@@ -1,0 +1,41 @@
+@use '../abstracts/variables' as *;
+
+@mixin centerer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin animal-background($amount, $path) {
+  background: linear-gradient(transparentize(white, $amount), transparentize(white, $amount)), url($path), no-repeat;
+  background-size: 290px;
+  background-position: center center;
+}
+
+@mixin arrow($arrow-root) {
+  @each $side in $sides {
+    @if $side == $arrow-root {
+      border-#{$side}: 30px solid $bubble-color;
+    } @else {
+      border-#{$side}: 20px solid transparent;
+    }
+  }
+}
+
+@mixin bp-min-max($point-1, $point-2) {
+  @media (min-width: #{$point-1}) and (max-width: #{$point-2}) {
+    @content;
+  }
+}
+
+@mixin bp-max($point) {
+  @media (max-width: #{$point}) {
+    @content;
+  }
+}
+
+@mixin bp-min($point) {
+  @media (min-width: #{$point}) {
+    @content;
+  }
+}

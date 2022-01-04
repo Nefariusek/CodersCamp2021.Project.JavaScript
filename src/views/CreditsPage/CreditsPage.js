@@ -1,9 +1,8 @@
-import './CreditsPage.css';
 import Button from '../../components/Button/Button';
 import Bubble from '../../components/Bubble/Bubble';
 
 const PAGE_TITLE = 'CREDITS';
-const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
+const MAIN_ANIMAL_IMG = { pathOrUrl: '../kangoroo.png', alt: 'kangoroo that tells informations' };
 const CreditsBubbleContent = {
   HEADER_TEXT: 'This is our first project of Coders Camp 2021',
   SENTENCE: 'Meet our whole team',

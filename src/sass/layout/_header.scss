@@ -1,0 +1,19 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.main-page .header,
+.adoption-page .header,
+.credits-page .header {
+  grid-area: header;
+
+  h1 {
+    margin: 20px 0;
+    font-size: 8vw;
+  }
+
+  @include bp-max($media-beta) {
+    h1 {
+      font-size: 38px;
+    }
+  }
+}
