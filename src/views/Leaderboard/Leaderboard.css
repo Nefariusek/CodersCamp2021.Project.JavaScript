@@ -53,6 +53,7 @@ td.step div:first-of-type {
 }
 #gold {
   height: 250px;
+  margin: 20px auto;
 }
 #silver {
   height: 200px;
@@ -117,5 +118,14 @@ button.resetButton {
     bottom: 0;
     right: 0;
     width: min-content;
+  }
+}
+@media only screen and (min-device-width: 280px) and (max-device-width: 480px) {
+  td.step div:first-of-type {
+    margin: 20px 0px;
+    width: 75px;
+  }
+  #scorePageTitle {
+    font-size: 2rem;
   }
 }

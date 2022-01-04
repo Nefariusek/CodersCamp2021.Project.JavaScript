@@ -7,9 +7,10 @@ import { onNavigationChange } from '../../components/router/Router';
 
 const PAGE_TITLE = 'ANIMALIADA';
 const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
+const FACT_HEADER = 'Did you know?';
 const AdoptionBubbleContent = {
-  IMG: { pathOrUrl: 'http://placekitten.com/300/400', alt: 'the animal to adoption' },
-  HEADER_TEXT: "Or maybe you'd like to adopt your own pet?",
+  IMG: { pathOrUrl: 'https://placedog.net/300/400?random', alt: 'the animal to adoption' },
+  HEADER_TEXT: "Maybe you'd like to adopt your own pet?",
   SENTENCES: ['This one is looking for home', 'See more here: <a href="#adoption-page">Adoption Page</a>'],
 };
 
@@ -60,20 +61,20 @@ function renderNavigation() {
 }
 
 function renderBubblesStructure() {
-  const bubbleFact = createFactBubble();
-  document.querySelector('.bubbles').append(bubbleFact);
   const bubbleAdoption = createAdoptionBubble();
   document.querySelector('.bubbles').append(bubbleAdoption);
+  const bubbleFact = createFactBubble();
+  document.querySelector('.bubbles').append(bubbleFact);
 }
 
 function createFactBubble() {
-  const bubbleFact = Bubble('higher', 'Did you know?', undefined, true);
-  bubbleFact.classList.add('fact');
+  const bubbleFact = Bubble('lower', '', undefined, true);
+  bubbleFact.classList.add('fact', 'invisible');
   return bubbleFact;
 }
 
 function createAdoptionBubble() {
-  const bubbleAdoption = Bubble('lower', AdoptionBubbleContent.HEADER_TEXT, AdoptionBubbleContent.SENTENCES, true);
+  const bubbleAdoption = Bubble('higher', AdoptionBubbleContent.HEADER_TEXT, AdoptionBubbleContent.SENTENCES, true);
   bubbleAdoption.classList.add('adoption');
   return bubbleAdoption;
 }
@@ -84,41 +85,54 @@ function renderBubblesContent() {
 }
 
 async function renderFactBubbleContent() {
-  const factObj = await getAnimalFact();
-  renderAnimalFact(factObj);
-  renderAnimalFactImg(factObj);
+  const imageFact = await getAnimalImageFact();
+  const imageObject = new Image();
+  imageObject.addEventListener(
+    'load',
+    () => {
+      const factBubble = document.querySelector('.bubble.fact');
+      renderAnimalFact(imageFact);
+      factBubble.classList.remove('invisible');
+      factBubble.classList.add('fade-in');
+    },
+    false,
+  );
+
+  renderAnimalFactImg(imageFact, imageObject);
 }
 
 function renderAdoptionBubbleContent() {
   renderAnimalAdoptionImg();
 }
 
-async function renderAnimalFact(factObj) {
-  const factSentenceItem = document.querySelector('.bubble.fact .bubble-text');
+function renderAnimalFact(fact) {
+  const factSentenceSpace = document.querySelector('.bubble.fact .bubble-text');
+  const factHeader = factSentenceSpace.querySelector('h2');
   const factSentence = document.createElement('p');
 
-  factSentence.innerText = factObj.sentence;
-  factSentenceItem.append(factSentence);
+  factHeader.innerText = FACT_HEADER;
+  factSentence.innerText = fact.sentence;
+  factSentenceSpace.append(factSentence);
 }
 
-function renderAnimalFactImg(factObj) {
-  const factImageItem = document.querySelector('.bubble.fact .bubble-img');
-  createImage(factImageItem, factObj);
+function renderAnimalFactImg(imageFact, imageObject) {
+  const factImageSpace = document.querySelector('.bubble.fact .bubble-img');
+  createImage(factImageSpace, imageFact, imageObject);
 }
 
 function renderAnimalAdoptionImg() {
-  const adoptionImageItem = document.querySelector('.bubble.adoption .bubble-img');
-  createImage(adoptionImageItem, AdoptionBubbleContent.IMG);
+  const adoptionImageSpace = document.querySelector('.bubble.adoption .bubble-img');
+  createImage(adoptionImageSpace, AdoptionBubbleContent.IMG);
 }
 
-function createImage(domElem, obj) {
-  const imgElem = document.createElement('img');
-  imgElem.src = obj.pathOrUrl;
-  imgElem.alt = obj.alt;
-  domElem.append(imgElem);
+function createImage(domElement, imageData, imageElement) {
+  const image = imageElement || document.createElement('img');
+  image.src = imageData.pathOrUrl;
+  image.alt = imageData.alt;
+  domElement.append(image);
 }
 
-async function getAnimalFact() {
+async function getAnimalImageFact() {
   const newImageFact = new ImageFact();
   const imageFact = await retrieveAnimalFact();
   newImageFact.sentence = imageFact.fact;
