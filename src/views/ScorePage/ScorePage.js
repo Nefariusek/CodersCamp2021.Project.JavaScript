@@ -13,7 +13,7 @@ export function renderScorePage() {
   container.append(
     renderGraphics(),
     renderScore(recentUserScore, totalNumber),
-    renderNickForm(),
+    renderNicknameForm(),
     renderMenuButton(),
     renderPlayAgainButton(),
   );
@@ -65,27 +65,27 @@ function renderGraphics() {
   return img;
 }
 
-function renderNickForm() {
-  const nickFormContainer = document.createElement('div');
-  nickFormContainer.setAttribute('id', 'nickFormDiv');
+function renderNicknameForm() {
+  const nicknameFormContainer = document.createElement('div');
+  nicknameFormContainer.setAttribute('id', 'nicknameFormDiv');
   const input = document.createElement('input');
-  input.setAttribute('id', 'nickname');
-  input.setAttribute('placeholder', 'Enter Nickname');
+  input.setAttribute('id', 'nicknamename');
+  input.setAttribute('placeholder', 'Enter Nicknamename');
   input.setAttribute('type', 'text');
   input.setAttribute('style', 'text-transform: uppercase');
   input.addEventListener('keyup', () => {
     document.querySelector('.saveScoreBtn').disabled = !input.value;
   });
-  nickFormContainer.append(input, Button('SUBMIT', 'saveScoreBtn', false, 'click', saveQuizScore));
-  return nickFormContainer;
+  nicknameFormContainer.append(input, Button('SUBMIT', 'saveScoreBtn', false, 'click', saveQuizScore));
+  return nicknameFormContainer;
 }
 
 function getCurrentScore(Answers) {
   return Answers.reduce((sum, ans) => sum + ans.getScore(), 0);
 }
 
-function nicknameValidation() {
-  const input = document.getElementById('nickname');
+function nicknamenameValidation() {
+  const input = document.getElementById('nicknamename');
   if (input.value !== '') {
     return true;
   }
@@ -96,19 +96,19 @@ function saveQuizScore() {
   alert('YOUR SCORE HAS BEEN SAVED');
   const quizScores = JSON.parse(localStorage.getItem('quizScores')) || [];
   const recentUserScore = getCurrentScore(userAnswers);
-  const nickName = document.getElementById('nickname');
-  if (nicknameValidation()) {
+  const nicknameName = document.getElementById('nicknamename');
+  if (nicknamenameValidation()) {
     const score = {
       SCORE: recentUserScore,
       ABOUT: QuizSettings.quizAbout,
       NUMBER: QuizSettings.questionsNum,
       TYPE: QuizSettings.questionsType,
-      NAME: nickName.value,
+      NAME: nicknameName.value,
     };
     quizScores.push(score);
     localStorage.setItem('quizScores', JSON.stringify(quizScores));
-    nickName.value = null;
-    nickName.disabled = true;
+    nicknameName.value = null;
+    nicknameName.disabled = true;
     document.querySelector('.saveScoreBtn').disabled = true;
   }
 }

@@ -9,7 +9,7 @@ h2 {
   color: white;
 }
 
-#nickFormDiv {
+#nicknameFormDiv {
   margin-top: 10px;
   display: flex;
   justify-content: center;
@@ -18,20 +18,20 @@ h2 {
   gap: 5%;
 }
 
-#nickname {
+#nicknamename {
   border: 0px solid;
   width: 250px;
   height: 48px;
 }
 
-#nickname:hover {
+#nicknamename:hover {
   color: white;
 }
-#nickname:disabled {
+#nicknamename:disabled {
   opacity: 0;
 }
 
-#nickname::placeholder {
+#nicknamename::placeholder {
   color: lightgray;
   text-align: center;
   font-weight: lighter;
@@ -73,10 +73,10 @@ input {
     bottom: 0%;
     left: 0%;
   }
-  #nickFormDiv {
+  #nicknameFormDiv {
     flex-direction: column;
   }
-  #nickname {
+  #nicknamename {
     width: auto;
     margin-bottom: 10px;
   }

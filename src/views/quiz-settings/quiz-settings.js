@@ -4,7 +4,9 @@ import Button from '../../components/Button/Button';
 
 class QuizSettings {
   quizAbout;
+
   questionsNum;
+
   questionsType;
 
   static createRadioButton(value, settingName) {
@@ -32,7 +34,7 @@ class QuizSettings {
         this.questionsType = value;
       }
       if (settingName === 'questionsNum') {
-        this.questionsNum = parseInt(component.value);
+        this.questionsNum = parseInt(component.value, 10);
       }
     });
   }
@@ -79,6 +81,7 @@ class QuizSettings {
     buttonStartQuiz.value = 'START QUIZ';
     return buttonStartQuiz;
   }
+
   static navigateToMenu() {
     window.location.hash = '';
   }
@@ -100,7 +103,7 @@ class QuizSettings {
     );
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      if (this.questionsNum === undefined || this.questionsNum < 1 || this.questionsNum > 20) {
+      if (validateQuestionNumber(this.questionsNum)) {
         alert('Insert questions number between 1 and 20');
       } else if (this.quizAbout === undefined) {
         alert('Choose animals');
@@ -128,4 +131,8 @@ class QuizSettings {
 export { QuizSettings };
 export function renderQuizSettings() {
   QuizSettings.showSettings();
+}
+
+function validateQuestionNumber(questionsNum) {
+  return !Number.isInteger(questionsNum) || questionsNum < 1 || questionsNum > 20;
 }

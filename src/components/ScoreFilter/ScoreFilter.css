@@ -1,0 +1,41 @@
+.score-filter {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  margin-top: 5vh;
+}
+
+.score-range {
+  display: flex;
+}
+
+input {
+  text-align: center;
+  margin-left: 10px;
+  height: 5vh;
+  width: 40px;
+  font-size: 60%;
+  text-align: right;
+}
+
+button {
+  margin-top: 2vh;
+}
+
+#settings {
+  text-align: center;
+}
+
+#option {
+  text-align: center;
+}
+
+@media only screen and (min-device-width: 280px) and (max-device-width: 1200px) {
+  .score-filter {
+    flex-direction: column;
+    margin-top: 2vh;
+  }
+  #settings {
+    margin: 10px auto;
+  }
+}
