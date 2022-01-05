@@ -5,7 +5,7 @@ import { retrieveAnimalFact } from '../../api/FactsController';
 import { onNavigationChange } from '../../components/router/Router';
 
 const PAGE_TITLE = 'ANIMALIADA';
-const MAIN_ANIMAL_IMG = { pathOrUrl: '../kangoroo.png', alt: 'kangoroo that tells informations' };
+const MAIN_ANIMAL_IMG = { pathOrUrl: './kangoroo.png', alt: 'kangoroo that tells informations' };
 const FACT_HEADER = 'Did you know?';
 const AdoptionBubbleContent = {
   IMG: { pathOrUrl: 'https://placedog.net/150/150?random', alt: 'the animal to adoption' },
