@@ -1,0 +1,148 @@
+#quizView {
+  display: grid;
+  grid-template-columns: 25vw 50vw 25vw;
+  grid-template-rows: 8vh 15vh 40vh 10vh 27vh;
+  grid-template-areas:
+    '. header  lifeline'
+    'number number number'
+    '. photo  timer'
+    'leftarrow question  rightarrow'
+    'answer answer answer';
+  justify-content: center;
+  align-items: center;
+}
+
+#quizView h1 {
+  grid-area: header;
+  color: black;
+  font-size: 5vmin;
+  width: auto;
+}
+
+#quizView #lifeline {
+  grid-area: lifeline;
+}
+
+#quizView #lifeline img {
+  height: 7vmin;
+  max-height: 70px;
+  width: auto;
+  vertical-align: middle;
+}
+
+#quizView #question-numbers {
+  grid-area: number;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 3vmin;
+  color: black;
+  flex-wrap: wrap;
+  gap: 1vmin;
+}
+
+#quizView #question-numbers div {
+  line-height: 4vmin;
+  width: 4vmin;
+  border-radius: 50%;
+  padding: 1vmin;
+  border: 0.3vmin solid #000;
+  text-align: center;
+  font-weight: bold;
+}
+#quizView #question-numbers #current-question {
+  line-height: 5vmin;
+  width: 5vmin;
+  border-radius: 50%;
+  padding: 2vmin;
+  border: 0.3vmin solid #000;
+  color: white;
+  text-align: center;
+  background-color: #000;
+}
+
+#quizView #question-numbers .answered {
+  line-height: 4vmin;
+  width: 4vmin;
+  border-radius: 50%;
+  padding: 1vmin;
+  border: 0.3vmin solid #000;
+  color: white;
+  text-align: center;
+  background-color: #000;
+}
+
+#quizView > img {
+  grid-area: photo;
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  justify-self: center;
+}
+
+#quizView #clock {
+  grid-area: timer;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#quizView #question-text {
+  grid-area: question;
+  color: white;
+  font-size: 5vmin;
+}
+
+#quizView #navigation-arrows-left {
+  grid-area: leftarrow;
+}
+#quizView #navigation-arrows-left img {
+  height: 7vmin;
+  max-height: 70px;
+  width: auto;
+}
+
+#quizView #navigation-arrows-right {
+  grid-area: rightarrow;
+}
+#quizView #navigation-arrows-right img {
+  height: 7vmin;
+  max-height: 70px;
+  width: auto;
+}
+
+#quizView #answers {
+  grid-area: answer;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+
+#quizView .answer {
+  margin: 0.5vmin;
+  padding: 2vmin;
+  vertical-align: middle;
+  width: 80%;
+  font-size: 3vmin;
+}
+#quizView .quizViewMenuButton {
+  position: fixed;
+  top: 2%;
+  left: 2%;
+}
+
+.wrapper.selected .answer {
+  background-color: #3e505b;
+  color: white;
+}
+
+@media (min-width: 320px) and (max-width: 960px) {
+  .quizViewMenuButton {
+    width: min-content;
+    padding-top: 12px;
+    font-size: 3vmin;
+  }
+}

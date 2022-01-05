@@ -1,0 +1,92 @@
+/*********** INFO BUBBLE ***********/
+
+.bubble {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-gap: 12px;
+  align-items: center;
+
+  padding: 20px;
+  margin-bottom: 30px;
+  min-height: 180px;
+
+  background: var(--bubble-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-weight: 100;
+}
+
+@media (max-width: 640px) {
+  .bubble {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bubble.no-image {
+  grid-template-columns: 1fr;
+}
+
+.bubble.no-image h2 {
+  font-size: 1.3em;
+}
+
+.bubble .bubble-img img {
+  border-radius: 8px;
+}
+
+.bubble.invisible,
+.bubble.invisible {
+  opacity: 0;
+}
+
+.bubble.fade-in,
+.bubble.fade-in {
+  opacity: 1;
+  transition: opacity 0.12s;
+  transition-timing-function: ease-in;
+}
+
+.bubble a {
+  color: white;
+}
+
+.bubble:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 55%;
+  left: 100%;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-left: 30px solid var(--bubble-color);
+}
+
+.bubble.lower:after {
+  top: 20%;
+}
+
+@media (max-width: 960px) {
+  .bubble:after {
+    top: 100%;
+    left: 20%;
+    border-bottom: 20px solid transparent;
+    border-top: 30px solid var(--bubble-color);
+    border-right: 20px solid transparent;
+    border-left: 20px solid transparent;
+  }
+
+  .bubble.lower:after {
+    top: 100%;
+    left: 40%;
+  }
+}
+
+.bubble img {
+  width: 100%;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}

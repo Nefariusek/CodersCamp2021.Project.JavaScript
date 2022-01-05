@@ -1,0 +1,98 @@
+#scorePage {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  color: white;
+}
+
+#nicknameFormDiv {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  margin: auto;
+  gap: 5%;
+}
+
+#nicknamename {
+  border: 0px solid;
+  width: 250px;
+  height: 48px;
+}
+
+#nicknamename:hover {
+  color: white;
+}
+#nicknamename:disabled {
+  opacity: 0;
+}
+
+#nicknamename::placeholder {
+  color: lightgray;
+  text-align: center;
+  font-weight: lighter;
+}
+
+input {
+  text-align: center;
+  font-weight: bold;
+}
+
+.scorePageMenuButton {
+  position: fixed;
+  bottom: 2%;
+  left: 4%;
+}
+
+.playAgainButton {
+  position: fixed;
+  bottom: 2%;
+  right: 4%;
+}
+
+.saveScoreBtn:disabled {
+  opacity: 0;
+}
+
+#finalScore {
+  height: 70px;
+}
+@media (min-width: 320px) and (max-width: 960px) {
+  .scorePageMenuButton {
+    position: relative;
+    align-self: center;
+    bottom: 0%;
+    left: 0%;
+  }
+  .playAgainButton {
+    position: relative;
+    bottom: 0%;
+    left: 0%;
+  }
+  #nicknameFormDiv {
+    flex-direction: column;
+  }
+  #nicknamename {
+    width: auto;
+    margin-bottom: 10px;
+  }
+  #finalScore {
+    height: 40px;
+  }
+  #catPNG {
+    height: 250px;
+    width: 250px;
+  }
+}
+@media only screen and (max-device-height: 610px) {
+  #catPNG {
+    display: none;
+  }
+  #scorePage {
+    margin-top: 20%;
+  }
+}

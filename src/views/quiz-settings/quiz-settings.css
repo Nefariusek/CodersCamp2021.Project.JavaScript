@@ -1,0 +1,168 @@
+.quizSettings {
+  width: 100%;
+  color: white;
+}
+
+#quizSettingsForm {
+  padding-top: 100px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 60px;
+  color: white;
+}
+
+form div {
+  min-width: 70%;
+  width: 100%;
+  max-width: 700px;
+  display: grid;
+  grid-template-columns: [first] 1fr [second] 1fr [third];
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  gap: 5%;
+}
+
+input {
+  border: 0px;
+  border-radius: 7px;
+  max-width: 100%;
+  max-width: 450px;
+  background-color: #658080;
+  height: 50px;
+  display: inline-block;
+}
+
+.radioButton {
+  color: white !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.radioButton:checked {
+  color: white !important;
+}
+
+input[type='radio'] {
+  -webkit-appearance: none;
+  width: 100%;
+  max-width: 450px;
+}
+
+input[type='radio']:checked {
+  background-color: #3e505b;
+  color: white;
+}
+
+input[type='radio']:hover {
+  background-color: #3e505b;
+  color: white;
+}
+
+input[type='submit']:active {
+  background-color: #3e505b;
+}
+
+form p {
+  grid-column-start: first;
+  grid-column-end: third;
+}
+
+#number {
+  color: white;
+  width: 40%;
+  grid-column-start: first;
+  grid-column-end: third;
+  text-align: center;
+  font-size: 16px;
+}
+
+#number:hover {
+  background-color: #3e505b;
+}
+
+#submitButton {
+  margin-bottom: 20px;
+  height: min-content !important;
+  padding: 15px 32px;
+  width: 200px;
+  position: fixed;
+  bottom: 2%;
+  right: 4%;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.settingsMenuButton {
+  position: fixed;
+  bottom: 2%;
+  left: 4%;
+}
+
+.settingsMenuButton:hover {
+  background-color: #3e505b;
+}
+#submitButton:hover {
+  background-color: #3e505b;
+}
+
+label {
+  color: white;
+  position: relative;
+  top: -35px;
+}
+
+p {
+  margin: 0 0;
+}
+
+@media only screen and (min-device-width: 280px) and (max-device-width: 480px) {
+  #quizSettingsForm {
+    padding-top: 10px;
+    gap: 10px;
+  }
+
+  #submitButton {
+    top: 470px;
+    width: 80%;
+    left: 10%;
+  }
+
+  .settingsMenuButton {
+    top: 540px;
+    width: 80%;
+    left: 10%;
+    height: min-content;
+  }
+
+  label {
+    top: -35px;
+  }
+
+  h3 {
+    font-size: 0.9em;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+  }
+
+  p {
+    margin: 0 0;
+  }
+
+  form div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .radioButton {
+    width: 70%;
+  }
+
+  #number {
+    width: 70%;
+  }
+}
