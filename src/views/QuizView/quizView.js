@@ -1,9 +1,9 @@
 import { QuizSettings } from '../quiz-settings/quiz-settings';
-import { createTimer, startTimer } from '../../components/timer/quiz-timer';
+import { createTimer, startTimer } from '../../components/QuizTimer/QuizTimer';
 import { getRandomQuizQuestions } from '../../model/randomizer';
 import { renderChoiceModal } from '../confirmChoiceModal/confirmChoiceModal';
 import Button from '../../components/Button/Button';
-import Answer from '../../components/Answer/Answer';
+import Answer from '../../model/Answer';
 
 let questions;
 let current;
@@ -11,7 +11,6 @@ let startTime;
 let endTime;
 let timerMinutes;
 let timerSeconds;
-let lifeline = false;
 export let userAnswers = [];
 
 export async function renderQuizView() {
@@ -169,7 +168,6 @@ function nextQuestion(e) {
   clearAnswerContainer();
 
   current++;
-  lifeline = false;
   renderQuizData();
 }
 
@@ -208,7 +206,6 @@ function selectQuestion(selectedNumber) {
 }
 
 function useLifeline() {
-  lifeline = true;
   const lifelineDiv = document.getElementById('lifeline');
   lifelineDiv.innerHTML = '';
 

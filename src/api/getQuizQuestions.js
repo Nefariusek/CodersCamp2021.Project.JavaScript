@@ -1,11 +1,15 @@
 import Question from '../model/Question';
 
-const QUESTION_TEXT = 'Name the breed:';
-
-const questionsApis = {
-  DOGS: { url: 'https://api.thedogapi.com/v1/breeds', api_key: '62b8cc9a-2c13-4eec-abe2-80703eabb0a6' },
-  CATS: { url: 'https://api.thecatapi.com/v1/breeds', api_key: '2d4cf1ee-1883-474f-80ab-f931262fd79b' },
+const QUESTION_APIS = {
+  DOGS: { URL: `${import.meta.env.VITE_DOG_API_URL}`, API_KEY: `${import.meta.env.VITE_DOG_API_KEY}` },
+  CATS: { URL: `${import.meta.env.VITE_CAT_API_URL}`, API_KEY: `${import.meta.env.VITE_CAT_API_KEY}` },
 };
+
+const QUESTIONS_APIS = {
+  DOGS: { URL: 'https://api.thedogapi.com/v1/breeds', API_KEY: '62b8cc9a-2c13-4eec-abe2-80703eabb0a6' },
+  CATS: { URL: 'https://api.thecatapi.com/v1/breeds', API_KEY: '2d4cf1ee-1883-474f-80ab-f931262fd79b' },
+};
+const QUESTION_TEXT = 'Name the breed:';
 
 export const getQuizQuestions = async (animal) => {
   const questions = [];
@@ -18,15 +22,17 @@ export const getQuizQuestions = async (animal) => {
 };
 
 async function retrieveQuizQuestions(animal) {
+  const url = QUESTION_APIS[animal].URL;
+  const apiKey = QUESTION_APIS[animal].API_KEY;
+  console.log(typeof apiKey);
   try {
-    const res = await fetch(questionsApis[animal].url, {
+    const res = await fetch(url, {
       headers: {
-        'x-api-key': questionsApis[animal].api_key,
+        'x-api-key': `${apiKey}`,
       },
     });
-    const data = await res.json();
 
-    return data;
+    return res.json();
   } catch (error) {
     return console.error('Error:', error);
   }
@@ -34,15 +40,12 @@ async function retrieveQuizQuestions(animal) {
 
 const mapDataToQuestions = (data) => {
   const allQuestions = getQuestionsFromData(data);
-  const quizQuestions = [];
-  allQuestions.forEach((q) => {
-    if (q.img !== undefined) {
-      const question = new Question(q.img, q.name, getFalseAnswers(q.name, allQuestions), QUESTION_TEXT);
-      quizQuestions.push(question);
+  return allQuestions.reduce((acc, q) => {
+    if (q.img) {
+      acc.push(new Question(q.img, q.name, getFalseAnswers(q.name, allQuestions), QUESTION_TEXT));
     }
-  });
-
-  return quizQuestions;
+    return acc;
+  }, []);
 };
 
 const getQuestionsFromData = (data) => {
