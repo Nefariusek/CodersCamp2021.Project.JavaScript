@@ -137,8 +137,7 @@ function renderQuizData() {
 function getTime() {
   timerMinutes = document.getElementById('timer-minutes').innerText;
   timerSeconds = document.getElementById('timer-seconds').innerText;
-  const time = timerMinutes * 60 + timerSeconds;
-  return time;
+  return timerMinutes * 60 + timerSeconds;
 }
 
 function saveAnswer(answer) {

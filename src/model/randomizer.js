@@ -1,4 +1,4 @@
-import { getQuizQuestions } from '../api/getQuizQuestions';
+import { getQuizQuestions } from '../services/quizService';
 
 export async function getRandomQuizQuestions(animal, numberOfQuestions) {
   const questionToRandomize = await getQuizQuestions(animal);

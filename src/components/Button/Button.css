@@ -11,8 +11,7 @@ button {
   transition: 0.4s;
   text-transform: uppercase;
   margin-bottom: 20px;
-  max-width: 200px;
-  width: 100%;
+  width: 200px;
   font-weight: bold;
 }
 
