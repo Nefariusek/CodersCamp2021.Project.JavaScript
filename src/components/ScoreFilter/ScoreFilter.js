@@ -95,7 +95,15 @@ function ClearButton() {
 
 function filterScores() {
   const scores = getScoreFromLocalStorage();
-  const filteredScores = scores.filter(filterAbout).filter(filterType).filter(filterQuestionNumber);
+  const filters = [filterAbout, filterType, filterQuestionNumber];
+  const filteredScores = scores.filter((score) => filters.every((filter) => filter(score)));
+  // const filteredScores = scores.filter(
+  //   (item) =>
+  //     item.ABOUT === settings.about &&
+  //     item.TYPE === settings.type &&
+  //     item.NUMBER >= settings.min &&
+  //     item.NUMBER <= settings.max,
+  // );
   renderScores(filteredScores);
 }
 
