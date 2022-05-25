@@ -19,7 +19,7 @@ export default function Dropdown(className, dropdownLabel, option1, option2) {
 
   const option2Setting = document.createElement('option');
   option2Setting.setAttribute('value', `${option2}`);
-  option2Setting.innerHTML = option2.toLowerCase();
+  option2Setting.innerHTML = option2?.toLowerCase();
 
   select.append(defaultSetting, option1Setting, option2Setting);
   dropdown.append(select);

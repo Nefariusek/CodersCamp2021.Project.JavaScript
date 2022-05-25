@@ -1,13 +1,5 @@
 import './Bubble.css';
 
-/**
- * Component creates speech bubble with or without image, with given header and optional sentences.
- * Component accepts following inputs:
- * @param {string} bubblePosition - "higher" or "lower" means that due to the "higher" or "lower" position of the bubble on the page, the arrow will be placed appropriately.
- * @param {boolean} hasImage - whether the bubble will contain an image
- * @param {string} header - header text in bubble
- * @param {Array.<string>} sentences - optional additional sentences in the bubble
- */
 export default function Bubble(bubblePosition, header = '', sentences = [], hasImage = false) {
   const bubble = document.createElement('div');
   bubble.classList.add('bubble', bubblePosition);

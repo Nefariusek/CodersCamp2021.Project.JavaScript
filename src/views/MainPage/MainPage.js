@@ -2,7 +2,7 @@ import './MainPage.css';
 import Button from '../../components/Button/Button';
 import Bubble from '../../components/Bubble/Bubble';
 import ImageFact from '../../model/ImageFact';
-import { retrieveAnimalFact } from '../../api/FactsController';
+import { retrieveAnimalFact } from '../../services/factService';
 import { onNavigationChange } from '../../components/router/Router';
 
 const PAGE_TITLE = 'ANIMALIADA';

@@ -65,7 +65,6 @@ export default function ScoreFilter() {
   return scoreFilter;
 }
 
-// TODO: use Button component instead
 function ClearButton() {
   const button = document.createElement('button');
   button.setAttribute('id', 'clearFilterBtn');
@@ -94,25 +93,17 @@ function ClearButton() {
   return button;
 }
 
-/* function resetSettings() {
-  settings.about = DEFAULT_ABOUT;
-  settings.type = DEFAULT_TYPE;
-  settings.min = DEFAULT_MIN;
-  settings.max = DEFAULT_MAX;
-  filterScores();
-
-  const dropdowns = document.querySelectorAll('select');
-  dropdowns.forEach((select) => {
-    select.selectedIndex = 0;
-  });
-
-  const button = document.querySelector('.reset-settings');
-  button.remove();
-} */
-
 function filterScores() {
   const scores = getScoreFromLocalStorage();
-  const filteredScores = scores.filter(filterAbout).filter(filterType).filter(filterQuestionNumber);
+  const filters = [filterAbout, filterType, filterQuestionNumber];
+  const filteredScores = scores.filter((score) => filters.every((filter) => filter(score)));
+  // const filteredScores = scores.filter(
+  //   (item) =>
+  //     item.ABOUT === settings.about &&
+  //     item.TYPE === settings.type &&
+  //     item.NUMBER >= settings.min &&
+  //     item.NUMBER <= settings.max,
+  // );
   renderScores(filteredScores);
 }
 

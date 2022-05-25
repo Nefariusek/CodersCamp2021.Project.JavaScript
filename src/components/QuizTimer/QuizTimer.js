@@ -1,4 +1,9 @@
+import './QuizTimer.css';
+
 let timer;
+
+export let timerMinutes;
+export let timerSeconds;
 
 export function createTimer() {
   const clock = document.createElement('div');
@@ -33,7 +38,7 @@ export function startTimer() {
   min.innerText = '00';
   sec.innerText = '00';
 
-  timer = setInterval(function () {
+  timer = setInterval(() => {
     seconds++;
     if (seconds === 60) {
       seconds = 0;
@@ -42,8 +47,10 @@ export function startTimer() {
         minutes = 0;
       }
       min.innerText = timerDigits(minutes);
+      timerMinutes = minutes;
     }
     sec.innerText = timerDigits(seconds);
+    timerSeconds = seconds;
   }, 1000);
 }
 
@@ -53,6 +60,6 @@ export function stopTimer() {
   clearInterval(timer);
 }
 
-function timerDigits(time_value) {
-  return time_value < 10 ? '0' + time_value : time_value;
+function timerDigits(timeValue) {
+  return timeValue < 10 ? `0${timeValue}` : timeValue;
 }
