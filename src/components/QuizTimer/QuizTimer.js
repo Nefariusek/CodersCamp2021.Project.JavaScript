@@ -1,4 +1,9 @@
+import './QuizTimer.css';
+
 let timer;
+
+export let timerMinutes;
+export let timerSeconds;
 
 export function createTimer() {
   const clock = document.createElement('div');
@@ -42,8 +47,10 @@ export function startTimer() {
         minutes = 0;
       }
       min.innerText = timerDigits(minutes);
+      timerMinutes = minutes;
     }
     sec.innerText = timerDigits(seconds);
+    timerSeconds = seconds;
   }, 1000);
 }
 

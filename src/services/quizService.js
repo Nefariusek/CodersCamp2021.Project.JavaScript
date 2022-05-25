@@ -52,14 +52,14 @@ const getQuestionsFromData = (data) => {
 };
 
 const getFalseAnswers = (correctAnswer, allAnswers) => {
-  const falseAnswers = [];
-  while (falseAnswers.length < 3) {
+  const falseAnswers = new Set();
+  while (falseAnswers.size < 3) {
     const falseAnswer = allAnswers[Math.floor(Math.random() * allAnswers.length)];
 
-    if (!falseAnswers.some((answer) => answer === falseAnswer.name) && falseAnswer.name !== correctAnswer) {
-      falseAnswers.push(falseAnswer.name);
+    if (falseAnswer.name !== correctAnswer) {
+      falseAnswers.add(falseAnswer.name);
     }
   }
 
-  return falseAnswers;
+  return [...falseAnswers.values()];
 };

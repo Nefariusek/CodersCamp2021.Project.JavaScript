@@ -1,5 +1,5 @@
 import { QuizSettings } from '../quiz-settings/quiz-settings';
-import { createTimer, startTimer } from '../../components/QuizTimer/QuizTimer';
+import { createTimer, startTimer, timerMinutes, timerSeconds } from '../../components/QuizTimer/QuizTimer';
 import { getRandomQuizQuestions } from '../../model/randomizer';
 import { renderChoiceModal } from '../confirmChoiceModal/confirmChoiceModal';
 import Button from '../../components/Button/Button';
@@ -9,8 +9,6 @@ let questions;
 let current;
 let startTime;
 let endTime;
-let timerMinutes;
-let timerSeconds;
 export let userAnswers = [];
 
 export async function renderQuizView() {
@@ -135,8 +133,6 @@ function renderQuizData() {
 }
 
 function getTime() {
-  timerMinutes = document.getElementById('timer-minutes').innerText;
-  timerSeconds = document.getElementById('timer-seconds').innerText;
   return timerMinutes * 60 + timerSeconds;
 }
 
