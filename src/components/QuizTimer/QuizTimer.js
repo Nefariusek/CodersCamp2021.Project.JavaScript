@@ -1,9 +1,5 @@
 import './QuizTimer.css';
-
-let timer;
-
-export let timerMinutes;
-export let timerSeconds;
+import timeManager from '../../model/TimeManager';
 
 export function createTimer() {
   const clock = document.createElement('div');
@@ -30,34 +26,31 @@ export function createTimer() {
 }
 
 export function startTimer() {
-  let minutes = 0;
-  let seconds = 0;
+  timeManager.resetTimer();
   const min = document.getElementById('timer-minutes');
   const sec = document.getElementById('timer-seconds');
 
   min.innerText = '00';
   sec.innerText = '00';
 
-  timer = setInterval(() => {
-    seconds++;
-    if (seconds === 60) {
-      seconds = 0;
-      minutes++;
-      if (minutes === 60) {
-        minutes = 0;
+  timeManager.interval = setInterval(() => {
+    timeManager.seconds++;
+    if (timeManager.seconds === 60) {
+      timeManager.seconds = 0;
+      timeManager.minutes++;
+      if (timeManager.minutes === 60) {
+        timeManager.minutes = 0;
       }
-      min.innerText = timerDigits(minutes);
-      timerMinutes = minutes;
+      min.innerText = timerDigits(timeManager.minutes);
     }
-    sec.innerText = timerDigits(seconds);
-    timerSeconds = seconds;
+    sec.innerText = timerDigits(timeManager.seconds);
   }, 1000);
 }
 
 export function stopTimer() {
   const clk = document.getElementById('clock');
   clk.style.display = 'none';
-  clearInterval(timer);
+  clearInterval(timeManager.interval);
 }
 
 function timerDigits(timeValue) {

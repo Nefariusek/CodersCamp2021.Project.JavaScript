@@ -1,9 +1,10 @@
 import { QuizSettings } from '../quiz-settings/quiz-settings';
-import { createTimer, startTimer, timerMinutes, timerSeconds } from '../../components/QuizTimer/QuizTimer';
+import { createTimer, startTimer } from '../../components/QuizTimer/QuizTimer';
 import { getRandomQuizQuestions } from '../../model/randomizer';
 import { renderChoiceModal } from '../confirmChoiceModal/confirmChoiceModal';
 import Button from '../../components/Button/Button';
 import Answer from '../../model/Answer';
+import timeManager from '../../model/TimeManager';
 
 let questions;
 let current;
@@ -133,7 +134,7 @@ function renderQuizData() {
 }
 
 function getTime() {
-  return timerMinutes * 60 + timerSeconds;
+  return timeManager.minutes * 60 + timeManager.seconds;
 }
 
 function saveAnswer(answer) {

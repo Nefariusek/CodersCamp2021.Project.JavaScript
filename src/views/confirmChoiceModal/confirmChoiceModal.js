@@ -2,6 +2,7 @@ import Button from '../../components/Button/Button';
 import '../../components/Button/Button.css';
 import './confirmChoiceModal.css';
 import { userAnswers } from '../QuizView/quizView';
+import { stopTimer } from '../../components/QuizTimer/QuizTimer';
 
 export function renderChoiceModal() {
   const choiceModal = document.createElement('div');
@@ -35,12 +36,13 @@ function renderInfo() {
   return info;
 }
 
-function navigateToScorePage() {
+function finishQuiz() {
+  stopTimer();
   window.location.hash = 'score-page';
 }
 
 function renderYesButton() {
-  return Button('YES', 'yesButton', null, 'click', navigateToScorePage);
+  return Button('YES', 'yesButton', null, 'click', finishQuiz);
 }
 
 function renderNoButton() {
