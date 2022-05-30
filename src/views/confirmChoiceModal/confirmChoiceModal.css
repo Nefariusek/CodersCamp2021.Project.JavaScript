@@ -1,0 +1,23 @@
+#choiceModal {
+  border: #648080 2px solid;
+  border-radius: 15px;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  background-color: #d8d8d8;
+  width: 95%;
+  height: 95% !important;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+#buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
